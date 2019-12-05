@@ -1,0 +1,340 @@
+<div class="all-container">
+
+
+
+
+<div class="picture">
+  <p class="header-title">cafelog</p>
+  <p class="header-subtitle">大学生の為のカフェ情報発信サイト</p>
+</div>
+
+<h1 class="title">投稿順</h1>
+<div class="second-block">
+
+</div>
+<section id="second-block">
+  <% @shops.each do |t|  %>
+    <div class="l-card">
+      <div class="l-thumbnail">
+        <figure class="thumbnail-wrapper">
+<%if t.pictures.present?%>
+          <img src="<%=t.pictures[0].picture%>">
+<%end%>
+        </figure>
+          <span class="more-text">
+            <%=link_to "Read More", "/shops/#{t.id}" %>
+          </span>
+      </div>
+      <div class="text-content">
+        <h3 class="title">
+          <%if t.name.present?%>
+          <%= t.name %>
+          <%end%>
+        </h3>
+          <p class="caption">
+            <%if t.pictures.present?%>
+            <%= t.area %>
+            <%end%>
+          </p>
+            <div class="content-meta">
+              <span class="date">
+                <span class="star-rating">
+                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                  <span class="star-rating-back">★★★★★</span>
+                </span>
+                  <% if t.comments.average(:score).present? %>
+                    <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                  <% end %>
+                  <%=link_to "Read More", "/shops/#{t.id}" %>
+              </span>
+            </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+</div>
+
+
+
+
+
+<ul class="slider"style="margin:0 auto;">
+    <li class="slide figure">
+        <a class="slide__link" href="/tops/index?a=admin">
+            <img src="../assets/coffeebeans2.jpg" alt="image01">
+            <span class="slide__content-wrap">
+                <span class="slide__content figcaption">
+                    <h2 class="slide__title">Cafelog<br>
+                      管理者</h2>
+                    <p class="slide__text">
+                    投稿一覧はこちら
+                    </p>
+                </span>
+            </span>
+        </a>
+    </li>
+    <li class="slide">
+        <a class="slide__link" href="/tops/index?b=user" > <!--これでparamsで受け取る-->
+            <img src="../assets/coffeebeans2.jpg" alt="image01">
+            <span class="slide__content-wrap">
+                <span class="slide__content">
+                    <h2 class="slide__title">Cafelog<br>
+                      利用者</h2>
+                    <p class="slide__text">
+                    投稿一覧はこちら
+                    </p>
+                </span>
+            </span>
+        </a>
+    </li>
+    <li class="slide">
+        <a class="slide__link" href="#">
+            <img src="../assets/coffeebeans2.jpg" alt="image01">
+            <span class="slide__content-wrap">
+                <span class="slide__content">
+                    <h2 class="slide__title">ラテアート選手権</h2>
+                    <p class="slide__text">
+                    Lorem ipsum dolor sit amet
+                    </p>
+                </span>
+            </span>
+        </a>
+    </li>
+</ul>
+
+
+<h1 class="title">東京で探す</h1>
+
+  <div class="a">
+      <%=link_to tag_path("二子玉川"), class:"b area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
+        <figcaption>
+          <h3>二子玉川</h3>
+          <p><%=@shibuya.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("表参道"), class:"c area-block", style:"color:white;" do%>
+        <figcaption>
+          <h3>表参道</h3>
+          <p><%=@omotesandou.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+    <figure class="d area-block">
+      <%=link_to tag_path("三軒茶屋"), style:"color:white;" do%>
+        <figcaption>
+          <h3>三軒茶屋</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+      <%=link_to tag_path("中目黒") , class:"e area-block", style:"color:white;" do%>
+        <figcaption>
+          <h3>中目黒</h3>
+          <p><%=@nakameguro.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("西荻窪"), class:"f area-block", style:"color:white;" do%>
+        <figcaption>
+          <h3>西荻窪</h3>
+          <p><%=@nishiogikubo.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("代官山"), class:"g area-block" , style:"color:white;" do%>
+        <figcaption>
+          <h3>代官山</h3>
+          <p><%=@daikanyama.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("浅草"), class:"h area-block", style:"color:white;" do%>
+        <figcaption>
+          <h3>浅草</h3>
+          <p><%=@asakusa.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+    <figure class="i area-block">
+      <%=link_to tag_path("桜新町") , style:"color:white;" do%>
+        <figcaption>
+          <h3>桜新町</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="j area-block">
+      <%=link_to tag_path("用賀"), style:"color:white;" do%>
+        <figcaption>
+          <h3>用賀</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="k area-block">
+      <%=link_to tag_path("銀座"), style:"color:white;" do%>
+        <figcaption>
+          <h3>銀座</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+  </div>
+    <!--<div class="b"><img class="c" src="assets/test1.jpg"></div> これで導入できないか確認してみる。-->
+
+<h1 class="title">渋谷</h1>
+
+<section id="second-block">
+  <% @area.each do |t|  %>
+    <div class="l-card">
+      <div class="l-thumbnail">
+        <figure class="thumbnail-wrapper">
+          <%if t.pictures.present?%>
+          <img src="<%=t.pictures[0].picture%>">
+          <%end%>
+        </figure>
+          <span class="more-text">
+            <%=link_to "Read More", "/shops/#{t.id}" %>
+          </span>
+      </div>
+        <div class="text-content">
+          <h3 class="title">
+            <%= t.name %>
+          </h3>
+            <p class="caption">
+             <%= t.area %>
+           </p>
+            <div class="content-meta">
+              <span class="date">
+                <span class="star-rating">
+                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                  <span class="star-rating-back">★★★★★</span>
+                </span>
+                <% if t.comments.average(:score).present? %>
+                  <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                <% end %>
+              </span>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</section>
+
+<h1 class="title">旅行でオススメ</h1>
+  <div class="a">
+    <figure class="l area-block">
+      <%=link_to tag_path("北海道"), style:"color:white;" do%>
+        <figcaption>
+          <h3>北海道</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="m area-block">
+      <%=link_to tag_path("京都"), style:"color:white;" do%>
+        <figcaption>
+          <h3>京都</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="n area-block">
+      <%=link_to tag_path("愛知"), style:"color:white;" do%>
+        <figcaption>
+          <h3>愛知</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="o area-block">
+      <%=link_to tag_path("秋田") , style:"color:white;" do%>
+        <figcaption>
+          <h3>秋田</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="p area-block">
+      <%=link_to tag_path("埼玉"), style:"color:white;" do%>
+        <figcaption>
+          <h3>埼玉</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="q area-block">
+      <%=link_to tag_path("神奈川") , style:"color:white;" do%>
+        <figcaption>
+          <h3>神奈川</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="r area-block">
+      <%=link_to tag_path("愛媛"), style:"color:white;" do%>
+        <figcaption>
+          <h3>愛媛</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+
+    <figure class="s area-block">
+      <%=link_to tag_path("青森") , style:"color:white;" do%>
+        <figcaption>
+          <h3>青森</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="t area-block">
+      <%=link_to tag_path("大阪"), style:"color:white;" do%>
+        <figcaption>
+          <h3>大阪</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="u area-block">
+      <%=link_to tag_path("奈良"), style:"color:white;" do%>
+        <figcaption>
+          <h3>奈良</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+  </div>
+
+<h1 class="title">wi-fiがあるお店</h1>
+
+<section id="second-block">
+  <% @tags.each do |t|  %><!--ここに&.eachを記載したら全部消えた-->
+    <div class="l-card">
+      <div class="l-thumbnail">
+        <figure class="thumbnail-wrapper">
+          <%if t.pictures.present?%>
+          <img src="<%=t.pictures[0].picture%>">
+          <%end%>
+        </figure>
+          <span class="more-text">
+            <%=link_to "Read More", "/shops/#{t.id}" %>
+          </span>
+      </div>
+        <div class="text-content">
+          <h3 class="title">
+            <%= t.name %>
+          </h3>
+            <p class="caption">
+             <%= t.area %>
+           </p>
+            <div class="content-meta">
+              <span class="date">
+                <span class="star-rating">
+                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                  <span class="star-rating-back">★★★★★</span>
+                </span>
+                <% if t.comments.average(:score).present? %>
+                  <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                <% end %>
+              </span>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</section>
+</div>

@@ -1,0 +1,33 @@
+<section id="container-block">
+
+
+
+
+  <section id="second-block">
+    <div class="cafelog-container">
+<!--純粋なshopはエンストをしていないのでそのまま表示することができる-->
+    <div class="shop-picture">
+      <%=image_tag @shop.picture.to_s%>
+    </div>
+    <div class="shop-info">
+      <h4>カフェ名:<%=@shop.name%></h4>
+      <h4>所在地：<%=@shop.area%></h4>
+      <h4>商品名<%=@shop.menu%></h4>
+      <h4>値段：<%=@shop.price%></h4>
+      <h4>レビュー<%=@shop.shop%></h4><br>
+      <h3><%=link_to "編集する", edit_shop_path(@shop.id)%>
+      <%=link_to "削除する", shop_path(@shop.id), method: :delete%></h3>
+    </div>
+    </div>
+  </section>
+
+
+    <h2>写真一覧</h2>
+      <div class="picture">
+        <% @shop.pictures.each do |picture|%>
+          <p><img src="<%=picture.picture.to_s%>">
+            <%=link_to "削除する", shop_picture_path(@shop, picture), method: :delete%></p>
+        <%end%>
+      </div>
+    <%=link_to "戻る", shop_path%>
+</section>

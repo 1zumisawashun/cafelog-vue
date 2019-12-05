@@ -1,0 +1,527 @@
+// Place all the styles related to the shops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+/***
+ *  Simple Pure CSS Star Rating Widget Bootstrap 4
+ *
+ *  www.TheMastercut.co
+ *
+ ***/
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+/* Styling h1 and links
+––––––––––––––––––––––––––––––––– */
+.starrating > input {display: none;}  /* Remove radio buttons */
+
+.starrating > label:before {
+  content: "\f005"; /* Star */
+  //margin: 2px;
+  font-size: 4em;
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+.starrating > label
+{
+  color: #222222; /* Start color when not clicked */
+}
+
+.starrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.starrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */
+
+//--------------------------------------------ここは投稿画面、newの画面の要素です
+
+.form-container{
+  margin: 0 auto;
+  width: 80%;
+
+}
+
+//------------------------------------------ここからが違う要素の部分になります
+
+
+
+#second-block{
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+margin: 0 auto;
+margin-left: 11%;
+}
+
+.picture{
+  width: 100%;
+  height:350px;
+background-size: cover;
+background-image: image-url("../assets/post-image2.jpg");
+}
+
+
+
+//---------------------------------------slickの動く要素
+.slider{
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+.slide{
+    position: relative;
+
+//ここがホバーエフェクト
+
+display: inline-block;
+cursor: pointer;
+transition: all 0.3s ease 0s;
+}
+.slide:hover {
+  opacity: 0.6; //要素を透明にするCSS
+}
+
+//ここまで
+
+
+
+//---------------------------------------ここからslick「東京で探す」
+
+
+figure {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+}
+figcaption {
+  position: absolute;
+  bottom: 0px;//これで表示が下に来る
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100px;
+  background: rgba(0,0,0,.6);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+figure:hover figcaption {
+  top: 100%;
+}//これでマウスオーバーで移動する
+//bottomに変えたら上に移動して消える
+//-----------------------------------------------
+
+
+
+.slide__link{
+    color: #fff;
+    text-align: center;
+}
+.slide img{
+    height: auto;
+    width: 100%;
+}
+.slide__content-wrap{
+    left: 50%;
+    position: absolute;
+    top: 50%;
+}
+.slide__content{
+    display: block;
+    opacity: 0;
+    transform: translate(-50%,20%);
+    transition: 0s;
+}
+.slide__content.on{
+    opacity: 1;
+    transform: translate(-50%,-50%);
+    transition: .5s;
+}
+.slide__title{
+    font-size: 48px;
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before{
+    color: #000;
+}
+
+//---------------------------------------
+
+/*　以下新規投稿ページの星用のCSS　geeksalon内容参照　星評価機能実装*/
+
+  .post_form{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .post_form input[type='radio']{
+    display: none;
+  }
+  .post_form label{
+    position: relative;
+    padding: 10px 10px 0;
+    color: gray;
+    cursor: pointer;
+    font-size: 30px; /*星の大きさを変更するときはここ*/
+  }
+  .post_form label .text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+    color: gray;
+  }
+  .post_form label:hover,
+  .post_form label:hover ~ label,
+  .post_form input[type='radio']:checked ~ label{
+    color: #ffcc00;
+  }
+
+
+/*　以下一覧ページの星用のCSS　*/
+
+  .star-rating {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 1em;
+    font-size: 25px;
+  }
+  .star-rating-front {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    display: inline-block;
+    color: #ccc;
+
+  }
+
+//----------------------------------------星評価機能ここまで
+
+.header-title{
+  font-size: 110px;
+  padding-left: 30%;
+  padding-top: 75px;
+}
+.header-subtitle{
+  font-size: 25px;
+  padding-left: 29%;
+}
+
+
+
+.a{
+  margin-top:3%;
+  margin-right: 5%;
+  margin-left: 5%;
+
+}
+.title{
+  margin-top: 10px;
+  margin-left: 12%;
+  font-size: 40px;
+}
+
+.area-block{
+    position: relative;
+
+//ここがホバーエフェクト
+
+display: inline-block;
+padding: 0.6em 2em; //このpaddingとmarginでリンクの文字を操作している！
+margin: 0 0 1em;
+color: #fff;
+cursor: pointer;
+transition: all 0.3s ease 0s;
+}
+.area-block:hover {
+  opacity: 0.6;
+}
+
+
+.b{background-size: cover;
+background-image: image-url("../assets/index3.jpg");
+padding-bottom: 270px;
+}
+.c{background-size: cover;
+background-image: image-url("../assets/S__1.jpg");
+padding-bottom: 270px;
+}
+.d{background-size: cover;
+background-image: image-url("../assets/S__2.jpg");
+padding-bottom: 270px;
+}
+.e{background-size: cover;
+background-image: image-url("../assets/S__3.jpg");
+padding-bottom: 270px;
+}
+.f{background-size: cover;
+background-image: image-url("../assets/S__4.jpg");
+padding-bottom: 270px;
+}
+.g{background-size: cover;
+background-image: image-url("../assets/S__5.jpg");
+padding-bottom: 270px;
+}
+.h{background-size: cover;
+background-image: image-url("../assets/S__6.jpg");
+padding-bottom: 270px;
+}
+.i{background-size: cover;
+background-image: image-url("../assets/S__7.jpg");
+padding-bottom: 270px;
+}
+.j{background-size: cover;
+background-image: image-url("../assets/S__8.jpg");
+padding-bottom: 270px;
+}
+.k{background-size: cover;
+background-image: image-url("../assets/S__9.jpg");
+padding-bottom: 270px;
+}
+.l{background-size: cover;
+background-image: image-url("../assets/S__10.jpg");
+padding-bottom: 300px;
+}
+.m{background-size: cover;
+background-image: image-url("../assets/S__11.jpg");
+padding-bottom: 300px;
+}
+.n{background-size: cover;
+background-image: image-url("../assets/S__12.jpg");
+padding-bottom: 300px;
+}
+.o{background-size: cover;
+background-image: image-url("../assets/S__13.jpg");
+padding-bottom: 300px;
+}
+.p{background-size: cover;
+background-image: image-url("../assets/S__14.jpg");
+padding-bottom: 300px;
+}
+.q{background-size: cover;
+background-image: image-url("../assets/S__15.jpg");
+padding-bottom: 300px;
+}
+.r{background-size: cover;
+background-image: image-url("../assets/S__16.jpg");
+padding-bottom: 300px;
+}
+.s{background-size: cover;
+background-image: image-url("../assets/S__17.jpg");
+padding-bottom: 300px;
+}
+.t{background-size: cover;
+background-image: image-url("../assets/S__18.jpg");
+padding-bottom: 300px;
+}
+.u{background-size: cover;
+background-image: image-url("../assets/S__19.jpg");
+padding-bottom: 300px;
+}
+
+//---------------------------------------カフェログ投稿の要素になる
+.cafelog-container{
+  width: 80%;
+  height: auto;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: white;
+  display: flex;
+}
+.shop-picture{
+  width: 40%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.shop-picture img{
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+
+}
+
+.shop-info{
+  width: 60%;
+  margin-left: 3%;
+  margin-top: 1%;
+
+}
+
+th{
+  width: 25px;
+  height: auto;
+}
+td{
+  width: 185px;
+  height: auto;
+}
+
+
+#third-block{
+  margin: 1% 10% 1% 10%;
+  padding:  2% 0 2% 0;
+  background-color: #fdfafd;
+}
+
+//これはコメント投稿の内容
+
+.comment-container{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+.comment{
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.user-picture{
+  width: 100px;
+  height: 120px;
+}
+.user-picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+.user-content{
+  width: 90%;
+  height: 120px;
+  padding-left: 20px;
+}
+.user-content p{
+  padding-top: 20px;
+}
+
+
+
+//以下、写真のみ投稿のレイアウト内容
+
+.image-container{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+
+}
+.image{
+  width: 270px;
+  height:280px;
+}
+
+.image img{
+  width: 270px;
+  height: 240px;
+  object-fit: cover;
+}
+
+
+
+
+img{
+  width: 270px; //これが現状での全写真の大きさを決めている。これを無くしてしまったら写真の大きさぶれるので注意
+  height: 160px;
+  object-fit: cover;
+}
+
+
+
+
+//これはcardの内容
+//ここでshops#indexの写真を変えられる→これがカードの外枠を指している
+.l-card {
+  overflow: hidden;
+  width: 20%;
+  height: auto;
+  padding: 0;
+  margin: 0.5%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.text-content {
+  padding: 16px;
+}
+.text-content .title {
+  margin: 0 0 3px 0;
+  font-size: 20px;
+  color: #3f3931;
+}
+.text-content .caption {
+  margin: 0 0 0 0;
+  font-size: 14px;
+  color: #555;
+}
+.content-meta {
+  overflow: hidden;
+  width: 100%;
+  font-size: 10px;
+}
+.date {
+  color: #aaa;
+}
+
+/*ここからthumbnailのスタイル設定*/
+.l-thumbnail {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+.thumbnail-wrapper {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.thumbnail-wrapper::after {
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}
+.thumbnail-wrapper img{
+  display: block;
+  max-width: 100%;
+}
+.more-text {
+  transition: 0.5s;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  padding: 6px 12px 8px;
+  color: #fff;
+  font-size: 14px;
+  border: 1px solid #fff;
+  opacity: 0;
+}
+.l-card:hover .thumbnail-wrapper::after {
+  opacity: 1;
+}
+.l-card:hover .more-text {
+  opacity: 1;}

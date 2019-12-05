@@ -1,0 +1,93 @@
+
+<div class="search-block">
+
+
+<h1>お店の名前と場所で検索できます</h1>
+
+<%= form_tag "/shops/search?utf8=✓", :method =>"get" do %>
+    <%= text_field_tag :search, params[:search], class:"form-control col-md-5" %>
+    <%= submit_tag "Search", :area => nil , class:"btn btn-success" %><!--each文ではないのでsubmit_tagになっている-->
+<% end %>
+
+<br>
+<h1>場所で検索</h1>
+<br>
+<span class=" btn btn-primary">
+<%=link_to "二子玉川", tag_path("二子玉川"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "表参道", tag_path("表参道"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "渋谷", tag_path("渋谷"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "中目黒", tag_path("中目黒"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "代官山", tag_path("代官山"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "荻窪", tag_path("荻窪"), style:"color:white;"%>
+</span>
+<br>
+<h1>特徴で検索</h1>
+<br>
+<span class=" btn btn-primary">
+<%=link_to "wi-fi", tag_path("wi-fi"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "コーヒースタンド", tag_path("コーヒースタンド"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "インスタ映え", tag_path("インスタ映え"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "デート", tag_path("デート"), style:"color:white;"%>
+</span>
+<span class=" btn btn-primary">
+<%=link_to "コワーキングスペース", tag_path("コワーキングスペース"), style:"color:white;"%>
+</span>
+
+</div>
+
+
+
+<%if params[:utf8]%><!--もしクエリパラメータが来たら表示する-->
+<h1 class="title">検索結果</h1>
+
+<section id="second-block">
+  <% @shops.each do |t|  %>
+    <div class="l-card">
+      <div class="l-thumbnail">
+        <figure class="thumbnail-wrapper">
+          <img src="<%=t.pictures[0].picture%>">
+        </figure>
+          <span class="more-text">
+            <%=link_to "Read More", "/shops/#{t.id}" %>
+          </span>
+      </div>
+      <div class="text-content">
+        <h3 class="title">
+          <%= t.name %>
+        </h3>
+          <p class="caption">
+            <%= t.area %>
+          </p>
+            <div class="content-meta">
+              <span class="date">
+                <span class="star-rating">
+                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                  <span class="star-rating-back">★★★★★</span>
+                </span>
+                  <% if t.comments.average(:score).present? %>
+                    <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                  <% end %>
+              </span>
+            </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+<%end%>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Cafelog4</title>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+          <!-- Latest compiled and minified CSS -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+          <!-- Latest compiled and minified JavaScript -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+            <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+            <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+            <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </head>
+
+    <body>
+      <header class="cafelog-header">
+        <div class="header-logo"></div>
+        <div class="header-botton">
+        <% if user_signed_in? %>
+          <nav><%=link_to "一覧画面", "/tops/index?c=cafe",style:"text-decoration: none;"%></nav>
+          <nav><a style="text-decoration: none;", href="/users/<%=current_user.id%>">マイページ</a></nav>
+          <nav><%=link_to "トップページ", shops_path,style:"text-decoration: none;"%></nav>
+          <nav><%=link_to "投稿画面", new_shop_path,style:"text-decoration: none;"%></nav>
+          <nav><%=link_to "検索", search_shops_path,style:"text-decoration: none;"%></nav>
+          <nav><%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,style:"text-decoration: none;"%></nav>
+            <%if current_user.try(:admin)%>
+            <nav><%=link_to "MAP", "/maps/index",style:"text-decoration: none;"%></nav>
+            <nav class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "管理画面", "/admin" ,style:"text-decoration: none;"%></nav>
+            <%end%>
+        <%else%>
+          <nav><%= button_to "ログイン", new_user_session_path, method: :get ,style:"text-decoration: none;"%></nav>
+          <nav><%= button_to "新規登録", new_user_registration_path, method: :get ,style:"text-decoration: none;"%></nav>
+          <nav><%=link_to "一覧画面", "/tops/index?c=cafe",style:"text-decoration: none;"%></nav>
+          <nav><%=link_to "トップページ", shops_path,style:"text-decoration: none;"%></nav>
+          <nav><%=link_to "検索", search_shops_path,style:"text-decoration: none;"%></nav>
+        <%end%>
+        </div>
+
+      </header>
+
+      <%= yield %>
+
+      <footer>
+
+
+      </footer>
+    </body>
+  </html>

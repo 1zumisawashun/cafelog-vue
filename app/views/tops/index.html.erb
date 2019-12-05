@@ -1,0 +1,140 @@
+<div class="picture">
+  <p class="header-title">cafelog</p>
+  <p class="header-subtitle">大学生の為のカフェ情報発信サイト</p>
+</div>
+
+
+<h1 class="title">投稿一覧</h1>
+<div class="tabs">
+
+  <%if params[:c]||params[:a]%>
+  <input id="all" type="radio" name="tab_item" checked> <!--checkedで切り替え画面のデフォルトでユーザーに見せる画面を決めている-->
+  <label class="tab_item" for="all">管理者投稿</label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming">ユーザー投稿</label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design">ラテアート選手権</label>
+  <%else params[:b]%>
+  <input id="all" type="radio" name="tab_item">
+  <label class="tab_item" for="all">管理者投稿</label>
+  <input id="programming" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="programming">ユーザー投稿</label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design">ラテアート選手権</label>
+  <%end%>
+
+
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <div class="c-txtsp">
+
+        <div class="container">
+      <% @shops.each do |t|  %>
+      <%if t.user.admin == true%> <!--これで条件分けをしている。簡単に実装できるのでお勧め-->
+        <div class="l-card">
+            <div class="l-thumbnail">
+              <figure class="thumbnail-wrapper">
+
+
+                <img src="<%=t.pictures[0].picture%>">
+
+              </figure>
+              <span class="more-text">
+              <%=link_to "Read More", "/shops/#{t.id}" %>
+              </span>
+            </div>
+
+          <div class="text-content">
+              <h3 class="title">
+                 <%= t.name %>
+              </h3>
+              <p class="caption">
+                 <%= t.area %>
+              </p>
+              <div class="content-meta">
+                <span class="date">
+                  <span class="star-rating">
+                    <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                    <span class="star-rating-back">★★★★★</span>
+                  </span>
+                  <% if t.comments.average(:score).present? %>
+                    <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                  <% end %>
+                </span>
+                <span class="like">
+
+                </span>
+              </div>
+          </div>
+        </div>
+        <%end%>
+    <% end %>
+    </div>
+
+
+  </div>
+    </div>
+  </div>
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <div class="c-txtsp">
+
+        <div class="container">
+      <% @shops.each do |t|  %>
+      <%if t.user.admin==false%>
+        <div class="l-card">
+            <div class="l-thumbnail">
+              <figure class="thumbnail-wrapper">
+
+
+                <img src="<%=t.pictures[0].picture%>">
+
+              </figure>
+              <span class="more-text">
+              <%=link_to "Read More", "/shops/#{t.id}" %>
+              </span>
+            </div>
+
+          <div class="text-content">
+              <h3 class="title">
+                 <%= t.name %>
+              </h3>
+              <p class="caption">
+                 <%= t.area %>
+              </p>
+              <div class="content-meta">
+                <span class="date">
+                  <span class="star-rating">
+                    <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                    <span class="star-rating-back">★★★★★</span>
+                  </span>
+                  <% if t.comments.average(:score).present? %>
+                    <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                  <% end %>
+                </span>
+                <span class="like">
+
+                </span>
+              </div>
+          </div>
+        </div>
+        <%end%>
+    <% end %>
+    </div>
+
+
+  </div>
+    </div>
+  </div>
+  <div class="tab_content" id="design_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">随時公開予定です</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="footer">
+   
+</div>

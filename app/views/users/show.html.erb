@@ -1,0 +1,128 @@
+
+
+<%if current_user.admin==false%>
+<h1 class="title"><%=current_user.username%>さんのマイページ</h1>
+<%end%>
+
+<div class="user-container">
+
+<div class="user-photo">
+<%=image_tag @user.user_image.to_s%><!--写真を使うという事はuploaderの操作、実行をしなければいけない-->
+<%=link_to "変更", edit_user_registration_path, class:"btn btn-primary",style:"color:white;"%>
+</div>
+
+<div class="user-info">
+<h3>ユーザ名：<%=@user.username%><br></h3>
+<h3>自己紹介：<%=@user.info%><br></h3>
+<h3>ユーザemail：<%=@user.email%><br></h3>
+<h3>ユーザpassword：<%=@user.password%></h3>
+</div>
+</div>
+
+
+
+
+
+<div class="mypage-container">
+
+  <div class="tabs">
+    <input id="all" type="radio" name="tab_item" checked>
+    <label class="tab_item col-md-6" for="all">MY CAFELOG</label>
+    <input id="programming" type="radio" name="tab_item">
+    <label class="tab_item col-md-6" for="programming">SAVE</label>
+    <!--<input id="design" type="radio" name="tab_item">
+    <label class="tab_item" for="design">POST CAFELOG</label>-->
+
+
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <div class="c-txtsp">
+        <p>投稿した内容が入ります</p><br>
+          <div class="container">
+            <% @shops.each do |t|  %>
+              <div class="l-card">
+                <div class="l-thumbnail">
+                  <figure class="thumbnail-wrapper">
+                    <img src="<%=t.pictures[0].picture%>">
+                  </figure>
+                    <span class="more-text">
+                      <%=link_to "Read More", "/shops/#{t.id}" %>
+                    </span>
+                </div>
+                  <div class="text-content">
+                    <h3 class="title">
+                      <%= t.name %>
+                    </h3>
+                      <p class="caption">
+                        <%= t.area %>
+                      </p>
+                      <div class="content-meta">
+                        <span class="date">
+                          <span class="star-rating">
+                            <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                            <span class="star-rating-back">★★★★★</span>
+                          </span>
+                          <% if t.comments.average(:score).present? %>
+                            <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                          <% end %>
+                        </span>
+                        <!--<span class="like">
+                          <i class="material-icons">&#xE87E;</i>
+                            120
+                          </span>-->
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <div class="c-txtsp">
+        <p>お気に入り保存した内容が入ります</p><br>
+          <div class="container">
+            <% @likes.each do |t|  %>
+              <div class="l-card">
+                <div class="l-thumbnail">
+                  <figure class="thumbnail-wrapper">
+                    <img src="<%=t.shop.pictures[0].picture%>">
+                  </figure>
+                  <span class="more-text">
+                    <%=link_to "Read More", "/shops/#{t.id}" %>
+                  </span>
+                </div>
+                  <div class="text-content">
+                    <h3 class="title">
+                      <%= t.shop.name %>
+                    </h3>
+                    <p class="caption">
+                      <%= t.shop.area %>
+                    </p>
+                  <div class="content-meta">
+                    <span class="date">
+                      <span class="star-rating">
+                        <span class="star-rating-front" style="width: <%=(t.shop.average_rate)%>%;">★★★★★</span><!--書き方が複雑になるので注意！-->
+                        <span class="star-rating-back">★★★★★</span>
+                      </span>
+                      <% if t.shop.comments.average(:score).present? %>
+                        <%=t.shop.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.shop.comments.count %>）
+                      <% end %>
+                    </span>
+
+                  </div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+</div>
