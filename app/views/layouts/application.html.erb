@@ -36,7 +36,7 @@
             <nav class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "管理画面", "/admin" ,style:"text-decoration: none;"%></nav>
             <%end%>
         <%else%>
-          <nav><%= button_to "ログイン", shop_path, method: :get ,style:"text-decoration: none;"%></nav>
+          <nav><%= button_to "ログイン", new_user_session_path, method: :get ,style:"text-decoration: none;"%></nav>
           <nav><%= button_to "新規登録", new_user_registration_path, method: :get ,style:"text-decoration: none;"%></nav>
           <nav><%=link_to "一覧画面", "/tops/index?c=cafe",style:"text-decoration: none;"%></nav>
           <nav><%=link_to "トップページ", shops_path,style:"text-decoration: none;"%></nav>

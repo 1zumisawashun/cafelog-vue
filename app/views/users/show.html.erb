@@ -7,7 +7,9 @@
 <div class="user-container">
 
 <div class="user-photo">
+  <%if @user.user_image.present?%>
 <%=image_tag @user.user_image.to_s%><!--写真を使うという事はuploaderの操作、実行をしなければいけない-->
+<%end%>
 <%=link_to "変更", edit_user_registration_path, class:"btn btn-primary",style:"color:white;"%>
 </div>
 
