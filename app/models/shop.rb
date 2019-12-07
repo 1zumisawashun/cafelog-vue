@@ -8,7 +8,7 @@ class Shop < ApplicationRecord
       Shop.all
     end
   end
-  validates :reivew, length: {maximum:140}
+  validates :review, length: {maximum:140}
 
   acts_as_taggable
   ratyrate_rateable 'review'
