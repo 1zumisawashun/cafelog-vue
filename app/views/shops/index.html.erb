@@ -1,7 +1,7 @@
 <div class="all-container">
 <div class="picture">
-  <p class="header-title">cafelog</p>
-  <p class="header-subtitle">大学生の為のカフェ情報発信サイト</p>
+  <div class="header-title"><strong>cafelog</strong></div>
+  <div class="header-subtitle"><strong>大学生の為のカフェ情報発信サイト</strong></div>
 </div>
 <div class="second-block">
 <h1 class="title">投稿順</h1>
@@ -107,13 +107,12 @@
 
 
 
-<h1 class="title">東京で探す</h1>
+<h1 class="title" style="margin-left:5%;">東京で探す</h1>
 
   <div class="a">
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
         <figcaption>
           <h3>二子玉川</h3>
-
           <p><%=@shibuya.count%>件の投稿があります</p>
         </figcaption>
       <%end%>
@@ -228,7 +227,7 @@
 </div>
 </div>
 
-<h1 class="title">旅行でオススメ</h1>
+<h1 class="title"style="margin-left:5%;">旅行でオススメ</h1>
   <div class="a">
     <figure class="area-content area-block">
       <%=link_to tag_path("北海道"), style:"color:white;" do%>
