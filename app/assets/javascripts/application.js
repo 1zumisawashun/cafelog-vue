@@ -60,7 +60,7 @@ $('.slider').slick({
     infinite: true,
     autoplaySpeed:4000,
     dots:true,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1
 
 });

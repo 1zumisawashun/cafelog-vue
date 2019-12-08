@@ -1,17 +1,13 @@
 <div class="all-container">
-
-
-
-
 <div class="picture">
   <p class="header-title">cafelog</p>
   <p class="header-subtitle">大学生の為のカフェ情報発信サイト</p>
 </div>
-
-<h1 class="title">投稿順</h1>
 <div class="second-block">
+<h1 class="title">投稿順</h1>
 
-</div>
+
+
 <section id="second-block">
   <% @shops.each do |t|  %>
     <div class="l-card">
@@ -28,7 +24,7 @@
       <div class="text-content">
         <h3 class="title">
           <%if t.name.present?%>
-          <%= t.name %>
+          <strong><%= t.name %></strong>
           <%end%>
         </h3>
           <p class="caption">
@@ -53,15 +49,20 @@
   <% end %>
 </section>
 </div>
+</div>
 
 
 
 
+<div class="all-container">
+  <div class="second-block">
 
-<ul class="slider"style="margin:0 auto;">
-    <li class="slide figure">
+
+<h1 class="title">一覧画面</h1>
+<ul class="slider">
+    <li class="slide figure" style="padding-bottom: 200px;">
         <a class="slide__link" href="/tops/index?a=admin">
-            <img src="../assets/coffeebeans2.jpg" alt="image01">
+            <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content figcaption">
                     <h2 class="slide__title">Cafelog<br>
@@ -73,9 +74,9 @@
             </span>
         </a>
     </li>
-    <li class="slide">
+    <li class="slide"style="padding-bottom: 200px;">
         <a class="slide__link" href="/tops/index?b=user" > <!--これでparamsで受け取る-->
-            <img src="../assets/coffeebeans2.jpg" alt="image01">
+            <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content">
                     <h2 class="slide__title">Cafelog<br>
@@ -87,9 +88,9 @@
             </span>
         </a>
     </li>
-    <li class="slide">
+    <li class="slide"style="padding-bottom: 200px;">
         <a class="slide__link" href="#">
-            <img src="../assets/coffeebeans2.jpg" alt="image01">
+            <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content">
                     <h2 class="slide__title">ラテアート選手権</h2>
@@ -101,6 +102,12 @@
         </a>
     </li>
 </ul>
+
+</div>
+</div>
+
+
+
 
 
 <h1 class="title">東京で探す</h1>
@@ -176,6 +183,10 @@
     </figure>
   </div>
     <!--<div class="b"><img class="c" src="assets/test1.jpg"></div> これで導入できないか確認してみる。-->
+<div class="all-container">
+<div class="second-block">
+
+
 
 <h1 class="title">渋谷</h1>
 
@@ -194,7 +205,7 @@
       </div>
         <div class="text-content">
           <h3 class="title">
-            <%= t.name %>
+            <strong><%= t.name %></strong>
           </h3>
             <p class="caption">
              <%= t.area %>
@@ -214,6 +225,9 @@
     </div>
   <% end %>
 </section>
+
+</div>
+</div>
 
 <h1 class="title">旅行でオススメ</h1>
   <div class="a">
@@ -300,6 +314,9 @@
     </figure>
   </div>
 
+
+  <div class="all-container">
+  <div class="second-block">
 <h1 class="title">wi-fiがあるお店</h1>
 
 <section id="second-block">
@@ -317,7 +334,7 @@
       </div>
         <div class="text-content">
           <h3 class="title">
-            <%= t.name %>
+            <strong><%= t.name %></strong>
           </h3>
             <p class="caption">
              <%= t.area %>
@@ -336,4 +353,8 @@
         </div>
     </div>
   <% end %>
+
 </section>
+
+</div>
+</div>
