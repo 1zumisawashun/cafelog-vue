@@ -10,6 +10,8 @@ class ShopsController < ApplicationController
     @area = Shop.where(area: "渋谷").limit(8)
     @tags =Shop.tagged_with(["wi-fi"]).limit(8)
     @score= Comment.average(:score)
+    @random= Shop.order("RANDOM()").limit(10)
+
 
     @hutakotamagawa=Shop.where(area:"二子玉川")
     @shibuya=Shop.where(area:"渋谷")

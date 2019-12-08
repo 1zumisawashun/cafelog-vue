@@ -67,5 +67,5 @@ gem 'cancancan', '~> 2.0'
 gem 'geocoder'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.19.0'
 end

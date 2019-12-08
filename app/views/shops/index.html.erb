@@ -58,15 +58,13 @@
   <div class="second-block">
 
 
-<h1 class="title">一覧画面</h1>
 <ul class="slider">
-    <li class="slide figure" style="padding-bottom: 200px;">
+    <li class="slide figure" style="padding-bottom: 150px;">
         <a class="slide__link" href="/tops/index?a=admin">
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content figcaption">
-                    <h2 class="slide__title">Cafelog<br>
-                      管理者</h2>
+                    <h2 class="slide__title">Cafelog管理者</h2>
                     <p class="slide__text">
                     投稿一覧はこちら
                     </p>
@@ -74,13 +72,12 @@
             </span>
         </a>
     </li>
-    <li class="slide"style="padding-bottom: 200px;">
+    <li class="slide"style="padding-bottom: 150px;">
         <a class="slide__link" href="/tops/index?b=user" > <!--これでparamsで受け取る-->
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content">
-                    <h2 class="slide__title">Cafelog<br>
-                      利用者</h2>
+                    <h2 class="slide__title">Cafelog利用者</h2>
                     <p class="slide__text">
                     投稿一覧はこちら
                     </p>
@@ -88,7 +85,7 @@
             </span>
         </a>
     </li>
-    <li class="slide"style="padding-bottom: 200px;">
+    <li class="slide"style="padding-bottom: 150px;">
         <a class="slide__link" href="#">
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
@@ -116,6 +113,7 @@
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
         <figcaption>
           <h3>二子玉川</h3>
+
           <p><%=@shibuya.count%>件の投稿があります</p>
         </figcaption>
       <%end%>
@@ -182,6 +180,7 @@
       <%end%>
     </figure>
   </div>
+
     <!--<div class="b"><img class="c" src="assets/test1.jpg"></div> これで導入できないか確認してみる。-->
 <div class="all-container">
 <div class="second-block">
