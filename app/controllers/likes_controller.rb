@@ -7,8 +7,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by(shop_id: params[:shop_id],
-    shop_id: current_user.id) #shop_idはフォームから受け取ることができないから記載する必要がある
+    @like = Like.find_by(shop_id: params[:shop_id]) #shop_idはフォームから受け取ることができないから記載する必要がある
     @like.destroy
     redirect_to root_path
   end
