@@ -98,3 +98,10 @@ function codeAddress(){
 
 
 <div id="rateYo"></div>
+
+<h1>お店の名前と場所で検索できます</h1>
+
+<%= form_tag "/shops/search?utf8=✓", :method =>"get" do %>
+    <%= text_field_tag :search, params[:search], class:"form-control col-md-5" %>
+    <%= submit_tag "Search", :area => nil , class:"btn btn-success" %><!--each文ではないのでsubmit_tagになっている-->
+<% end %>

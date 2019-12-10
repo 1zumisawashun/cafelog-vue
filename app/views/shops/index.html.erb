@@ -4,7 +4,7 @@
   <div class="header-subtitle"><strong>大学生の為のカフェ情報発信サイト</strong></div>
 </div>
 <div class="second-block">
-<h1 class="title">投稿順</h1>
+<h1 class="title"><strong>投稿順</strong></h1>
 
 
 
@@ -28,8 +28,8 @@
           <%end%>
         </h3>
           <p class="caption">
-            <%if t.pictures.present?%>
-            <%= t.area %>
+            <%if t.area.present?%>
+            <%=link_to "#{t.area}駅", tag_path("#{t.area}") ,style:"color:black;"%>
             <%end%>
           </p>
             <div class="content-meta">
@@ -39,9 +39,11 @@
                   <span class="star-rating-back">★★★★★</span>
                 </span>
                   <% if t.comments.average(:score).present? %>
-                    <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                    <%=t.comments.average(:score).round(1)%>点
+
+                    <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
+
                   <% end %>
-                  <%=link_to "Read More", "/shops/#{t.id}" %>
               </span>
             </div>
       </div>
@@ -110,12 +112,14 @@
 <h1 class="title" style="margin-left:5%;">東京で探す</h1>
 
   <div class="a">
+
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
         <figcaption>
           <h3>二子玉川</h3>
           <p><%=@shibuya.count%>件の投稿があります</p>
         </figcaption>
       <%end%>
+
       <%=link_to tag_path("表参道"), class:"area-content area-block", style:"color:white;" do%>
         <figcaption>
           <h3>表参道</h3>
@@ -179,6 +183,7 @@
       <%end%>
     </figure>
   </div>
+
 
     <!--<div class="b"><img class="c" src="assets/test1.jpg"></div> これで導入できないか確認してみる。-->
 <div class="all-container">

@@ -5,7 +5,7 @@
       <%= csrf_meta_tags %>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      
+
       <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -24,13 +24,14 @@
 
     <body>
       <header class="cafelog-header">
-        <div class="header-logo"></div>
+        <%=link_to "", shops_path,style:"text-decoration: none;" ,class:"header-logo"%>
         <div class="header-botton">
+
         <% if user_signed_in? %>
-          <nav><%=link_to "一覧画面", "/tops/index?c=cafe",style:"text-decoration: none;"%></nav>
+          <nav><%=link_to "一覧", "/tops/index?c=cafe",style:"text-decoration: none;"%></nav>
           <nav><a style="text-decoration: none;", href="/users/<%=current_user.id%>">マイページ</a></nav>
-          <nav><%=link_to "トップページ", shops_path,style:"text-decoration: none;"%></nav>
-          <nav><%=link_to "投稿画面", new_shop_path,style:"text-decoration: none;"%></nav>
+
+          <nav><%=link_to "投稿", new_shop_path,style:"text-decoration: none;"%></nav>
           <nav><%=link_to "検索", search_shops_path,style:"text-decoration: none;"%></nav>
           <nav><%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,style:"text-decoration: none;"%></nav>
             <%if current_user.try(:admin)%>
@@ -40,8 +41,7 @@
         <%else%>
           <nav><%= button_to "ログイン", new_user_session_path, method: :get ,style:"text-decoration: none;"%></nav>
           <nav><%= button_to "新規登録", new_user_registration_path, method: :get ,style:"text-decoration: none;"%></nav>
-          <nav><%=link_to "一覧画面", "/tops/index?c=cafe",style:"text-decoration: none;"%></nav>
-          <nav><%=link_to "トップページ", shops_path,style:"text-decoration: none;"%></nav>
+          <nav><%=link_to "一覧", "/tops/index?c=cafe",style:"text-decoration: none;"%></nav>
           <nav><%=link_to "検索", search_shops_path,style:"text-decoration: none;"%></nav>
         <%end%>
         </div>
