@@ -60,16 +60,6 @@
 </div>
 
 
-<script>
-new Masonry('body',{
-  itemSelector: '.l-card',
-  columnWidth: 265,
-  gutter: 2
-
-});
-
-</script>
-
 
 
 
@@ -249,15 +239,6 @@ new Masonry('body',{
 </div>
 </div>
 
-<script>
-new Masonry('body',{
-  itemSelector: '.l-card',
-  columnWidth: 265,
-  gutter: 2
-
-});
-
-</script>
 
 
 <h1 class="title"style="margin-left:5%;">旅行でオススメ</h1>
@@ -346,13 +327,15 @@ new Masonry('body',{
   </div>
 
 
+
+
   <div class="all-container">
   <div class="second-block">
 <h1 class="title">wi-fiがあるお店</h1>
 
 <section id="second-block">
   <% @tags.each do |t|  %><!--ここに&.eachを記載したら全部消えた-->
-    <div class="l-card col-xs-6">
+    <div class="l-card tags">
       <div class="l-thumbnail">
         <figure class="thumbnail-wrapper">
           <%if t.pictures.present?%>
@@ -394,7 +377,10 @@ new Masonry('body',{
 new Masonry('body',{
   itemSelector: '.l-card',
   columnWidth: 265,
-  gutter: 2
+  gutter: 2,
+  stamp: '.slide'
+
+  stamp: '.a'
 
 });
 
