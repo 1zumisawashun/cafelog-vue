@@ -8,10 +8,14 @@
 
 
 
-<section id="second-block">
+<section id="second-block" class="container">
+  <div class="row">
+
+
+
   <% @shops.each do |t|  %>
     <div class="l-card">
-      <div class="l-thumbnail">
+      <div class="l-thumbnail ">
         <figure class="thumbnail-wrapper">
 <%if t.pictures.present?%>
           <img src="<%=t.pictures[0].picture%>">
@@ -49,9 +53,22 @@
       </div>
     </div>
   <% end %>
+  </div>
+
 </section>
 </div>
 </div>
+
+
+<script>
+new Masonry('body',{
+  itemSelector: '.l-card',
+  columnWidth: 265,
+  gutter: 2
+
+});
+
+</script>
 
 
 
@@ -111,7 +128,7 @@
 
 <h1 class="title" style="margin-left:5%;">東京で探す</h1>
 
-  <div class="a">
+  <div class="a col-xs-10">
 
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
         <figcaption>
@@ -232,8 +249,19 @@
 </div>
 </div>
 
+<script>
+new Masonry('body',{
+  itemSelector: '.l-card',
+  columnWidth: 265,
+  gutter: 2
+
+});
+
+</script>
+
+
 <h1 class="title"style="margin-left:5%;">旅行でオススメ</h1>
-  <div class="a">
+  <div class="a col-xs-10">
     <figure class="area-content area-block">
       <%=link_to tag_path("北海道"), style:"color:white;" do%>
         <figcaption>
@@ -324,7 +352,7 @@
 
 <section id="second-block">
   <% @tags.each do |t|  %><!--ここに&.eachを記載したら全部消えた-->
-    <div class="l-card">
+    <div class="l-card col-xs-6">
       <div class="l-thumbnail">
         <figure class="thumbnail-wrapper">
           <%if t.pictures.present?%>
@@ -361,3 +389,13 @@
 
 </div>
 </div>
+
+<script>
+new Masonry('body',{
+  itemSelector: '.l-card',
+  columnWidth: 265,
+  gutter: 2
+
+});
+
+</script>

@@ -105,3 +105,32 @@ function codeAddress(){
     <%= text_field_tag :search, params[:search], class:"form-control col-md-5" %>
     <%= submit_tag "Search", :area => nil , class:"btn btn-success" %><!--each文ではないのでsubmit_tagになっている-->
 <% end %>
+
+<div class="grid">
+  <div class="grid-item">...</div>
+  <div class="grid-item grid-item--width2">...</div>
+  <div class="grid-item">...</div>
+  ...
+  <div class="grid-item">...</div>
+  <div class="grid-item grid-item--width2">...</div>
+  <div class="grid-item">...</div>
+  <div class="grid-item">...</div>
+  <div class="grid-item grid-item--width2">...</div>
+  <div class="grid-item">...</div>
+  <div class="grid-item">...</div>
+  <div class="grid-item grid-item--width2">...</div>
+  <div class="grid-item">...</div>
+</div>
+
+
+
+
+<script>
+new Masonry('body',{
+  itemSelector: '.grid-item',
+  columnWidth: 180,
+  gutter: 4
+
+});
+
+</script>

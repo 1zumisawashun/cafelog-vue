@@ -4,6 +4,15 @@
 
 
 
+.grid-item{
+  width:180px;
+  height: 300px;
+  background-color: blue;
+}
+
+
+
+
 /***
  *  Simple Pure CSS Star Rating Widget Bootstrap 4
  *
@@ -469,7 +478,7 @@ img{
 //ここでshops#indexの写真を変えられる→これがカードの外枠を指している
 .l-card {
   overflow: hidden;
-  width: 24%;
+  width: 265px;
   height: auto;
   padding: 0;
   margin: 0.5%;
@@ -549,9 +558,9 @@ img{
 
 
 
-
+/*
   @media screen and (max-width:639px) {
-/*スマホ用のcssを記述*/
+スマホ用のcssを記述
 
 .l-card {
   overflow: hidden;
@@ -636,8 +645,9 @@ img{
 
 
 }
-
-@media screen and (max-width: 639px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
+*/
+/*
+@media screen and (max-width: 639px) { ウィンドウ幅が最大479pxまでの場合に適用
   .picture{
     width: 100%;
     height:140px;
@@ -657,3 +667,5 @@ img{
 
 
 }
+
+*/
