@@ -484,7 +484,7 @@ img{
 //ここでshops#indexの写真を変えられる→これがカードの外枠を指している
 .l-card {
   overflow: hidden;
-  width: 265px;
+  width: 24%;//265px;
   height: auto;
   padding: 0;
   margin: 0.5%;
@@ -564,14 +564,13 @@ img{
 
 
 
-/*
+
   @media screen and (max-width:639px) {
-スマホ用のcssを記述
 
 .l-card {
   overflow: hidden;
   width: 48%;
-  height: 200px;
+  height: 230px;
   padding: 0;
   margin: 1%;
   border: 1px solid #ddd;
@@ -583,19 +582,19 @@ img{
 //  padding: 16px;
 //}
 .text-content .title {
-  margin: 0 0 1px 0;
-  font-size: 15px;
+  margin: 0 0 0.5px 0;
+  font-size: 13px;
   color: #3f3931;
 }
 .text-content .caption {
-  margin: 0 0 1px 0;
-  font-size: 15px;
+  margin: 0 0 0.5px 0;
+  font-size: 13px;
   color: #555;
 }
 .content-meta {
   overflow: hidden;
   width: 100%;
-  font-size: 10px;
+  font-size: 8px;
 }
 .date {
   color: #aaa;
@@ -625,8 +624,8 @@ img{
 }
 .thumbnail-wrapper img{
   display: block;
-  height:120px;//ここが写真の高さ
-  max-width: 48%;//ここがカードの中身に入っている写真の大きさをコントロールする
+  height:115px;//ここが写真の高さ
+  max-width: 58%;//ここがカードの中身に入っている写真の大きさをコントロールする
 }
 .more-text {
   transition: 0.5s;
@@ -647,11 +646,44 @@ img{
 .l-card:hover .more-text {
   opacity: 1;}
 
+  /*　以下一覧ページの星用のCSS　geeksalonの星評価機能*/
+
+    .star-rating {
+      position: relative;
+      display: inline-block;
+      width: 5em;
+      height: 0.5em;
+      font-size: 17px;
+    }
+    .star-rating-front {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      color: #ffcc33;
+    }
+    .star-rating-back {
+      display: inline-block;
+      color: #ccc;
+
+    }
+
+    .second-block{
+      width: 95%;
+      height: auto;
+      margin: 0 auto;
+      background-color: #9aabb9;
+    }
+
+
+
+
 
 
 
 }
-*/
+
 
 @media screen and (max-width: 639px) {
   //第2headerの要素
