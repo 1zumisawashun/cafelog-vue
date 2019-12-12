@@ -30,8 +30,8 @@
         <div class="header-botton">
 
         <% if user_signed_in? %>
-        <nav><a class="fa fa-home fa-lg " aria-hidden="true"style="text-decoration: none;", href="/tops/index?c=cafe"></a></nav>
-        <nav><a class="fa fa-user-circle-o fa-lg " aria-hidden="true"style="text-decoration: none;", href="/users/<%=current_user.id%>"></a></nav>
+        <nav><a class="fa fa-home fa-lg " aria-hidden="true"style="text-decoration: none;" href="/tops/index?c=cafe"></a></nav>
+        <nav><a class="fa fa-user-circle-o fa-lg " aria-hidden="true" href="/users/<%=current_user.id%>"></a></nav>
 
         <nav><%=link_to search_shops_path ,style:"text-decoration: none;" do %><i style="color:white" class="fa fa-search fa-lg" aria-hidden="true"></i><%end%></nav>
         <nav><%= link_to destroy_user_session_path, method: :delete ,style:"text-decoration: none;,color:white;" do%><i style="color:white" class="fa fa-sign-out fa-lg" aria-hidden="true"></i><%end%></nav>
@@ -61,7 +61,7 @@
 
     <div class="footer">
       <nav><%=link_to search_shops_path do %><i style="color:white" class="fa fa-search fa-lg " aria-hidden="true"></i><%end%></nav>
-      <nav><a style="color:white" class="fa fa-user-circle-o fa-lg " aria-hidden="true"style="text-decoration: none;", href="/users/<%=current_user.id%>"></a></nav>
+      <nav><a style="color:white" class="fa fa-user-circle-o fa-lg " aria-hidden="true"style="text-decoration: none;" href="/users/<%=current_user.id%>"></a></nav>
     </div>
   <%end%>
 </footer>
