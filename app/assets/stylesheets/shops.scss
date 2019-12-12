@@ -66,6 +66,18 @@
   background-color: #9aabb9;
 }
 
+.slider-container{
+  width: 100%;
+  height: auto;
+  background-color: #c4d4e0;
+}
+.slider-block{
+  width: 82%;
+  height: auto;
+  margin: 0 auto;
+  background-color: #9aabb9;
+}
+
 #second-block{
   display: flex;
   flex-wrap: wrap;
@@ -565,14 +577,18 @@ img{
 
 
 
+
+
+
+
   @media screen and (max-width:639px) {
 
 .l-card {
   overflow: hidden;
-  width: 48%;
-  height: 225px;
+  width: 46%;
+  height: 220px;
   padding: 0;
-  margin: 1%;
+  margin: 2%;
   border: 1px solid #ddd;
   border-radius: 10px;
   background: #fff;
@@ -625,7 +641,7 @@ img{
 .thumbnail-wrapper img{
   display: block;
   height:120px;//ここが写真の高さ
-  max-width: 60%;//ここがカードの中身に入っている写真の大きさをコントロールする
+  max-width: 55%;//ここがカードの中身に入っている写真の大きさをコントロールする
 }
 .more-text {
   transition: 0.5s;
@@ -669,12 +685,30 @@ img{
 
     }
 
-    .second-block{
+    .all-container{
       width: 100%;
       height: auto;
-      margin: 0 auto;
-      background-color: #9aabb9;
+      background-color: white;
+
     }
+
+    .second-block{
+      width: 96%;
+      height: auto;
+      margin: 0 auto;
+      background-color: white;
+    }
+
+    #second-block{
+      display: flex;
+      flex-wrap: wrap;
+      height: auto;
+      width: 100%;
+
+
+    }
+
+
 
     .a{
       margin: 0 auto;
@@ -683,43 +717,15 @@ img{
 
 }
 
-.slide__link{
-    color: #fff;
-    text-align: center;
-}
-.slide img{
-    height: auto;
-    width: 90%;
-    margin: 0 auto;
-}
-.slide__content-wrap{
-    left: 50%;
-    position: absolute;
-    top: 50%;
-}
-.slide__content{
-    //display: block;
-    opacity: 0;
-    transform: translate(-50%,20%);
-    transition: 0s;
-    width: 100%;
-}
-.slide__content.on{
-    opacity: 1;
-    transform: translate(-50%,-50%);
-    transition: .5s;
-}
-.slide__title{
-    font-size: 24px;
-}
-.slide__text{
-  font-size: 12px;
 
+.slider-block{
+  display: none;
 }
-/*slick setting*/
-.slick-prev:before,
-.slick-next:before{
-    color: #000;
+.slider-container{
+  display: none;
+}
+.slider{
+  display: none;
 }
 
 
@@ -780,6 +786,15 @@ td{
 }
 
 
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 639px) {
   //第2headerの要素
   .picture{
@@ -796,7 +811,7 @@ td{
   }
   .header-subtitle{
     font-size: 13px;
-    padding-left: 12.5%;
+    padding-left: 13%;
   }
 
 //headerの要素になります

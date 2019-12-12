@@ -28,13 +28,13 @@
   background-color: black;
 }
 .header-logo{
-  width: 70px;
-  height: 70px;
+  width: 72px;
+  height: 72px;
   background-size: cover;
   background-image: image-url("../assets/cafelog-logo.jpg");
   border-radius: 50%;
   margin-right: auto; //これで要素を左詰めにしている
-  margin-left: 15px;
+  margin-left: 5px;
 }
 
 
@@ -55,4 +55,36 @@ nav{
 }
 header a{
   color: white;
+}
+
+footer{
+  position: fixed;
+  width: 100%;
+  height: auto;
+  bottom:0px;
+  right:0px;
+}
+.footer-botton{
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color: black;
+
+}
+
+footer nav{
+  margin-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
