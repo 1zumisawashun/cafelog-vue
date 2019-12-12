@@ -127,14 +127,15 @@ input[name="tab_item"] {
 @media screen and (max-width: 639px) {
 
 
-  .c-txtsp .l-card{ //これがuser投稿カードの大きさ
-   width: 46%;
 
-  }
   .c-txtsp { //これがuser投稿箱の大きさ
     width: 100%;
     height: auto;
     margin: 0 auto;
+  }
+  .c-txtsp .l-card{
+   width: 46%;
+
   }
 
   .container{
@@ -216,10 +217,7 @@ input[name="tab_item"] {
 
     }
 
-    .c-txtsp .l-card{ //これがuser投稿カードの大きさ
-     width: 24%;
-
-    }
+  
     .c-txtsp { //これがuser投稿箱の大きさ
       width: 100%;
       height: auto;

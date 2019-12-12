@@ -107,7 +107,11 @@ background-image: image-url("../assets/post-image2.jpg");
 }
 
 
+.container{
+  display: flex;
+  flex-wrap: wrap;
 
+}
 
 
 
@@ -581,7 +585,7 @@ img{
 
 
 
-  @media screen and (max-width:639px) {
+@media screen and (max-width:639px) {
 
 .l-card {
   overflow: hidden;
@@ -751,7 +755,7 @@ flex-wrap:wrap;
 .shop-info{
   width: 100%;
   height: auto;
-
+margin:0;
 }
 
 th{
