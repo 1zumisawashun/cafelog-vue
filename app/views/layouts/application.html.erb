@@ -56,11 +56,11 @@
 <footer>
   <% if user_signed_in? %>
     <div class="footer-botton">
-      <nav><%=link_to new_shop_path,style:"text-decoration: none;" do%><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i><%end%></nav>
+      <nav><%=link_to new_shop_path do%><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i><%end%></nav>
     </div>
 
     <div class="footer">
-      <nav><%=link_to search_shops_path,style:"text-decoration: none;" do %><i style="color:white" class="fa fa-search fa-lg " aria-hidden="true"></i><%end%></nav>
+      <nav><%=link_to search_shops_path do %><i style="color:white" class="fa fa-search fa-lg " aria-hidden="true"></i><%end%></nav>
       <nav><a style="color:white" class="fa fa-user-circle-o fa-lg " aria-hidden="true"style="text-decoration: none;", href="/users/<%=current_user.id%>"></a></nav>
     </div>
   <%end%>
