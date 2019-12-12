@@ -22,15 +22,31 @@
 
 
 $(function() {
-    $('.a').slick({
-        dots: true,
-        infinite: true,
-        arrows: true,
-        autoplay:true,
-        autoplaySpeed:3000,
-        slidesToShow: 5,
-        slidesToScroll: 1
-    });
+	$('.a').slick({
+		centerMode: true, //センターモード
+		centerPadding: '60px', //前後のパディング
+		autoplay: true, //オートプレイ
+		autoplaySpeed: 2000, //オートプレイの切り替わり時間
+		slidesToShow: 3,
+		responsive: [{
+			breakpoint: 768,
+			settings: {
+				arrows: false, // 前後の矢印非表示
+				centerMode: true,
+				centerPadding: '40px',
+				slidesToShow: 3
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				arrows: false,
+				centerMode: true,
+				centerPadding: '40px',
+				slidesToShow: 1
+			}
+		}]
+	});
 });
 
 $(function () {
@@ -59,7 +75,6 @@ $('.slider').slick({
     autoplay:true,
     infinite: true,
     autoplaySpeed:4000,
-    dots:true,
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1

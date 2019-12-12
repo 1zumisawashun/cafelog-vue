@@ -4,7 +4,7 @@
   <div class="header-subtitle"><strong>大学生の為のカフェ情報発信サイト</strong></div>
 </div>
 <div class="second-block">
-<h1 class="title"><strong>ユーザ投稿</strong></h1>
+<h1 class="title"><strong>投稿順</strong></h1>
 
 
 
@@ -68,7 +68,7 @@
 
 
 <ul class="slider">
-    <li class="slide figure" style="padding-bottom: 150px;">
+    <li class="slide figure" style="padding-bottom: 150px;,width:400px;">
         <a class="slide__link" href="/tops/index?a=admin">
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
@@ -81,7 +81,7 @@
             </span>
         </a>
     </li>
-    <li class="slide"style="padding-bottom: 150px;">
+    <li class="slide"style="padding-bottom: 150px;,width:400px;">
         <a class="slide__link" href="/tops/index?b=user" > <!--これでparamsで受け取る-->
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
@@ -94,7 +94,7 @@
             </span>
         </a>
     </li>
-    <li class="slide"style="padding-bottom: 150px;">
+    <li class="slide"style="padding-bottom: 150px;,width:400px;">
         <a class="slide__link" href="#">
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
@@ -165,30 +165,7 @@
           <p><%=@asakusa.count%>件の投稿があります</p>
         </figcaption>
       <%end%>
-    <figure class="area-content area-block">
-      <%=link_to tag_path("桜新町") , style:"color:white;" do%>
-        <figcaption>
-          <h3>桜新町</h3>
-          <p>caption text here ...</p>
-        </figcaption>
-      <%end%>
-    </figure>
-    <figure class="area-content area-block">
-      <%=link_to tag_path("用賀"), style:"color:white;" do%>
-        <figcaption>
-          <h3>用賀</h3>
-          <p>caption text here ...</p>
-        </figcaption>
-      <%end%>
-    </figure>
-    <figure class="area-content area-block">
-      <%=link_to tag_path("銀座"), style:"color:white;" do%>
-        <figcaption>
-          <h3>銀座</h3>
-          <p>caption text here ...</p>
-        </figcaption>
-      <%end%>
-    </figure>
+
   </div>
 
 

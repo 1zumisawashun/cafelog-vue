@@ -261,7 +261,7 @@ figure:hover figcaption {
 
 .a{
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   left:0px;
 
 }
@@ -570,7 +570,7 @@ img{
 .l-card {
   overflow: hidden;
   width: 48%;
-  height: 230px;
+  height: 225px;
   padding: 0;
   margin: 1%;
   border: 1px solid #ddd;
@@ -578,12 +578,12 @@ img{
   background: #fff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.1);
 }
-//.text-content {
-//  padding: 16px;
-//}
+.text-content { //ここが店の名前とかが入っている箱
+  padding: 7px;
+}
 .text-content .title {
   margin: 0 0 0.5px 0;
-  font-size: 13px;
+  font-size: 15px;
   color: #3f3931;
 }
 .text-content .caption {
@@ -624,8 +624,8 @@ img{
 }
 .thumbnail-wrapper img{
   display: block;
-  height:115px;//ここが写真の高さ
-  max-width: 58%;//ここがカードの中身に入っている写真の大きさをコントロールする
+  height:120px;//ここが写真の高さ
+  max-width: 60%;//ここがカードの中身に入っている写真の大きさをコントロールする
 }
 .more-text {
   transition: 0.5s;
@@ -634,9 +634,9 @@ img{
   top: 50%;
   transform: translate(-50%, -50%);
   display: inline-block;
-  padding: 6px 12px 8px;
+  padding: 4px 10px 6px;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   border: 1px solid #fff;
   opacity: 0;
 }
@@ -670,13 +670,108 @@ img{
     }
 
     .second-block{
-      width: 95%;
+      width: 100%;
       height: auto;
       margin: 0 auto;
       background-color: #9aabb9;
     }
 
+    .a{
+      margin: 0 auto;
+      width: 100%;
+      //left:0px;
 
+}
+
+.slide__link{
+    color: #fff;
+    text-align: center;
+}
+.slide img{
+    height: auto;
+    width: 90%;
+    margin: 0 auto;
+}
+.slide__content-wrap{
+    left: 50%;
+    position: absolute;
+    top: 50%;
+}
+.slide__content{
+    //display: block;
+    opacity: 0;
+    transform: translate(-50%,20%);
+    transition: 0s;
+    width: 100%;
+}
+.slide__content.on{
+    opacity: 1;
+    transform: translate(-50%,-50%);
+    transition: .5s;
+}
+.slide__title{
+    font-size: 24px;
+}
+.slide__text{
+  font-size: 12px;
+
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before{
+    color: #000;
+}
+
+
+
+.cafelog-container{
+  width: 100%;
+  height: auto;
+  margin: 0;
+display: flex;
+flex-wrap:wrap;
+}
+.shop-picture{
+  width: 100%;
+  height: auto;
+}
+.shop-picture img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+
+}
+
+.shop-info{
+  width: 100%;
+  height: auto;
+
+}
+
+th{
+  width: 50px;
+  height: auto;
+}
+td{
+  width: 185px;
+  height: auto;
+}
+
+//これはコメント投稿の内容
+
+.comment-container{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+.comment{
+  display: flex;
+  width: 100%;
+  height: auto;
+}
 
 
 
