@@ -7,7 +7,7 @@
 .grid-item{
   width:180px;
   height: 300px;
-  background-color: blue;
+  background-color: #c4d4e0;
 }
 
 
@@ -57,25 +57,25 @@
 .all-container{
   width: 100%;
   height: auto;
-  background-color: #c4d4e0;
+  background-color: white;
 }
 .second-block{
   width: 82%;
   height: auto;
   margin: 0 auto;
-  background-color: #9aabb9;
+  background-color: white;
 }
 
 .slider-container{
   width: 100%;
   height: auto;
-  background-color: #c4d4e0;
+  background-color: white;
 }
 .slider-block{
   width: 82%;
   height: auto;
   margin: 0 auto;
-  background-color: #9aabb9;
+  background-color: white;
 }
 
 #second-block{
@@ -92,7 +92,7 @@
   margin-top: 10%;
   margin-bottom: 10%;
   padding:3%;
-  background-color: #9aabb9;
+  background-color: white;
   border-radius: 10px;
 }
 .search{
@@ -119,6 +119,7 @@ background-image: image-url("../assets/post-image2.jpg");
 .slider{
     margin: 0 auto;
     width: 80%;
+    background-color: #3f3931;
 }
 
 
@@ -350,7 +351,7 @@ td{
   background-color: #fdfafd;
 }
 .footer{
-  background-color:black;
+  background-color:#3f3931;
    width:100%;
   height:50px;
 }
@@ -830,10 +831,12 @@ td{
     font-size: 60px;
     padding-left: 13%;
     padding-top: 13px;
+    color:#3f3931;
   }
   .header-subtitle{
     font-size: 13px;
     padding-left: 13%;
+    color:#3f3931;
   }
 
 //headerの要素になります
@@ -841,7 +844,7 @@ td{
     width: 100%;
     height: auto;
     display: flex;
-    background-color: black;
+    background-color: #3f3931;
   }
   .header-logo{
     width: 70px;

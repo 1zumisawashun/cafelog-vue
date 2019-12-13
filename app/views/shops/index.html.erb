@@ -1,76 +1,62 @@
 <div class="all-container">
-<div class="picture">
-  <div class="header-title"><strong>cafelog</strong></div>
-  <div class="header-subtitle"><strong>大学生の為のカフェ情報発信サイト</strong></div>
-</div>
-<div class="second-block">
-<h3 class="title"><strong>投稿順</strong></h3>
-
-
-
-<section id="second-block" class="container">
-  <div class="row">
-
-
-
-  <% @shops.each do |t|  %>
-    <div class="l-card">
-      <div class="l-thumbnail ">
-        <figure class="thumbnail-wrapper">
-<%if t.pictures.present?%>
-          <img src="<%=t.pictures[0].picture%>">
-<%end%>
-        </figure>
-          <span class="more-text">
-            <%=link_to "Read More", "/shops/#{t.id}" %>
-          </span>
-      </div>
-      <div class="text-content">
-        <h3 class="title">
-          <%if t.name.present?%>
-          <strong><%= t.name %></strong>
-          <%end%>
-        </h3>
-          <p class="caption">
-            <%if t.area.present?%>
-            <%=link_to "#{t.area}駅", tag_path("#{t.area}") ,style:"color:black;"%>
-            <%end%>
-          </p>
-            <div class="content-meta">
-              <span class="date">
-                <span class="star-rating">
-                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
-                  <span class="star-rating-back">★★★★★</span>
-                </span>
-                  <% if t.comments.average(:score).present? %>
-                    <%=t.comments.average(:score).round(1)%>点
-
-                    <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
-
-                  <% end %>
-              </span>
-            </div>
-      </div>
-    </div>
-  <% end %>
+  <div class="picture">
+    <div class="header-title"><strong>cafelog</strong></div>
+    <div class="header-subtitle"><strong>大学生の為のカフェ情報発信サイト</strong></div>
   </div>
 
-</section>
+  <div class="second-block">
+    <h3 class="title"><strong>投稿順</strong></h3>
+      <section id="second-block" class="container">
+        <div class="row">
+          <% @shops.each do |t|  %>
+            <div class="l-card">
+              <div class="l-thumbnail ">
+                <figure class="thumbnail-wrapper">
+                  <%if t.pictures.present?%>
+                    <img src="<%=t.pictures[0].picture%>">
+                  <%end%>
+                </figure>
+                <span class="more-text">
+                  <%=link_to "Read More", "/shops/#{t.id}" %>
+                </span>
+              </div>
+              <div class="text-content">
+                <h3 class="title">
+                  <%if t.name.present?%>
+                    <strong><%= t.name %></strong>
+                  <%end%>
+                </h3>
+                <p class="caption">
+                  <%if t.area.present?%>
+                    <%=link_to "#{t.area}駅", tag_path("#{t.area}") ,style:"color:black;"%>
+                  <%end%>
+                </p>
+                <div class="content-meta">
+                  <span class="date">
+                    <span class="star-rating">
+                      <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                      <span class="star-rating-back">★★★★★</span>
+                    </span>
+                      <% if t.comments.average(:score).present? %>
+                        <%=t.comments.average(:score).round(1)%>点
+                        <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
+                      <% end %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </section>
+  </div>
 </div>
-</div>
-
-
-
-
 
 <div class="slider-container">
   <div class="slider-block">
-
-
-<ul class="slider">
-    <li class="slide figure" style="padding-bottom: 150px;,width:400px;">
+    <ul class="slider">
+      <li class="slide figure" style="padding-bottom: 150px;,width:400px;">
         <a class="slide__link" href="/tops/index?a=admin">
-            <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
+          <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content figcaption">
                     <h2 class="slide__title">Cafelog管理者</h2>
@@ -80,8 +66,8 @@
                 </span>
             </span>
         </a>
-    </li>
-    <li class="slide"style="padding-bottom: 150px;,width:400px;">
+      </li>
+      <li class="slide"style="padding-bottom: 150px;,width:400px;">
         <a class="slide__link" href="/tops/index?b=user" > <!--これでparamsで受け取る-->
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
@@ -107,7 +93,7 @@
             </span>
         </a>
     </li>
-</ul>
+  </ul>
 
 </div>
 </div>
@@ -116,10 +102,8 @@
 
 
 
-<h1 class="title" style="margin-left:5%;">東京で探す</h1>
-
+<h1 class="title" style="margin-left:9%;"><strong>東京で探す</strong></h1>
   <div class="a col-xs-10">
-
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
         <figcaption>
           <h3>二子玉川</h3>
@@ -204,7 +188,8 @@
                   <span class="star-rating-back">★★★★★</span>
                 </span>
                 <% if t.comments.average(:score).present? %>
-                  <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                  <%=t.comments.average(:score).round(1)%>点
+                  <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
                 <% end %>
               </span>
             </div>
@@ -218,7 +203,7 @@
 
 
 
-<h1 class="title"style="margin-left:5%;">旅行でオススメ</h1>
+<h1 class="title"style="margin-left:9%;"><strong>旅行でオススメ</strong></h1>
   <div class="a col-xs-10">
     <figure class="area-content area-block">
       <%=link_to tag_path("北海道"), style:"color:white;" do%>
@@ -337,7 +322,8 @@
                   <span class="star-rating-back">★★★★★</span>
                 </span>
                 <% if t.comments.average(:score).present? %>
-                  <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                  <%=t.comments.average(:score).round(1)%>点
+                  <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
                 <% end %>
               </span>
             </div>
@@ -349,14 +335,3 @@
 
 </div>
 </div>
-
-<script>
-new Masonry('body',{
-  itemSelector: '.l-card',
-  columnWidth: 265,
-  gutter: 2,
-  stamp: '.slide','.a'
-
-});
-
-</script>

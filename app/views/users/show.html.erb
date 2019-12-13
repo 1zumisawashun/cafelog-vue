@@ -1,39 +1,33 @@
 
 
 <%if current_user.admin==false%>
-<h1 class="title"><%=current_user.username%>さんのマイページ</h1>
+  <h3 class="title"><%=current_user.username%>さんのマイページ</h3>
 <%end%>
 
-<div class="user-container">
+  <div class="user-container">
+    <div class="user-photo">
+      <%if @user.user_image.present?%>
+        <div class="user-image"><%=image_tag @user.user_image.to_s%></div><!--写真を使うという事はuploaderの操作、実行をしなければいけない-->
+      <%end%>
+    </div>
 
-<div class="user-photo">
-  <%if @user.user_image.present?%>
-<div class="user-image"><%=image_tag @user.user_image.to_s%></div><!--写真を使うという事はuploaderの操作、実行をしなければいけない-->
-<%end%>
-
+    <div class="user-info">
+      <h3><strong>ユーザ名：<%=@user.username%></strong><br></h3>
+      <h3><strong>自己紹介：<%=@user.info%></strong><br></h3>
+      <h3><strong>ユーザemail：<%=@user.email%></strong><br></h3>
+      <h3><strong>ユーザpassword：<%=@user.password%></strong></h3>
+        <div class="user-edit">
+          <%=link_to edit_user_registration_path, style:"width:100%;,margin:0 auto;" do%>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>編集する
+          <%end%>
+        </div>
+    </div>
 </div>
-
-<div class="user-info">
-<h3><strong>ユーザ名：<%=@user.username%></strong><br></h3>
-<h3><strong>自己紹介：<%=@user.info%></strong><br></h3>
-<h3><strong>ユーザemail：<%=@user.email%></strong><br></h3>
-<h3><strong>ユーザpassword：<%=@user.password%></strong></h3>
-<div class="user-edit">
-  <%=link_to edit_user_registration_path, style:"width:100%;,margin:0 auto;" do%>
-  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>編集する
-  <%end%>
-</div>
-</div>
-</div>
-
-
-
-
 
 <div class="mypage-container">
 
   <div class="tabs">
-    
+
 
 
     <input id="all" type="radio" name="tab_item" checked>
