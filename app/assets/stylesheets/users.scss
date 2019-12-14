@@ -155,7 +155,8 @@ input[name="tab_item"] {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 96%; //ここwidthとmarginの関係が大切→この2つの操作をすることで真ん中に合わせて要素が設置される。これ重要！
-    margin: 0 auto;}
+    margin: 0 auto;
+  }
 
 
     .tab_content {

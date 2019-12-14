@@ -59,6 +59,7 @@
   width: 100%;
   height: auto;
   background-color: white;
+  padding-bottom: 80px;
 }
 .second-block{
   width: 82%;
@@ -582,6 +583,26 @@ img{
 
 
 
+.table-container{
+  width: 100%;
+    height: auto;
+  }
+
+.table{
+  margin:3% 10% 0 10%;
+  width:80%;
+  height: auto;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -746,6 +767,7 @@ flex-wrap:wrap;
 .shop-picture{
   width: 100%;
   height: auto;
+  margin-top: 0; //
 }
 .shop-picture img{
   width: 100%;
@@ -757,17 +779,39 @@ flex-wrap:wrap;
 .shop-info{
   width: 100%;
   height: auto;
-margin:0;
+  margin: 0;
+
+
+}
+.shop-info table{
+  margin: 0;
+  width: 100%;
 }
 
 th{
-  width: 50px;
+  width: 60px;
   height: auto;
 }
 td{
   width: 185px;
   height: auto;
 }
+
+
+#third-block{
+  width:100%;
+  margin-left: 0;
+}
+.table-container table{
+  margin: 0;
+  width: 100%;
+}
+.table-container #map{
+  width:100%;
+  height: 400px;
+  margin: 0;
+}
+
 
 //これはコメント投稿の内容
 
@@ -784,6 +828,34 @@ td{
   width: 100%;
   height: auto;
 }
+.comment_lists{
+  height: auto;
+}
+.user-content{
+  height: auto;
+}
+.image-container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.image{
+  width: 50%;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.image img{
+  width:100%;
+  height:170px;
+  object-fit: cover;
+
+}
+.image a{
+  width: 50%;
+  height: auto;
+}
 
 //検索機能の画面
 .search-block{
@@ -791,13 +863,19 @@ td{
   height: auto;
   margin: 0 auto;
   margin-top: 10%;
-  margin-bottom: 10%;
+
   padding:3%;
   background-color: white;
   border-radius: 10px;
+  padding-bottom: 80px;
 }
 .search{
   margin: 2.5px;
 }
+.all-container{
+  padding-bottom: 80px;
+
+}
+
 
 }
