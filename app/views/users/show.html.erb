@@ -1,8 +1,6 @@
 
 
-<%if current_user.admin==false%>
-  <h3 class="title"><%=current_user.username%>さんのマイページ</h3>
-<%end%>
+<!--<%if current_user.admin==false%> <%=current_user.username%>さんのマイページ <%end%>-->
 
   <div class="user-container">
     <div class="user-photo">
@@ -86,7 +84,7 @@
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
       <div class="c-txtsp">
-        
+
           <div class="container">
             <% @likes.each do |t|  %>
               <div class="l-card">
