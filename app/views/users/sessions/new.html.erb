@@ -24,3 +24,5 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+<p>登録がまだの方はこちら</p>
+<%= link_to "新規登録", new_user_registration_path, method: :get ,style:"text-decoration: none;" %>

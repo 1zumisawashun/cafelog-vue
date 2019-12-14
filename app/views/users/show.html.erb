@@ -24,11 +24,9 @@
     </div>
 </div>
 
-<div class="mypage-container">
+
 
   <div class="tabs">
-
-
 
     <input id="all" type="radio" name="tab_item" checked>
     <label class="tab_item col-md-6" for="all">MY CAFELOG</label>
@@ -41,8 +39,9 @@
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
       <div class="c-txtsp">
-        <p>投稿した内容が入ります</p><br>
-          <section id="second-block">
+          <div class="container">
+
+
             <% @shops.each do |t|  %>
               <div class="l-card">
                 <div class="l-thumbnail">
@@ -78,7 +77,7 @@
                   </div>
               </div>
             <% end %>
-          </section>
+          </div>
       </div>
     </div>
   </div>
@@ -87,7 +86,7 @@
   <div class="tab_content" id="programming_content">
     <div class="tab_content_description">
       <div class="c-txtsp">
-        <p>お気に入り保存した内容が入ります</p><br>
+        
           <div class="container">
             <% @likes.each do |t|  %>
               <div class="l-card">
@@ -128,5 +127,3 @@
 
 
   </div>
-
-</div>
