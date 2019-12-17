@@ -286,10 +286,11 @@ figure:hover figcaption {
 }
 
 .area-block{
-    position: relative;
-    background-color: #193446;
-    background-size: cover;
-    background-image: image-url("../assets/post-image2.jpg");
+  width:50%;
+height:400px;
+position: relative;
+overflow:hidden;
+
 
 //ここがホバーエフェクト
 
@@ -306,6 +307,20 @@ transition: all 0.3s ease 0s;
 }
 .area-content{
   padding-bottom: 270px;
+}
+
+.a img{
+  width: 100px;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: inherit;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
 //---------------------------------------カフェログ投稿の要素になる
