@@ -6,8 +6,11 @@
 
   <h4><strong>キーワードで検索</strong></h4>
   <%= form_tag "/shops/search?utf8=✓", :method =>"get" do %>
-      <%= text_field_tag :search, params[:search], class:"form-control col-md-5" %>
-    <%= submit_tag "Search", :area => nil , class:"btn btn-success" %><!--each文ではないのでsubmit_tagになっている-->
+      <%= text_field_tag :search, params[:search], class:"form-control col-md-7", style:"display: inline"%><!--display:inlineで段落分け消し-->
+
+          <%= submit_tag "Search", :area => nil , class:"btn btn-outline-dark"%>
+
+    <!--each文ではないのでsubmit_tagになっている-->
   <% end %>
 
 <h4><strong>場所で検索</strong></h4>
@@ -85,7 +88,7 @@
 
 
 
-<section id="second-block">
+<section id="forth-block">
   <% @shops.each do |t|  %>
     <div class="l-card">
       <div class="l-thumbnail">

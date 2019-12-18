@@ -1,4 +1,8 @@
-<h2>Sign up</h2>
+
+<!--ここが新規登録画面-->
+<div class="form-container">
+
+<div class="title"><strong>新規登録</strong></div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -29,8 +33,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:"btn btn-dark", style:"color:white;" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<!--<%= render "users/shared/links" %>-->
+
+</div>

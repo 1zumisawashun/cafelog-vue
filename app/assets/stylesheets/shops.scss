@@ -10,8 +10,10 @@
   height: 300px;
   background-color: #c4d4e0;
 }
-
-
+//謎に発生している右の余白を消すための要素です
+.wrap {
+     overflow: hidden;
+ }
 
 
 /***
@@ -50,6 +52,7 @@
 .form-container{
   margin: 0 auto;
   width: 80%;
+  margin-bottom: 150px;
 
 }
 
@@ -59,7 +62,6 @@
   width: 100%;
   height: auto;
   background-color: white;
-  padding-bottom: 80px;
 }
 .second-block{
   width: 82%;
@@ -84,6 +86,14 @@
   display: flex;
   flex-wrap: wrap;
   height: auto;
+
+}
+#forth-block{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+
+padding-bottom: 80px;
 
 }
 
@@ -274,7 +284,8 @@ figure:hover figcaption {
 
 .title{
   margin-top: 10px;
-  font-size: 40px;
+  font-size: 20px;
+  margin-left:10%;
 }
 
 
@@ -355,6 +366,7 @@ transition: all 0.3s ease 0s;
 th{
   width: 25px;
   height: auto;
+  margin: 0;
 }
 td{
   width: 185px;
@@ -365,7 +377,7 @@ td{
 #third-block{
   margin: 1% 10% 1% 10%;
   padding:  2% 0 2% 0;
-  background-color: #fdfafd;
+
 }
 .footer{
   background-color:#3f3931;
@@ -446,7 +458,7 @@ img{
  }
  .text-content .title {
    margin: 0 0 3px 0;
-   font-size: 20px;
+   font-size: 10px;
    color: #3f3931;
  }
  .text-content .caption {
@@ -598,16 +610,13 @@ img{
 
 
 
-.table-container{
-  width: 100%;
+.table-container{ //bootstrapのtableはデフォルトでwidthが100％なので気を付ける
+  width: 80%;
+  margin: 0 auto;
     height: auto;
   }
 
-.table{
-  margin:3% 10% 0 10%;
-  width:80%;
-  height: auto;
-}
+
 
 
 
@@ -733,6 +742,12 @@ img{
       background-color: white;
 
     }
+    .bottom-container{
+      width: 100%;
+      height: auto;
+      background-color: white;
+      padding-bottom: 80px;
+    }
 
     .second-block{
       width: 96%;
@@ -747,9 +762,15 @@ img{
       height: auto;
       width: 100%;
 
+    }
+    #forth-block{
+      display: flex;
+      flex-wrap: wrap;
+      height: auto;
+      width: 100%;
+    padding-bottom: 80px;
 
     }
-
 
 
     .a{
@@ -757,6 +778,9 @@ img{
       width: 100%;
       //left:0px;
 
+}
+.title{
+  margin-left: 0;
 }
 
 
@@ -786,7 +810,7 @@ flex-wrap:wrap;
 }
 .shop-picture img{
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: cover;
 
 }
@@ -817,17 +841,12 @@ td{
   width:100%;
   margin-left: 0;
 }
-.table-container table{
-  margin: 0;
-  width: 100%;
-}
-.table-container #map{
-  width:100%;
-  height: 400px;
-  margin: 0;
-  padding-bottom: 80px;
-}
 
+.table-container{
+  width: 100%;
+  height: auto;
+  padding-bottom: 100px;
+}
 
 //これはコメント投稿の内容
 
@@ -837,6 +856,15 @@ td{
   height: auto;
   width: 100%;
   padding-bottom: 2%;
+}
+.user-picture{
+  width: 70px;
+  height: auto;
+}
+.user-picture img{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
 }
 
 .comment{
@@ -879,6 +907,7 @@ td{
   height: auto;
   margin: 0 auto;
   margin-top: 10%;
+  margin-bottom: 80px;
 
   padding:3%;
   background-color: white;
@@ -887,10 +916,6 @@ td{
 }
 .search{
   margin: 2.5px;
-}
-.all-container{
-  padding-bottom: 80px;
-
 }
 
 .actions{//これはユーザ編集画面のやつ

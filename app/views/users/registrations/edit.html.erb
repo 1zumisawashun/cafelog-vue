@@ -1,4 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<div class="form-container">
+<div class="title"><strong>編集画面</strong></div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -51,9 +53,11 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update", class:"btn btn-primary", style:"color:white;" %>
+    <%= f.submit "Update", class:"btn btn-dark", style:"color:white;" %>
   </div>
 <% end %>
+
+</div>
 
 
 <!-- <h3>Cancel my account</h3>-->

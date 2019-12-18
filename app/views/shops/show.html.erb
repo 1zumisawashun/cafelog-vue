@@ -1,4 +1,6 @@
 
+<div class="wrap">
+
 
 <section id="container-block">
     <div class="cafelog-container">
@@ -50,17 +52,17 @@
             </tbody>
           </table>
 
-        <%=link_to "編集する", edit_shop_path(@shop.id),class:"btn btn-primary",style:"color:white"if user_signed_in? &&current_user.id==@shop.user.id%>
-          <%=link_to "削除する", shop_path(@shop.id), method: :delete,class:"btn btn-danger",style:"color:white"if user_signed_in? && current_user.id==@shop.user.id%>
+        <%=link_to "編集する", edit_shop_path(@shop.id),class:"btn btn-dark",style:"color:white"if user_signed_in? &&current_user.id==@shop.user.id%>
+          <%=link_to "削除する", shop_path(@shop.id), method: :delete,class:"btn btn-dark",style:"color:white"if user_signed_in? && current_user.id==@shop.user.id%>
 
             <!--<h3></h3>      user情報があるとseedで初期データを入れることができない   -->
             <% if user_signed_in? &&current_user.already_liked?(@shop) %>
             <%= link_to shop_like_path(@shop),:style=>"color:red;", method: :delete do %>
-            <i class="fa fa-heart" style="margin-left:20px;"></i>
+            <i class="fa fa-bookmark fa-lg" style="margin-left:20px;"></i>
             <%end%>
             <% else %>
             <%= link_to shop_likes_path(@shop), method: :post do %> <!--method: :postにしないとgetに飛ばされる-->
-            <i class="fa fa-heart"style="margin-left:20px;"></i>
+            <i class="fa fa-bookmark fa-lg" style="margin-left:20px;"></i>
             <%end%>
             <% end %>
         </div>
@@ -68,18 +70,18 @@
 
 </section>
 
-
+<h3 class="title"><strong>特徴</strong></h3>
 <section id="third-block">
   <div class="tag-container">
 <% @shop.tag_list.each do |tag| %>
-  <span class=" btn btn-primary">
+  <span class=" btn btn-dark">
   <%=link_to "#{tag}", tag_path(tag), style:"color:white;"%>
   </span>
 <% end %>
 </div>
 </section>
 
-
+<h3 class="title"><strong>コメント</strong></h3>
   <section id="third-block">
       <div class="comment-container">
             <div id="comment_lists">
@@ -115,11 +117,11 @@
 
       <!-- 切り替えボタンの設定 -->
       <%if user_signed_in? %>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalScrollable">
        コメントする
       </button>
       <%end%>
-      <div class="btn btn-primary">
+      <div class="btn btn-dark">
         <%=link_to "コメント一覧へ", shop_comment_path(@shop.id), style:"color:white" %>
       </div>
 
@@ -160,7 +162,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-              <%=f.submit "コメントする",class:"btn btn-primary" %>
+              <%=f.submit "コメントする",class:"btn btn-dark" %>
               <%end%>
             </div>
           </div>
@@ -170,7 +172,7 @@
   </section>
 
 
-
+<h3 class="title"><strong>写真</strong></h3>
   <section id="third-block"> <!--こっちは別の写真モデルを作らないといけない-->
 <div class="image-container">
   <% @images.last(8).each do |image|%>
@@ -185,11 +187,11 @@
 
   <!-- 切り替えボタンの設定 -->
   <%if user_signed_in? %>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable2">
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalScrollable2">
  写真を投稿する
 </button>
 <%end%>
-<div class="btn btn-primary">
+<div class="btn btn-dark">
   <%=link_to "写真一覧へ", shop_image_path(@shop.id), style:"color:white" %>
 </div>
 
@@ -211,7 +213,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-        <%=f.submit "写真をアップする", class:"btn btn-primary"%>
+        <%=f.submit "写真をアップする", class:"btn btn-dark"%>
         <%end%>
       </div>
     </div>
@@ -254,9 +256,7 @@
   <style>
   #map {
     height: 400px;
-    width: 80%;
-    margin: 0 10% 5% 10%;
-    padding-bottom:80px;
+    width: 100%;
   }
   </style>
 
@@ -310,3 +310,5 @@
 
 
 <%end%>
+
+</div>

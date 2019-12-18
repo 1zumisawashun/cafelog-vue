@@ -104,14 +104,12 @@ footer nav{
   background-image: image-url("../assets/post-image2.jpg");
   }
   .header-title{
-    font-size: 60px;
-    padding-left: 13%;
+    font-size: 65px;
+    padding-left: 8%;
     padding-top: 13px;
     color:#3f3931;
   }
   .header-subtitle{
-    font-size: 13px;
-    padding-left: 13%;
-    color:#3f3931;
+    display:none;
   }
 }
