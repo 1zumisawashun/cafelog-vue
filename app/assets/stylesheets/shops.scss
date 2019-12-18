@@ -3,50 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-
-.grid-item{
-  width:180px;
-  height: 300px;
-  background-color: #c4d4e0;
-}
 //謎に発生している右の余白を消すための要素です
 .wrap {
      overflow: hidden;
  }
-
-
-/***
- *  Simple Pure CSS Star Rating Widget Bootstrap 4
- *
- *  www.TheMastercut.co
- *
- ***/
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
-/* Styling h1 and links
-––––––––––––––––––––––––––––––––– */
-.starrating > input {display: none;}  /* Remove radio buttons */
-
-.starrating > label:before {
-  content: "\f005"; /* Star */
-  //margin: 2px;
-  font-size: 4em;
-  font-family: FontAwesome;
-  display: inline-block;
-}
-
-.starrating > label
-{
-  color: #222222; /* Start color when not clicked */
-}
-
-.starrating > input:checked ~ label
-{ color: #ffca08 ; } /* Set yellow color when star checked */
-
-.starrating > input:hover ~ label
-{ color: #ffca08 ;  } /* Set yellow color when star hover */
-
 //--------------------------------------------ここは投稿画面、newの画面の要素です
 
 .form-container{
@@ -55,7 +15,6 @@
   margin-bottom: 150px;
 
 }
-
 //------------------------------------------ここからが違う要素の部分になります
 
 .all-container{
@@ -125,35 +84,30 @@ background-image: image-url("../assets/post-image2.jpg");
 
 }
 
-
-
 //---------------------------------------slickの動く要素
+
+ul{
+  padding-left: 0;//ここに要素を書くことによってslick二デフォルトで入っていたpadding-left:40;を打ち消すことができた！
+}
+
 .slider{
-    margin: 0 auto;
-    width: 80%;
+    width: 100%;
     background-color: #3f3931;
 }
 
-
 .slide{
     position: relative;
-
-//ここがホバーエフェクト
-
-display: inline-block;
-cursor: pointer;
-transition: all 0.3s ease 0s;
+    //ここがホバーエフェクト
+    display: inline-block;//これで横に並べているのかな？？
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
+
 .slide:hover {
   opacity: 0.6; //要素を透明にするCSS
 }
 
-//ここまで
-
-
-
 //---------------------------------------ここからslick「東京で探す」
-
 
 figure {
   position: relative;
@@ -176,8 +130,6 @@ figure:hover figcaption {
 }//これでマウスオーバーで移動する
 //bottomに変えたら上に移動して消える
 //-----------------------------------------------
-
-
 
 .slide__link{
     color: #fff;
@@ -211,7 +163,6 @@ figure:hover figcaption {
 .slick-next:before{
     color: #000;
 }
-
 //---------------------------------------
 
 /*　以下新規投稿ページの星用のCSS　geeksalon内容参照　星評価機能実装*/
@@ -288,12 +239,11 @@ figure:hover figcaption {
   margin-left:10%;
 }
 
-
+//slickの中身パート2--------------------------------------
 .a{
   margin: 0 auto;
   width: 100%;
   left:0px;
-
 }
 
 .area-block{
@@ -301,10 +251,7 @@ figure:hover figcaption {
 height:400px;
 position: relative;
 overflow:hidden;
-
-
 //ここがホバーエフェクト
-
 display: inline-block;
 padding: 0.6em 2em; //このpaddingとmarginでリンクの文字を操作している！
 margin: 0 0 1em;
@@ -312,6 +259,7 @@ color: #fff;
 cursor: pointer;
 transition: all 0.3s ease 0s;
 }
+
 .area-block:hover {
   opacity: 0.6;
 
@@ -385,7 +333,7 @@ td{
   height:50px;
 }
 
-//これはコメント投稿の内容
+//これはコメント投稿の内容-----------------------------------
 
 .comment-container{
   display: flex;
@@ -421,8 +369,6 @@ td{
   padding-top: 20px;
 }
 
-
-
 //以下、写真のみ投稿のレイアウト内容
 
 .image-container{
@@ -441,8 +387,6 @@ td{
   height: 240px;
   object-fit: cover;
 }
-
-
 
 
 img{
@@ -524,9 +468,7 @@ img{
 
 
 
-
-
-//これはcardの内容
+//これはcardの内容---------------------------------------------
 //ここでshops#indexの写真を変えられる→これがカードの外枠を指している
 .l-card {
   overflow: hidden;
