@@ -1,3 +1,7 @@
+
+<div class="form-container">
+
+
 <%=form_for @shop do |f| %>
 
    <%= f.label :name %>
@@ -40,13 +44,13 @@
         <%=f.text_field :url, class:"form-control col-md-5", placeholder:"お店のURLが入ります"%>
       <%end%>
 
-      
+
       </div>
 
 
 
-   <%= f.submit %>
+   <%= f.submit "編集する",class:"btn btn-dark", style:"color:white;" %>
 
 <% end %>
 
-<%=link_to "一覧画面へ", shops_path%>
+</div>
