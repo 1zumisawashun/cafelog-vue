@@ -6,6 +6,7 @@
 //謎に発生している右の余白を消すための要素です
 .wrap {
      overflow: hidden;
+
  }
 //--------------------------------------------ここは投稿画面、newの画面の要素です
 
@@ -92,7 +93,8 @@ ul{
 
 .slider{
     width: 100%;
-    background-color: #3f3931;
+
+    background: radial-gradient(white,  #3f3931);
 }
 
 .slide{
@@ -132,7 +134,7 @@ figure:hover figcaption {
 //-----------------------------------------------
 
 .slide__link{
-    color: #fff;
+    color: #3f3931;
     text-align: center;
 }
 .slide img{
