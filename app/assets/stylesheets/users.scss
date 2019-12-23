@@ -30,12 +30,12 @@
   width:60%;
   margin-top: 25px;
 }
-.user-photo img{
+.user-image img{
 
   border-radius: 50%;
   object-fit: cover;
-  width: 100%;
-  height: auto;
+  width: 145px;
+  height: 145px;
 
 }
 
@@ -198,8 +198,8 @@ input[name="tab_item"] {
 
       border-radius: 50%;
       object-fit: cover;
-      width: 100%;
-      height: auto;
+      width: 70px;
+      height: 70px;
 
     }
 

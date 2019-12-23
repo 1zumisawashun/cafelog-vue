@@ -11,6 +11,7 @@ class ShopsController < ApplicationController
     @tags =Shop.tagged_with(["wi-fi"]).limit(8)
     @score= Comment.average(:score)
     @images=Picture.order("RANDOM()").all #これでランダム設定できている→確認済み
+    @all= Shop.all
 
 
     @hutakotamagawa=Shop.where(area:"二子玉川")
@@ -20,6 +21,7 @@ class ShopsController < ApplicationController
     @nakameguro=Shop.where(area:"中目黒")
     @asakusa=Shop.where(area:"浅草")
     @nishiogikubo=Shop.where(area:"西荻窪")
+    @sangendyaya=Shop.where(area:"三軒茶屋")
   end
 
   def show

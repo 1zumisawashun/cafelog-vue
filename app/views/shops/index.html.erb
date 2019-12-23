@@ -2,9 +2,19 @@
 
 <div class="all-container">
   <div class="picture">
-    <div class="header-title"><strong>cafelog</strong></div>
-    <div class="header-subtitle"><strong>大学生の為のカフェ情報発信サイト</strong></div>
+    <div class="header-title" style="color: #3f3931;"><strong>cafelog</strong></div>
+    <div class="header-subtitle" style="color: #3f3931;"><strong>大学生の為のカフェ情報発信サイト</strong></div>
   </div>
+
+
+  <div class="second-block">
+    <div class="news-block">
+        <div class="news-content"><strong>現在、<%=@all.count%>件の投稿があります。</strong></div>
+        <div class="news-content"><strong>大学生の為のカフェ情報発信サイトです。</strong></div>
+    </div>
+  </div>
+
+
 
   <div class="second-block">
     <h3 class="title" style="margin-left:0;"><strong>投稿順</strong></h3>
@@ -30,7 +40,7 @@
                 </h3>
                 <p class="caption">
                   <%if t.area.present?%>
-                    <%=link_to "#{t.area}駅", tag_path("#{t.area}") ,style:"color:black;"%>
+                    <strong><%=link_to "#{t.area}", tag_path("#{t.area}") ,style:"color:black;"%></strong>
                   <%end%>
                 </p>
                 <div class="content-meta">
@@ -126,7 +136,7 @@
       <%= image_tag @images[3].picture.url%>
         <figcaption>
           <h3>三軒茶屋</h3>
-          <p>caption text here ...</p>
+          <p><%=@sangendyaya.count%>件の投稿があります</p>
         </figcaption>
       <%end%>
     </figure>
@@ -188,7 +198,7 @@
             <strong><%= t.name %></strong>
           </h3>
             <p class="caption">
-             <%= t.area %>
+             <strong><%= t.area %></strong>
            </p>
             <div class="content-meta">
               <span class="date">
@@ -305,7 +315,7 @@
             <strong><%= t.name %></strong>
           </h3>
             <p class="caption">
-             <%= t.area %>
+             <strong><%= t.area %></strong>
            </p>
             <div class="content-meta">
               <span class="date">

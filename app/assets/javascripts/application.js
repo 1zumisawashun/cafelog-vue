@@ -20,9 +20,24 @@
 //= require particles
 //= require_tree .
 
+$(function() {
+	$('.news-block').slick({
+		dots: true,
+		infinite: true,
+		arrows: true,
+		autoplay:true,
+		autoplaySpeed:5000,
+		slidesToShow: 1,
+		slidesToScroll: 1
+
+	});
+});
+
+
 
 $(function() {
 	$('.a').slick({
+		dots: true,
 		centerMode: true, //センターモード
 		centerPadding: '60px', //前後のパディング
 		autoplay: true, //オートプレイ
@@ -72,6 +87,7 @@ $('.slider').on('init',function(){
     $('.slide__content').addClass('on');
 });
 $('.slider').slick({
+	dots: true,
     autoplay:true,
     infinite: true,
     autoplaySpeed:4000,

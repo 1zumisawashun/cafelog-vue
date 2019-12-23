@@ -29,6 +29,18 @@
   margin: 0 auto;
   background-color: white;
 }
+.news-block{
+  width: 100%;
+  height: auto;
+  margin: 0 auto; //上手くこれができていない
+
+  color:white;
+  background-color: #3f3931;
+  font-size: 20px;
+  border-radius: 15px;
+  text-align: center;
+
+}
 
 .slider-container{
   width: 100%;
@@ -698,6 +710,18 @@ img{
       height: auto;
       margin: 0 auto;
       background-color: white;
+    }
+    .news-block{
+      width: 100%;
+      height: auto;
+      margin: 0 auto; //上手くこれができていない
+
+      color:white;
+      background-color: #3f3931;
+      font-size: 15px;
+      border-radius: 15px;
+      text-align: center;
+
     }
 
     #second-block{
