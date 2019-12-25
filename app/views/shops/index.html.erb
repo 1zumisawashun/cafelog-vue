@@ -344,8 +344,19 @@
 
 </div>
 </div>
-<div class="footer">
-
-</div>
+<%if user_signed_in?%>
+<%else%>
+  <div class="footer-container">
+      <div class="footer-block">
+          <div class="footer-content">
+              <nav><a href="/tops/about">cafelogとは</a></nav>
+              <nav><%=link_to "お問い合わせ", tops_about_path%>  </nav>
+          </div>
+          <div class="footer-content">
+              <nav><p style="color:white;">©2019 cafelog All Rights Reserved.</p></nav>
+          </div>
+      </div>
+  </div>
+<%end%>
 
 </div>

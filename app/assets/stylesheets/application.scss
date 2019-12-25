@@ -95,6 +95,43 @@ footer nav{
   padding-top: 15px;
   padding-bottom: 15px;
 }
+
+//shops index footer内容
+.footer-container{
+  width: 100%;
+  height: 150px;
+  justify-content:center;
+  align-items: center;
+  background-color:  #3f3931;
+}
+
+.footer-content{
+  width: 100%;
+  height: auto;
+  display: flex;
+  height: auto;
+  justify-content:center;
+  align-items: center;
+  padding-top: 25px;
+
+
+
+}
+.footer-content a{
+  padding: 0 10px;
+  color: white;
+
+}
+
+.footer-content nav{
+  color:white;
+
+}
+
+
+
+
+
 @media screen and (max-width: 639px) {
   //第2headerの要素
   .picture{

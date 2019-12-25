@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   get 'maps/index'
   get 'tags/:tag_name', to: 'tops#index', as: :tag
   get "tops/index" => "tops#index"
-  
+  get "tops/about" => "tops#about"
+
 
   #get "shops/search" => "shops#search"
   #get "shops/shibuya" => "shops#shibuya"

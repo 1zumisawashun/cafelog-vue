@@ -5,6 +5,8 @@ class ShopsController < ApplicationController
     @shops = Shop.search(params[:search])
   end
 
+  
+
   def index
     @shops = Shop.limit(8).order('id DESC') #.page(params[:page]).per(4) ページネーションするときに必要な記載内容
     @area = Shop.where(area: "渋谷").limit(8)

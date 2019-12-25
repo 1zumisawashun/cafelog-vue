@@ -6,12 +6,6 @@ class TopsController < ApplicationController
   end
 end
 
-  def omotesandou
-  @shops = Shop.where(area: "表参道")
-  end
-
-  def coffee_stand
-    @shops =Shop.tagged_with(["コーヒースタンド"])
-  end
-
+def about
+end
 end
