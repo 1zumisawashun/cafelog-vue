@@ -37,7 +37,7 @@
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
       <div class="c-txtsp">
-          <div class="container">
+          <div class="tops-container">
 
 
             <% @shops.each do |t|  %>
@@ -64,7 +64,8 @@
                             <span class="star-rating-back">★★★★★</span>
                           </span>
                           <% if t.comments.average(:score).present? %>
-                            <%=t.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.comments.count %>）
+                            <%=t.comments.average(:score).round(1)%> 点
+                            <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
                           <% end %>
                         </span>
                         <!--<span class="like">
@@ -85,7 +86,7 @@
     <div class="tab_content_description">
       <div class="c-txtsp">
 
-          <div class="container">
+          <div class="tops-container">
             <% @likes.each do |t|  %>
               <div class="l-card">
                 <div class="l-thumbnail">
@@ -110,7 +111,8 @@
                         <span class="star-rating-back">★★★★★</span>
                       </span>
                       <% if t.shop.comments.average(:score).present? %>
-                        <%=t.shop.comments.average(:score).round(1)%> 点<br>コメント数（<%= t.shop.comments.count %>）
+                        <%=t.shop.comments.average(:score).round(1)%> 点
+                        <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.shop.comments.count %>
                       <% end %>
                     </span>
 

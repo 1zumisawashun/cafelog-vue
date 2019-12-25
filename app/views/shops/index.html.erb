@@ -11,13 +11,15 @@
     <div class="news-block">
         <div class="news-content"><strong>現在、<%=@all.count%>件の投稿があります。</strong></div>
         <div class="news-content"><strong>大学生の為のカフェ情報発信サイトです。</strong></div>
+        <div class="news-content"><strong><%=@all.last.created_at%>更新</strong></div>
     </div>
   </div>
 
 
 
   <div class="second-block">
-    <h3 class="title" style="margin-left:0;"><strong>投稿順</strong></h3>
+    <h3 class="title" style="display:inline; margin-left:0;"><strong>投稿順</strong></h3><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px;"%>
+
       <section id="second-block" class="container">
         <div class="row">
           <% @shops.each do |t|  %>
@@ -114,7 +116,8 @@
 
 
 
-<h1 class="title" style="margin-left:9%;"><strong>東京で探す</strong></h1>
+<h1 class="title" style="display:inline; margin-left:9%;"><strong>東京で探す</strong></h1><%=link_to "もっと見る", "/shops/search" ,style:"margin-left:10px;"%>
+
   <div class="a col-xs-10">
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
       <%= image_tag @images[1].picture.url%>
@@ -178,7 +181,7 @@
 
 
 
-<h3 class="title" style="margin-left:0;"><strong>渋谷で探す</strong></h3>
+<h3 class="title" style="display:inline; margin-left:0;"><strong>渋谷で探す</strong></h3><%=link_to "もっと見る", tag_path("渋谷"),style:"margin-left:10px;"%>
 
 <section id="second-block">
   <% @area.each do |t|  %>
@@ -198,7 +201,9 @@
             <strong><%= t.name %></strong>
           </h3>
             <p class="caption">
-             <strong><%= t.area %></strong>
+              <%if t.area.present?%>
+                <strong><%=link_to "#{t.area}", tag_path("#{t.area}") ,style:"color:black;"%></strong>
+              <%end%>
            </p>
             <div class="content-meta">
               <span class="date">
@@ -222,7 +227,8 @@
 
 
 
-<h1 class="title"style="margin-left:9%;"><strong>旅行でオススメ</strong></h1>
+<h1 class="title"style="display:inline; margin-left:9%;"><strong>旅行でオススメ</strong></h1><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px;"%>
+
   <div class="a col-xs-10">
     <figure class="area-content area-block">
       <%=link_to tag_path("北海道"), style:"color:white;" do%>
@@ -295,8 +301,7 @@
 
   <div class="bottom-container">
   <div class="second-block">
-<h3 class="title" style="margin-left:0;"><strong>wi-fiがあるお店</strong></h3>
-
+<h3 class="title" style="display:inline; margin-left:0;"><strong>wi-fiがあるお店</strong></h3><%=link_to "もっと見る", tag_path("wi-fi"),style:"margin-left:10px;" %>
 <section id="forth-block">
   <% @tags.each do |t|  %><!--ここに&.eachを記載したら全部消えた-->
     <div class="l-card tags">
@@ -315,7 +320,9 @@
             <strong><%= t.name %></strong>
           </h3>
             <p class="caption">
-             <strong><%= t.area %></strong>
+              <%if t.area.present?%>
+                <strong><%=link_to "#{t.area}", tag_path("#{t.area}") ,style:"color:black;"%></strong>
+              <%end%>
            </p>
             <div class="content-meta">
               <span class="date">
@@ -336,6 +343,9 @@
 </section>
 
 </div>
+</div>
+<div class="footer">
+
 </div>
 
 </div>

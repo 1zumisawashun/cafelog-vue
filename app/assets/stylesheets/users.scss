@@ -52,6 +52,12 @@
   flex-wrap: wrap;
 
 }
+.tops-container{
+  flex-wrap: wrap;
+  display: flex;
+  
+
+}
 
 .c-txtsp .l-card{ //これがuser投稿カードの大きさ
  width: 24%;
@@ -152,6 +158,10 @@ input[name="tab_item"] {
   }
 
   .container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tops-container{
     display: flex;
     flex-wrap: wrap;
 
