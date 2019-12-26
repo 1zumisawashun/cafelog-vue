@@ -21,6 +21,9 @@
 
 @import "font-awesome";
 
+
+
+
 header{
   width: 100%;
   height: auto;
@@ -58,9 +61,28 @@ header nav{
   padding-bottom: 15px;
 
 }
-header a{
+
+header a {
   color: white;
+  display: inline-block;
 }
+header a:hover {
+  -webkit-animation: zoom .5s;
+  animation: zoom .5s;
+}
+@-webkit-keyframes zoom {
+  50% {
+    -webkit-transform: scale(1.25);
+  }
+}
+@keyframes zoom {
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+
+
 
 footer{
   position: fixed;
@@ -88,6 +110,26 @@ footer{
   background-color: #3f3931;
 
 }
+
+footer a {
+  color: white;
+  display: inline-block;
+}
+footer a:hover {
+  -webkit-animation: zoom .5s;
+  animation: zoom .5s;
+}
+@-webkit-keyframes zoom {
+  50% {
+    -webkit-transform: scale(1.25);
+  }
+}
+@keyframes zoom {
+  50% {
+    transform: scale(1.25);
+  }
+}
+
 
 footer nav{
   margin-right: 20px;
@@ -117,10 +159,19 @@ footer nav{
 
 
 }
-.footer-content a{
-  padding: 0 10px;
-  color: white;
 
+
+.detail a, .footer-content a {
+  padding: 0 10px;
+
+  display: inline-block;
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.footer-content a:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .footer-content nav{
