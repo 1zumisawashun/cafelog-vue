@@ -1,25 +1,19 @@
 <div class="wrap">
-
-<div class="all-container">
-  <div class="picture">
-    <div class="header-title" style="color: #3f3931;"><strong>cafelog</strong></div>
-    <div class="header-subtitle" style="color: #3f3931;"><strong>大学生の為のカフェ情報発信サイト</strong></div>
-  </div>
-
-
-  <div class="second-block">
-    <div class="news-block">
-        <div class="news-content"><strong>現在、<%=@all.count%>件の投稿があります。</strong></div>
-        <div class="news-content"><strong>大学生の為のカフェ情報発信サイトです。</strong></div>
-        <div class="news-content"><strong><%=@all.last.created_at%>更新</strong></div>
+  <div class="all-container">
+    <div class="background-picture">
+      <div class="header-title">cafelog</div>
+      <div class="header-subtitle">大学生の為のカフェ情報発信サイト</div>
     </div>
-  </div>
-
-
+      <div class="second-block">
+        <div class="news-block">
+          <div class="news-content"><strong>現在、<%=@all.count%>件の投稿があります。</strong></div>
+          <div class="news-content"><strong>大学生の為のカフェ情報発信サイトです。</strong></div>
+          <div class="news-content"><strong><%=@all.last.created_at%>更新</strong></div>
+        </div>
+      </div>
 
   <div class="second-block">
-    <h3 class="title" style="display:inline; margin-left:0;"><strong>投稿順</strong></h3><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px;text-decoration: none; ",class:"detail"%>
-
+    <div class="title"style="display:inline;">投稿順</div><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px;text-decoration: none; ",class:"detail"%>
       <section id="second-block" class="container">
         <div class="row">
           <% @shops.each do |t|  %>
@@ -40,11 +34,11 @@
                     <strong><%= t.name %></strong>
                   <%end%>
                 </h3>
-                <p class="caption">
+                <div class="caption">
                   <%if t.area.present?%>
-                    <strong><%=link_to "#{t.area}", tag_path("#{t.area}") ,style:"color:black;"%></strong>
+                    <%=link_to "#{t.area}", tag_path("#{t.area}")%>
                   <%end%>
-                </p>
+                </div>
                 <div class="content-meta">
                   <span class="date">
                     <span class="star-rating">
@@ -73,10 +67,10 @@
           <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content figcaption">
-                    <h2 class="slide__title">Cafelog管理者</h2>
-                    <p class="slide__text">
+                    <h3 class="slide__title">Cafelog管理者</h3>
+                    <div class="slide__text">
                     投稿一覧はこちら
-                    </p>
+                    </div>
                 </span>
             </span>
         </a>
@@ -86,10 +80,10 @@
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content">
-                    <h2 class="slide__title">Cafelog利用者</h2>
-                    <p class="slide__text">
+                    <h3 class="slide__title">Cafelog利用者</h3>
+                    <div class="slide__text">
                     投稿一覧はこちら
-                    </p>
+                    </div>
                 </span>
             </span>
         </a>
@@ -99,10 +93,10 @@
             <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
             <span class="slide__content-wrap">
                 <span class="slide__content">
-                    <h2 class="slide__title">ラテアート選手権</h2>
-                    <p class="slide__text">
-                    Lorem ipsum dolor sit amet
-                    </p>
+                    <h3 class="slide__title">ラテアート選手権</h3>
+                    <div class="slide__text">
+                    お気に入りを見つけよう
+                    </div>
                 </span>
             </span>
         </a>
@@ -116,7 +110,7 @@
 
 
 
-<h1 class="title" style="display:inline; margin-left:9%;"><strong>東京で探す</strong></h1><%=link_to "もっと見る", "/shops/search" ,style:"margin-left:10px; text-decoration: none;",class:"detail"%>
+<div class="title" style="display:inline;">東京で探す</div><%=link_to "もっと見る", "/shops/search" ,style:"margin-left:10px; text-decoration: none;",class:"detail"%>
 
   <div class="a col-xs-10">
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
@@ -181,7 +175,7 @@
 
 
 
-<h3 class="title" style="display:inline; margin-left:0;"><strong>渋谷で探す</strong></h3><%=link_to "もっと見る", tag_path("渋谷"),style:"margin-left:10px; text-decoration: none;",class:"detail"%>
+<div class="title" style="display:inline;">渋谷で探す</div><%=link_to "もっと見る", tag_path("渋谷"),style:"margin-left:10px; text-decoration: none;",class:"detail"%>
 
 <section id="second-block">
   <% @area.each do |t|  %>
@@ -200,11 +194,11 @@
           <h3 class="title">
             <strong><%= t.name %></strong>
           </h3>
-            <p class="caption">
+            <div class="caption">
               <%if t.area.present?%>
-                <strong><%=link_to "#{t.area}", tag_path("#{t.area}") ,style:"color:black;"%></strong>
+                <%=link_to "#{t.area}", tag_path("#{t.area}")%>
               <%end%>
-           </p>
+           </div>
             <div class="content-meta">
               <span class="date">
                 <span class="star-rating">
@@ -227,7 +221,7 @@
 
 
 
-<h1 class="title"style="display:inline; margin-left:9%;"><strong>旅行でオススメ</strong></h1><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px; text-decoration: none; ",class:"detail"%>
+<div class="title"style="display:inline;">旅行でオススメ</div><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px; text-decoration: none; ",class:"detail"%>
 
   <div class="a col-xs-10">
     <figure class="area-content area-block">
@@ -301,7 +295,7 @@
 
   <div class="all-container">
   <div class="second-block">
-<h3 class="title" style="display:inline; margin-left:0;"><strong>wi-fiがあるお店</strong></h3><%=link_to "もっと見る", tag_path("wi-fi"),style:"margin-left:10px;text-decoration: none;",class:"detail" %>
+<div class="title" style="display:inline;">wi-fiがあるお店</div><%=link_to "もっと見る", tag_path("wi-fi"),style:"margin-left:10px;text-decoration: none;",class:"detail" %>
 <section id="second-block"> <!--forth-blockにするとpaddingが発動するようになっている。-->
   <% @tags.each do |t|  %><!--ここに&.eachを記載したら全部消えた-->
     <div class="l-card tags">
@@ -319,11 +313,11 @@
           <h3 class="title">
             <strong><%= t.name %></strong>
           </h3>
-            <p class="caption">
+            <div class="caption">
               <%if t.area.present?%>
-                <strong><%=link_to "#{t.area}", tag_path("#{t.area}") ,style:"color:black;"%></strong>
+                <%=link_to "#{t.area}", tag_path("#{t.area}")%>
               <%end%>
-           </p>
+           </div>
             <div class="content-meta">
               <span class="date">
                 <span class="star-rating">
@@ -343,13 +337,13 @@
 </section>
 
 </div>
+
+
+<div class="search-bar">
+<input id="address" type="textbox" class="form-control col-md-11" style="display:inline;"><!--ここに場所の名前を登録する-->
+<input type="button" value="search" class="btn-border" onclick="codeAddress()">
 </div>
-
-
-<%if user_signed_in?%>
-<%else%>
-<input id="address" type="textbox" class="form-control col-md-7" style="display:inline;"><!--ここに場所の名前を登録する-->
-<input type="button" value="検索" class="btn btn-dark" style="color:white;" onclick="codeAddress()">
+</div>
 <!-- ここまで追加-->
 <div id='map'></div>
 
@@ -403,17 +397,18 @@ function codeAddress(){
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4gF9HU4F7dz_aWGynXJ3jgS9qCPufJ10&callback=initMap" async defer></script>
 
-
+<%if user_signed_in?%>
+<%else%>
   <div class="footer-container">
-      <div class="footer-block">
-          <div class="footer-content">
-              <nav><a href="/tops/about">cafelogとは</a></nav>
-              <nav><%=link_to "お問い合わせ", tops_about_path%>  </nav>
-          </div>
-          <div class="footer-content">
-              <nav><p style="color:white;">©2019 cafelog All Rights Reserved.</p></nav>
-          </div>
+    <div class="footer-block">
+      <div class="footer-content">
+        <nav><a href="/tops/about">cafelogとは</a></nav>
+        <nav><%=link_to "お問い合わせ", tops_about_path%></nav>
       </div>
+      <div class="footer-content">
+        <nav><div style="color:white;">©2019 cafelog All Rights Reserved.</div></nav>
+      </div>
+    </div>
   </div>
 <%end%>
 

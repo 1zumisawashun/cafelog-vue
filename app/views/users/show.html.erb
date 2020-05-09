@@ -54,9 +54,11 @@
                     <h3 class="title">
                       <strong><%= t.name %></strong>
                     </h3>
-                      <p class="caption">
-                        <strong><%= t.area %></strong>
-                      </p>
+                    <div class="caption">
+                      <%if t.area.present?%>
+                      <%=link_to "#{t.area}", tag_path("#{t.area}")%>
+                      <%end%>
+                    </div>
                       <div class="content-meta">
                         <span class="date">
                           <span class="star-rating">
@@ -101,9 +103,11 @@
                     <h3 class="title">
                       <strong><%= t.shop.name %></strong>
                     </h3>
-                    <p class="caption">
-                      <strong><%= t.shop.area %></strong>
-                    </p>
+                    <div class="caption">
+                      <%if t.shop.area.present?%>
+                      <%=link_to "#{t.shop.area}", tag_path("#{t.shop.area}")%>
+                      <%end%>
+                    </div>
                   <div class="content-meta">
                     <span class="date">
                       <span class="star-rating">

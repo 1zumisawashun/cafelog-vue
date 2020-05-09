@@ -141,7 +141,7 @@ footer nav{
 //shops index footer内容
 .footer-container{
   width: 100%;
-  height: 150px;
+  height: 80px;
   justify-content:center;
   align-items: center;
   background-color:  #3f3931;
@@ -154,10 +154,7 @@ footer nav{
   height: auto;
   justify-content:center;
   align-items: center;
-  padding-top: 25px;
-
-
-
+  padding: 10px 0 2.5px 0;
 }
 
 
@@ -185,7 +182,7 @@ footer nav{
 
 @media screen and (max-width: 639px) {
   //第2headerの要素
-  .picture{
+  .background-picture{
     width: 100%;
     height:140px;
     padding-bottom: 120px;
