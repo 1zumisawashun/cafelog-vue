@@ -28,15 +28,12 @@
   <div class="tab_content" id="all_content">
     <div class="tab_content_description">
       <div class="c-txtsp">
-
         <div class="tops-container">
       <% @shops.each do |t|  %>
       <%if t.user.admin == true%> <!--これで条件分けをしている。簡単に実装できるのでお勧め-->
         <div class="l-card">
             <div class="l-thumbnail">
               <figure class="thumbnail-wrapper">
-
-
                 <img src="<%=t.pictures[0].picture%>">
 
               </figure>
