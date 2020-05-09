@@ -102,20 +102,19 @@
 
 
 
-<%if @image.pictures.present?%>
+
 <div class="title" style="display:inline;">東京で探す</div><%=link_to "もっと見る", "/shops/search" ,style:"margin-left:10px; text-decoration: none;",class:"detail"%>
 
   <div class="a col-xs-10">
       <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
-      <%= image_tag @images[1].picture.url%><!--修正をする箇所-->
+
         <figcaption>
           <h3>二子玉川</h3>
           <p><%=@shibuya.count%>件の投稿があります</p>
         </figcaption>
       <%end%>
-
       <%=link_to tag_path("表参道"), class:"area-content area-block", style:"color:white;" do%>
-<%= image_tag @images[2].picture.url%>
+
         <figcaption>
           <h3>表参道</h3>
           <p><%=@omotesandou.count%>件の投稿があります</p>
@@ -160,7 +159,7 @@
       <%end%>
 
   </div>
-<%end%>
+
 
     <!--<div class="b"><img class="c" src="assets/test1.jpg"></div> これで導入できないか確認してみる。-->
 <div class="all-container">
