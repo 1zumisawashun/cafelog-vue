@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <title>カフェログ</title>
+            <link rel="apple-touch-icon" href="apple-touch-icon.png">
+                <%= csrf_meta_tags %>
+                <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+                <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+                <!--レスポンシブ-->
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                <!--bootstrap4-->
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                <!--Rate Yo! -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+                <!--slick.js-->
+                <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+                <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+                <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+                <!--masonry.js-->
+                <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    </head>
+
+    <body>
+      <header>
+        <div class="header-botton">
+            <%=link_to "", shops_path, class:"header-logo"%>
+
+                <%if current_user.try(:admin)%>
+                  <nav><%=link_to "/maps/index",style:"text-decoration: none;" do%><i class="fa fa-map-o fa-lg" aria-hidden="true"></i><%end%></nav>
+                  <nav class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "/admin",style:"text-decoration: none;" do%><i class="fa fa-line-chart fa-lg" aria-hidden="true"></i><%end%></nav>
+
+                  <%end%>
+                  <% if user_signed_in? %>
+                      <nav><%= link_to destroy_user_session_path, method: :delete ,style:"text-decoration: none;" do%><i style="color:white" class="fa fa-sign-out fa-lg" aria-hidden="true"></i><%end%></nav>
+                      <%else%>
+              <nav><%=link_to new_user_session_path, method: :get do%><i class="fa fa-sign-in fa-lg" aria-hidden="true" style="color:white;"></i><%end%></nav>
+              <nav><a class="fa fa-home fa-lg " aria-hidden="true"style="color:white;" href="/tops/index?c=cafe"></a></nav>
+              <nav><%=link_to search_shops_path do %><i style="color:white" class="fa fa-search fa-lg " aria-hidden="true"></i><%end%></nav>
+            <%end%>
+
+          </div>
+      </header>
+
+      <%= yield %>
+
+      <footer>
+        <% if user_signed_in? %>
+          <div class="footer-botton">
+            <nav><%=link_to new_shop_path do%><i class="fa fa-plus-circle fa-4x" aria-hidden="true" style="color: #3f3931;"></i><%end%></nav>
+          </div>
+          <div class="footer">
+            <nav><a class="fa fa-home fa-lg " aria-hidden="true"style="color:white;" href="/tops/index?c=cafe"></a></nav>
+            <nav><%=link_to search_shops_path do %><i style="color:white" class="fa fa-search fa-lg " aria-hidden="true"></i><%end%></nav>
+            <nav><a style="color:white" class="fa fa-user-circle-o fa-lg " aria-hidden="true"style="text-decoration: none;" href="/users/<%=current_user.id%>"></a></nav>
+
+          </div>
+        <%end%>
+      </footer>
+
+    </body>
+  </html>

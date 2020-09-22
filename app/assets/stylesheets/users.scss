@@ -1,0 +1,250 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-container{
+  border-radius: 15px 15px 0 0;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 5%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0 8px 25px rgba(0, 0, 0, 0.2);
+  height: auto;
+  display: flex;
+  background-color:  #d9d9d9;
+}
+
+.user-photo{
+  width: 25%;
+  height: auto;
+
+}
+
+.user-photo a{
+  width: 100%;
+  margin: 0 auto;
+  display:flex;
+
+}
+.user-image{
+  margin: 0 auto;
+  width:60%;
+  margin-top: 25px;
+}
+.user-image img{
+
+  border-radius: 50%;
+  object-fit: cover;
+  width: 145px;
+  height: 145px;
+
+}
+
+.user-info{
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 75%;
+  height: auto;
+  margin:0 auto;
+}
+
+
+.container{
+  flex-wrap: wrap;
+
+}
+.tops-container{
+  flex-wrap: wrap;
+  display: flex;
+
+
+}
+
+.c-txtsp .l-card{ //これがuser投稿カードの大きさ
+ width: 24%;
+
+}
+.c-txtsp { //これがuser投稿箱の大きさ
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+
+
+
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  margin-top: 100px;
+  padding-bottom: 80px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%; //ここwidthとmarginの関係が大切→この2つの操作をすることで真ん中に合わせて要素が設置される。これ重要！
+  margin: 0 auto;}
+
+  .tabs label {
+    margin-bottom: 0;//これを記載しないとmargin-bottom:5rem;が上書きされず浮いてしまう！
+  }
+
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100%/3);
+  height: 50px;
+  border-bottom: 3px solid #3f3931;
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+  background-color: #3f3931;
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 639px) {
+
+
+
+  .c-txtsp { //これがuser投稿箱の大きさ
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .c-txtsp .l-card{
+   width: 48%;
+
+  }
+
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tops-container{
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+
+
+  /*タブ切り替え全体のスタイル*/
+  .tabs {
+    margin-top: 100px;
+    padding-bottom: 80px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 96%; //ここwidthとmarginの関係が大切→この2つの操作をすることで真ん中に合わせて要素が設置される。これ重要！
+    margin: 0 auto;
+  }
+
+
+    .tab_content {
+      display: none;
+      padding: 1px 1px 0;
+      clear: both;
+      overflow: hidden;
+    }
+
+    .user-container{
+      border-radius: 15px 15px 0 0;
+      width: 96%;
+      margin: 0 auto;
+      margin-top: 5%;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0 8px 25px rgba(0, 0, 0, 0.2);
+      height: auto;
+      display: flex;
+      background-color:  #d9d9d9;
+    }
+
+    .user-photo{
+      width: 30%;
+      height: auto;
+
+    }
+
+    .user-photo a{
+      width: 100%;
+      margin: 0 auto;
+      display:flex;
+
+    }
+    .user-image{
+      margin: 0 auto;
+      width:60%;
+      margin-top: 25px;
+    }
+    .user-photo img{
+
+      border-radius: 50%;
+      object-fit: cover;
+      width: 70px;
+      height: 70px;
+
+    }
+
+
+    .user-info{
+      padding-top: 25px;
+      padding-bottom: 25px;
+      width: 70%;
+      height: auto;
+      margin:0 auto;
+    }
+    .user-info h3{
+      font-size: 15px;
+    }
+
+
+
+    .c-txtsp { //これがuser投稿箱の大きさ
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+
+
+
+
+}

@@ -1,0 +1,941 @@
+// Place all the styles related to the shops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//謎に発生している右の余白を消すための要素です
+.wrap {
+  overflow: hidden;
+}
+//--------------------------------------------ここは投稿画面、newの画面の要素です
+
+.form-container {
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 150px;
+}
+//------------------------------------------ここからがindex.html
+
+.all-container {
+  width: 100%;
+  height: auto;
+  background-color: white;
+}
+.second-block {
+  width: 82%;
+  height: auto;
+  margin: 0 auto;
+  background-color: white;
+}
+.news-block {
+  width: 100%;
+  height: auto;
+  margin: 0 auto; //上手くこれができていない
+  color: white;
+  background-color: #3f3931;
+  font-size: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+}
+
+.slider-container {
+  width: 100%;
+  height: auto;
+  background-color: white;
+}
+.slider-block {
+  width: 82%;
+  height: auto;
+  margin: 0 auto;
+  background-color: white;
+}
+
+#second-block {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+}
+#forth-block {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  padding-bottom: 80px;
+}
+
+.search-block {
+  width: 80%;
+  height: auto;
+  margin:0 auto;
+  margin-top: 5%;
+  padding: 3%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.search-bar{
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.background-picture {
+  width: 100%;
+  height: 390px;
+  background-size: cover;
+  background-image: image-url("../assets/post-image2.jpg");
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+//---------------------------------------slick要素→ラテアート選手権、管理者一覧画面へ、ユーザ一覧画面へ等
+ul {
+  padding-left: 0; //ここに要素を書くことによってslick二デフォルトで入っていたpadding-left:40;を打ち消すことができた！
+}
+.slider {
+  width: 100%;
+  height: auto;
+  background: radial-gradient(white, #3f3931);
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+}
+.slide {
+  position: relative;
+  //ここがホバーエフェクト
+  display: inline-block; //これで横に並べているのかな？？
+  cursor: pointer;
+  transition: all 1.5s ease 0s;//JSをいじらなくても遷移のスピードを変えられる
+}
+.slide:hover {
+  opacity: 0.6; //要素を透明にするCSS
+}
+//---------------------------------------slick要素→「東京で探す」や「特徴で探す」等
+figure {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+}
+figcaption {
+  position: absolute;
+  bottom: 0px; //これで表示が下に来る
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+figure:hover figcaption {
+  top: 100%;
+} //これでマウスオーバーで移動する
+//bottomに変えたら上に移動して消える
+//-----------------------------------------------
+.slide__link {
+  color: #3f3931;
+  text-align: center;
+}
+.slide img {
+  height: auto;
+  width: 100%;
+}
+.slide__content-wrap {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+.slide__content {
+  display: block;
+  opacity: 0;
+  transform: translate(-50%, 20%);
+  transition: 0s;
+}
+.slide__content.on {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
+.slide__title {
+  font-size: 48px;
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before {
+  color: #000;
+}
+//---------------------------------------
+/*　以下新規投稿ページの星用のCSS　geeksalon内容参照　星評価機能実装*/
+
+.post_form {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.post_form input[type="radio"] {
+  display: none;
+}
+.post_form label {
+  position: relative;
+  padding: 10px 10px 0;
+  color: gray;
+  cursor: pointer;
+  font-size: 30px; /*星の大きさを変更するときはここ*/
+}
+.post_form label .text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+  color: gray;
+}
+.post_form label:hover,
+.post_form label:hover ~ label,
+.post_form input[type="radio"]:checked ~ label {
+  color: #ffcc00;
+}
+
+/*　以下一覧ページの星用のCSS　*/
+
+.star-rating {
+  position: relative;
+  display: inline-block;
+  width: 5em;
+  height: 1em;
+  font-size: 20px;
+}
+.star-rating-front {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  display: inline-block;
+  color: #ccc;
+}
+
+//----------------------------------------星評価機能ここまで
+
+.header-title {
+  font-size: 110px;
+  padding-left: 28%;
+  padding-top: 75px;
+  color: #3f3931;
+  font-weight: bold;
+}
+.header-subtitle {
+  font-size: 25px;
+  padding-left: 27%;
+  color: #3f3931;
+  font-weight: bold;
+}
+
+//searchにも使われている,indexにも使われている
+.title {
+  margin: 10px 0 0 10px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+//slickの中身パート2--------------------------------------
+.a {
+  margin: 0 auto;
+  width: 100%;
+  left: 0px;
+}
+
+.area-block {
+  width: 50%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  //ここがホバーエフェクト
+  display: inline-block;
+  padding: 0.6em 2em; //このpaddingとmarginでリンクの文字を操作している！
+  margin: 0 0 1em;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.area-block:hover {
+  opacity: 0.6;
+}
+.area-content {
+  padding-bottom: 270px;
+}
+
+.a img {
+  width: 100px;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: inherit;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+//---------------------------------------カフェログ投稿の要素になる。ここからがshow画面
+.container-block{
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.cafelog-container {
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+  display: flex;
+}
+.shop-picture {
+  width: 48%;
+  height: auto;
+  margin: 2%;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+}
+.shop-picture img {
+  width: 300px;
+  height: 370px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.shop-info {
+  width: 48%;
+  margin:2%;
+}
+.review-container{
+  width: 100%;
+  height:300px;
+  background-color:＃F4F5F7;
+  border-radius: 5px;
+  padding:10px;
+  margin-bottom: 20px;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+}
+
+.footer {
+  background-color: #3f3931;
+  width: 100%;
+  height: 50px;
+}
+//show画面のボタンを管理している-----------------
+.btn-border {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  padding: 8px;
+  text-align: center;
+  background-color: #3f3931;
+  font-size: 16px;
+  // line-height: 52px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #3f3931;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.btn-border:after{
+  width: 100%;
+  height: 0;
+  content:"";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background : #FFF;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transition: .2s;
+  z-index: -1;
+}
+.btn-border:hover{
+  color: #3f3931;
+}
+.btn-border:hover:after{
+  height: 240%;
+  opacity: 1;
+}
+.btn-border:active:after{
+  height: 340%;
+  opacity: 1;
+}
+
+//これはコメント投稿の内容-----------------------------------
+
+.comment-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+  // padding-bottom: 2%;
+}
+
+.comment {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.user-picture {
+  width: 80px;
+  height: 80px;
+}
+
+.user-picture img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-content {
+  width: 95%;
+  height: auto;
+  margin-left: 5%;
+}
+
+//ここから写真投稿の内容-----------------------------------------
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+.image {
+  width: 25%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.picture{
+  width: 100%;
+  height: 240px;
+}
+.picture img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.table-container {
+  //bootstrapのtableはデフォルトでwidthが100％なので気を付ける
+  width: 100%;
+  margin: 3% 0 10% 0;
+  height: auto;
+}
+
+table{
+  width: 100%;
+  border-spacing: 0;
+}
+
+table th{
+  border-bottom: solid 2px #3f3931;;
+  padding: 10px 0;
+  width: 20%;
+}
+
+table td{
+  border-bottom: solid 2px #ddd;
+  text-align: center;
+  padding: 10px 0;
+  width: 80%;
+}
+
+
+
+//--------------------------------------------------ここまでがshow
+
+
+
+img {
+  width: 270px; //これが現状での全写真の大きさを決めている。これを無くしてしまったら写真の大きさぶれるので注意
+  height: 160px;
+  object-fit: cover;
+}
+
+.text-content {
+  padding: 10px;
+}
+.text-content .title {
+  width: 100%;
+  height: 50px;
+  font-size: 10px;
+  color: #3f3931;
+}
+.text-content .caption {
+  width: 100%;
+  height: 20px;
+  font-size: 14px;
+  color: gray;
+}
+.content-meta {
+  overflow: hidden;
+  width: 100%;
+  font-size: 10px;
+}
+ .caption a {
+    color: gray;
+  }
+
+/*ここからthumbnailのスタイル設定*/
+.l-thumbnail {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+.thumbnail-wrapper {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.thumbnail-wrapper::after {
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}
+.thumbnail-wrapper img {
+  display: block;
+  max-width: 100%;
+}
+.more-text {
+  transition: 0.5s;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  padding: 6px 12px 8px;
+  color: #fff;
+  font-size: 14px;
+  border: 1px solid #fff;
+  opacity: 0;
+}
+.l-card:hover .thumbnail-wrapper::after {
+  opacity: 1;
+}
+.l-card:hover .more-text {
+  opacity: 1;
+}
+
+//これはcardの内容---------------------------------------------
+//ここでshops#indexの写真を変えられる→これがカードの外枠を指している
+.l-card {
+  overflow: hidden;
+  width: 24%; //265px;
+  height: auto;
+  padding: 0;
+  margin: 0.5%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+// .text-content {
+//   padding: 16px;
+// }
+.text-content .title {
+  margin: 0 0 3px 0;
+  font-size: 20px;
+  color: #3f3931;
+}
+.text-content .caption {
+  margin: 0 0 0 0;
+  font-size: 14px;
+  color: #555;
+}
+.content-meta {
+  overflow: hidden;
+  width: 100%;
+  font-size: 10px;
+}
+// .date .caption a{
+//   color: #aaa;
+// }
+
+/*ここからthumbnailのスタイル設定*/
+.l-thumbnail {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+.thumbnail-wrapper {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.thumbnail-wrapper::after {
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}
+.thumbnail-wrapper img {
+  display: block;
+  max-width: 100%; //ここがカードの中身に入っている写真の大きさをコントロールする
+}
+.more-text {
+  transition: 0.5s;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  padding: 6px 12px 8px;
+  color: #fff;
+  font-size: 14px;
+  border: 1px solid #fff;
+  opacity: 0;
+}
+.l-card:hover .thumbnail-wrapper::after {
+  opacity: 1;
+}
+.l-card:hover .more-text {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 639px) {
+  .l-card {
+    overflow: hidden;
+    width: 48%;
+    height: 220px;
+    padding: 0;
+    margin: 1%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  .text-content {
+    //ここが店の名前とかが入っている箱
+    padding: 7px;
+  }
+  .text-content .title {
+    width: 100%;
+    height:37.5px;
+    margin: 0 0 0.5px 0;
+    font-size: 15px;
+    color: #3f3931;
+  }
+  .text-content .caption {
+    margin: 0 0 0.5px 0;
+    font-size: 13px;
+    color: #555;
+  }
+  .content-meta {
+    overflow: hidden;
+    width: 100%;
+    font-size: 8px;
+  }
+  .date {
+    color: #aaa;
+  }
+  .l-thumbnail {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  .thumbnail-wrapper {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .thumbnail-wrapper::after {
+    transition: 0.5s;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+  }
+  .thumbnail-wrapper img {
+    display: block;
+    height: 120px; //ここが写真の高さ
+    max-width: 65%; //ここがカードの中身に入っている写真の大きさをコントロールする
+  }
+  .more-text {
+    transition: 0.5s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    padding: 2px 5px 3px;
+    color: #fff;
+    font-size: 10px;
+    border: 1px solid #fff;
+    opacity: 0;
+  }
+  .l-card:hover .thumbnail-wrapper::after {
+    opacity: 1;
+  }
+  .l-card:hover .more-text {
+    opacity: 1;
+  }
+
+  /*　以下一覧ページの星用のCSS　geeksalonの星評価機能*/
+
+  .star-rating {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 0.5em;
+    font-size: 17px;
+  }
+  .star-rating-front {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    display: inline-block;
+    color: #ccc;
+  }
+
+
+  .all-container {
+    width: 100%;
+    height: auto;
+    background-color: white;
+  }
+  .bottom-container {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding-bottom: 80px;
+  }
+
+  .second-block {
+    width: 96%;
+    height: auto;
+    margin: 0 auto;
+    background-color: white;
+  }
+  .news-block {
+    width: 100%;
+    height: auto;
+    margin: 0 auto; //上手くこれができていない
+
+    color: white;
+    background-color: #3f3931;
+    font-size: 15px;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  #second-block {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+  }
+  #forth-block {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+    padding-bottom: 80px;
+  }
+
+  .a {
+    margin: 0 auto;
+    width: 100%;
+    //left:0px;
+  }
+  .title {
+    margin-left: 0;
+  }
+
+  .slider-block {
+    display: none;
+  }
+  .slider-container {
+    display: none;
+  }
+  .slider {
+    display: none;
+  }
+  .container-block{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .cafelog-container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .shop-picture {
+    width: 100%;
+    height: auto;
+    margin:0 auto;
+    margin-top:10px;
+  }
+  .shop-picture img {
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+  }
+
+  .shop-info {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  .shop-info table {
+    margin: 0;
+    width: 100%;
+  }
+
+  th {
+    width: 60px;
+    height: auto;
+  }
+  td {
+    width: 185px;
+    height: auto;
+  }
+
+  #third-block {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .table-container {
+    width: 100%;
+    height: auto;
+    padding-bottom: 100px;
+  }
+//userのcssは別にあるよ！
+  //これはコメント投稿の内容
+
+  .comment-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+    padding-bottom: 2%;
+  }
+  .user-picture {
+    width: 70px;
+    height: auto;
+  }
+  .user-picture img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+  }
+
+  .comment {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+  .comment_lists {
+    height: auto;
+  }
+  .user-content {
+    height: auto;
+  }
+  .image-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .image {
+    width: 50%;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .picture{
+    width: 100%;
+    height: auto;
+  }
+  .picture img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+  }
+  .image a {
+    width: 50%;
+    height: auto;
+  }
+
+  //検索機能の画面
+  .search-block {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 80px;
+
+    padding: 3%;
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 80px;
+  }
+  .search {
+    margin: 2.5px;
+  }
+
+  .actions {
+    //これはユーザ編集画面のやつ
+    padding-bottom: 80px;
+  }
+}

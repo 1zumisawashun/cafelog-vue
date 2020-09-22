@@ -1,0 +1,67 @@
+
+<div class="form-container">
+<div class="title"><strong>編集画面</strong></div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+<!--ここでユーザ編集画面をコントロールしています-->
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, class:"form-control col-md-5" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_image %><br />
+    <%= f.file_field :user_image, autofocus: true, class:"form-control col-md-5" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :info %><br />
+    <%= f.text_area :info, autofocus: true , class:"form-control col-md-5"%>
+  </div>
+<!-- 以上の3つを新しく追加した-->
+
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control col-md-5" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control col-md-5",placeholder: "変更しない場合は空欄にしてください" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control col-md-5" ,placeholder: "変更しない場合は空欄にしてください"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control col-md-5",placeholder: "現在のパスワードを記入してください" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class:"btn btn-dark", style:"color:white;" %>
+  </div>
+<% end %>
+
+</div>
+
+
+<!-- <h3>Cancel my account</h3>-->
+
+<!--<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>-->
+
+<!--<%= link_to "戻る", :back, class:"btn btn-primary", style:"color:white;" %>-->

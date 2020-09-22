@@ -1,0 +1,162 @@
+<div class="search-block">
+  <div class="title">キーワードで検索</div>
+  <%= form_tag "/shops/search?utf8=✓", :method =>"get" do %>
+      <%= text_field_tag :search, params[:search], class:"form-control col-md-7", style:"display: inline"%><!--display:inlineで段落分け消し-->
+          <%= submit_tag "Search", :area => nil , class:"btn-border"%>
+    <!--each文ではないのでsubmit_tagになっている-->
+  <% end %>
+
+<hr>
+
+<div class="title">場所で検索</div>
+<span class=" btn-border ">
+<%=link_to "二子玉川", tag_path("二子玉川")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "表参道", tag_path("表参道")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "渋谷", tag_path("渋谷")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "中目黒", tag_path("中目黒")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "代官山", tag_path("代官山")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "西荻窪", tag_path("西荻窪")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "銀座", tag_path("銀座")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "都立大学", tag_path("都立大学")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "中目黒", tag_path("中目黒")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "大手町", tag_path("大手町")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "桜新町", tag_path("桜新町")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "三軒茶屋", tag_path("三軒茶屋")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "明治神宮前", tag_path("明治神宮前")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "新橋", tag_path("新橋")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "下北沢", tag_path("下北沢")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "新宿三丁目", tag_path("新宿三丁目")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "人形町", tag_path("人形町")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "四谷三丁目", tag_path("四谷三丁目")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "代々木上原", tag_path("代々木上原")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "品川", tag_path("品川")%>
+</span>
+
+<hr>
+
+<div class="title">特徴で検索</div>
+<span class=" btn-border ">
+<%=link_to "wi-fiあり", tag_path("wi-fi")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "コーヒースタンド", tag_path("コーヒースタンド")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "インスタ映え", tag_path("インスタ映え")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "デート", tag_path("デート")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "コワーキングスペース", tag_path("コワーキングスペース")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "電源あり", tag_path("電源")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "駅チカ", tag_path("駅チカ")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "スイーツ", tag_path("スイーツ")%>
+</span>
+<span class=" btn-border ">
+<%=link_to "ラテアート", tag_path("ラテアート")%>
+</span>
+
+<hr>
+
+</div>
+
+<%if params[:utf8]%><!--もしクエリパラメータが来たら表示する-->
+<div class="all-container">
+
+
+<div class="second-block">
+<div class="title">検索結果</div>
+
+
+
+<section id="forth-block">
+  <% @shops.each do |t|  %>
+    <div class="l-card">
+      <div class="l-thumbnail">
+        <figure class="thumbnail-wrapper">
+<%if t.pictures.present?%>
+          <img src="<%=t.pictures[0].picture%>">
+<%end%>
+        </figure>
+          <span class="more-text">
+            <%=link_to "Read More", "/shops/#{t.id}" %>
+          </span>
+      </div>
+      <div class="text-content">
+        <h3 class="title">
+          <%if t.name.present?%>
+          <strong><%= t.name %></strong>
+          <%end%>
+        </h3>
+          <div class="caption">
+            <%if t.area.present?%>
+            <%=link_to "#{t.area}", tag_path("#{t.area}")%>
+            <%end%>
+          </div>
+            <div class="content-meta">
+              <span class="date">
+                <span class="star-rating">
+                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                  <span class="star-rating-back">★★★★★</span>
+                </span>
+                  <% if t.comments.average(:score).present? %>
+                    <%=t.comments.average(:score).round(1)%>点
+
+                    <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
+
+                  <% end %>
+              </span>
+            </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+</div>
+</div>
+
+<%end%>

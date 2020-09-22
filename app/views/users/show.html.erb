@@ -1,0 +1,133 @@
+
+
+<!--<%if current_user.admin==false%> <%=current_user.username%>さんのマイページ <%end%>-->
+
+  <div class="user-container">
+    <div class="user-photo">
+      <%if @user.user_image.present?%>
+        <div class="user-image"><%=image_tag @user.user_image.to_s%></div><!--写真を使うという事はuploaderの操作、実行をしなければいけない-->
+      <%end%>
+    </div>
+
+    <div class="user-info">
+      <h3><strong>ユーザ名：<%=@user.username%></strong><br></h3>
+      <h3><strong>自己紹介：<%=@user.info%></strong><br></h3>
+      <h3><strong>ユーザemail：<%=@user.email%></strong><br></h3>
+      <h3><strong>ユーザpassword：<%=@user.password%></strong></h3>
+        <div class="user-edit">
+          <%=link_to edit_user_registration_path, style:"width:100%;,margin:0 auto;" do%>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>編集する
+          <%end%>
+        </div>
+    </div>
+</div>
+
+
+
+  <div class="tabs">
+
+    <input id="all" type="radio" name="tab_item" checked>
+    <label class="tab_item col-md-6" for="all"><i class="fa fa-coffee fa-lg"></i> MY CAFELOG</label>
+    <input id="programming" type="radio" name="tab_item">
+    <label class="tab_item col-md-6" for="programming"><i class="fa fa-bookmark fa-lg"></i> SAVE</label>
+    <!--<input id="design" type="radio" name="tab_item">
+    <label class="tab_item" for="design">POST CAFELOG</label>-->
+
+
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <div class="c-txtsp">
+          <div class="tops-container">
+
+
+            <% @shops.each do |t|  %>
+              <div class="l-card">
+                <div class="l-thumbnail">
+                  <figure class="thumbnail-wrapper">
+                    <img src="<%=t.pictures[0].picture%>">
+                  </figure>
+                    <span class="more-text">
+                      <%=link_to "Read More", "/shops/#{t.id}" %>
+                    </span>
+                </div>
+                  <div class="text-content">
+                    <h3 class="title">
+                      <strong><%= t.name %></strong>
+                    </h3>
+                    <div class="caption">
+                      <%if t.area.present?%>
+                      <%=link_to "#{t.area}", tag_path("#{t.area}")%>
+                      <%end%>
+                    </div>
+                      <div class="content-meta">
+                        <span class="date">
+                          <span class="star-rating">
+                            <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                            <span class="star-rating-back">★★★★★</span>
+                          </span>
+                          <% if t.comments.average(:score).present? %>
+                            <%=t.comments.average(:score).round(1)%> 点
+                            <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
+                          <% end %>
+                        </span>
+                        <!--<span class="like">
+                          <i class="material-icons">&#xE87E;</i>
+                            120
+                          </span>-->
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <div class="c-txtsp">
+
+          <div class="tops-container">
+            <% @likes.each do |t|  %>
+              <div class="l-card">
+                <div class="l-thumbnail">
+                  <figure class="thumbnail-wrapper">
+                    <img src="<%=t.shop.pictures[0].picture%>">
+                  </figure>
+                  <span class="more-text">
+                    <%=link_to "Read More", "/shops/#{t.id}" %>
+                  </span>
+                </div>
+                  <div class="text-content">
+                    <h3 class="title">
+                      <strong><%= t.shop.name %></strong>
+                    </h3>
+                    <div class="caption">
+                      <%if t.shop.area.present?%>
+                      <%=link_to "#{t.shop.area}", tag_path("#{t.shop.area}")%>
+                      <%end%>
+                    </div>
+                  <div class="content-meta">
+                    <span class="date">
+                      <span class="star-rating">
+                        <span class="star-rating-front" style="width: <%=(t.shop.average_rate)%>%;">★★★★★</span><!--書き方が複雑になるので注意！-->
+                        <span class="star-rating-back">★★★★★</span>
+                      </span>
+                      <% if t.shop.comments.average(:score).present? %>
+                        <%=t.shop.comments.average(:score).round(1)%> 点
+                        <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.shop.comments.count %>
+                      <% end %>
+                    </span>
+
+                  </div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>

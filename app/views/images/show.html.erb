@@ -1,0 +1,81 @@
+<section id="container-block">
+  <div class="cafelog-container">
+      <div class="shop-picture">
+
+        <%=image_tag @pictures[0].picture.to_s%>
+          <%if @pictures[1].present?%>
+            <%=image_tag @pictures[1].picture.to_s%>
+          <%else%>
+            <%=image_tag @pictures[0].picture.to_s%><!--ここにデフォルトの画像を入れればOK-->
+          <%end%>
+
+        <%if @pictures[2].present?%>
+          <%=image_tag @pictures[2].picture.to_s%>
+        <%else%>
+          <%=image_tag @pictures[0].picture.to_s%>
+        <%end%>
+
+        <%if @pictures[3].present?%>
+        <%=image_tag @pictures[3].picture.to_s%>
+      <%else%>
+        <%=image_tag @pictures[0].picture.to_s%>
+      <%end%>
+      </div>
+
+      <div class="shop-info">
+          <table class="table table-striped table-hover" >
+            <tbody>
+              <tr>
+                  <th>カフェ名</th>
+                  <td><%=@shop.name%></td>
+              </tr>
+              <tr>
+                  <th>所在地</th>
+                  <td><%=@shop.area%></td>
+              </tr>
+              <tr>
+                  <th>商品名</th>
+                  <td><%=@shop.menu%></td>
+              </tr>
+              <tr>
+                  <th>値段</th>
+                  <td><%=@shop.price%></td>
+              </tr>
+              <tr>
+                  <th>レビュー</th>
+                  <td><%=@shop.review%></td>
+              </tr>
+            </tbody>
+          </table>
+
+        <%=link_to "編集する", edit_shop_path(@shop.id),class:"btn btn-primary",style:"color:white"if current_user.id==@shop.user.id%>
+          <%=link_to "削除する", shop_path(@shop.id), method: :delete,class:"btn btn-danger",style:"color:white"if current_user.id==@shop.user.id%>
+
+            <!--<h3></h3>      user情報があるとseedで初期データを入れることができない   -->
+            <% if current_user.already_liked?(@shop) %>
+            <%= link_to shop_like_path(@shop),:style=>"color:red;", method: :delete do %>
+            <i class="fa fa-heart" style="margin-left:20px;"></i>
+            <%end%>
+            <% else %>
+            <%= link_to shop_likes_path(@shop), method: :post do %> <!--method: :postにしないとgetに飛ばされる-->
+            <i class="fa fa-heart"style="margin-left:20px;"></i>
+            <%end%>
+            <% end %>
+
+
+        </div>
+    </div>
+</section>
+
+
+<section id="third-block">
+  <div class="image-container">
+    <%@images.each do |image|%>
+      <div class="image">
+        <%=image_tag image.image.to_s%>
+        <%=link_to "削除する", shop_image_path(@shop.id), method: :delete if current_user.id==image.user.id%>
+      </div>
+    <%end%>
+
+    </div>
+    </section>

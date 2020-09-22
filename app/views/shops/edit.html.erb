@@ -1,0 +1,56 @@
+
+<div class="form-container">
+
+
+<%=form_for @shop do |f| %>
+
+   <%= f.label :name %>
+   <%= f.text_field :name, class:"form-control col-md-5" %>
+   <br>
+   <%= f.label :area %>
+   <%= f.text_field :area, class:"form-control col-md-5" %>
+   <br>
+   <%= f.label :menu %>
+   <%= f.text_field :menu, class:"form-control col-md-5" %>
+   <br>
+   <%= f.label :price %>
+   <%= f.text_field :price, class:"form-control col-md-5" %>
+   <br>
+   <%= f.label :review %>
+   <%= f.text_area :review, class:"form-control col-md-5", size:"100×50"%>
+   <br>
+   <%=f.label :tag_list%>
+   <%=f.text_field :tag_list, class:"form-control col-md-5"%>
+   <br>
+   <%= f.fields_for :pictures do |f|%>
+  <%= f.file_field :picture, class:"form-control col-md-5", :multiple=>true, name:"pictures[picture][]"%>
+    <% end %>
+
+    <div class="form-group">
+
+      <%if current_user.admin==true %>
+      <div class="form-group">
+      <%= f.label :latitude%>
+      <%= f.text_field :latitude, class:"form-control col-md-5", placeholder:"緯度が入ります" %>
+      </div>
+      <div class="form-group">
+      <%= f.label :longitude %>
+      <%= f.text_field :longitude, class:"form-control col-md-5", placeholder:"経度が入ります" %>
+      </div>
+        <%=f.text_field :address, class:"form-control col-md-5", placeholder:"住所が入ります" %>
+        <%=f.text_field :station, class:"form-control col-md-5", placeholder:"最寄り駅が入ります"%>
+        <%=f.text_field :opening_hour, class:"form-control col-md-5", placeholder:"営業時間が入ります"%>
+        <%=f.text_field :phone, class:"form-control col-md-5", placeholder:"お店の電話番号が入ります"%>
+        <%=f.text_field :url, class:"form-control col-md-5", placeholder:"お店のURLが入ります"%>
+      <%end%>
+
+
+      </div>
+
+
+
+   <%= f.submit "編集する",class:"btn btn-dark", style:"color:white;" %>
+
+<% end %>
+
+</div>

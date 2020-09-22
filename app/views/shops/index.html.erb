@@ -1,0 +1,407 @@
+<div class="wrap">
+  <div class="all-container">
+    <div class="background-picture">
+      <div class="header-title">cafelog</div>
+      <div class="header-subtitle">大学生の為のカフェ情報発信サイト</div>
+    </div>
+
+  <div class="second-block">
+    <div class="title"style="display:inline;">投稿順</div><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px;text-decoration: none; ",class:"detail"%>
+      <section id="second-block" class="container">
+        <div class="row">
+          <% @shops.each do |t|  %>
+            <div class="l-card">
+              <div class="l-thumbnail ">
+                <figure class="thumbnail-wrapper">
+                  <%if t.pictures.present?%>
+                    <img src="<%=t.pictures[0].picture%>">
+                  <%end%>
+                </figure>
+                <span class="more-text">
+                  <%=link_to "Read More", "/shops/#{t.id}" %>
+                </span>
+              </div>
+              <div class="text-content">
+                <h3 class="title">
+                  <%if t.name.present?%>
+                    <strong><%= t.name %></strong>
+                  <%end%>
+                </h3>
+                <div class="caption">
+                  <%if t.area.present?%>
+                    <%=link_to "#{t.area}", tag_path("#{t.area}")%>
+                  <%end%>
+                </div>
+                <div class="content-meta">
+                  <span class="date">
+                    <span class="star-rating">
+                      <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                      <span class="star-rating-back">★★★★★</span>
+                    </span>
+                      <% if t.comments.average(:score).present? %>
+                        <%=t.comments.average(:score).round(1)%>点
+                        <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
+                      <% end %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </section>
+  </div>
+</div>
+
+<div class="slider-container">
+  <div class="slider-block">
+    <ul class="slider">
+      <li class="slide figure" style="padding-bottom: 150px;,width:400px;">
+        <a class="slide__link" href="/tops/index?a=admin">
+          <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
+            <span class="slide__content-wrap">
+                <span class="slide__content figcaption">
+                    <h3 class="slide__title">Cafelog管理者</h3>
+                    <div class="slide__text">
+                    投稿一覧はこちら
+                    </div>
+                </span>
+            </span>
+        </a>
+      </li>
+      <li class="slide"style="padding-bottom: 150px;,width:400px;">
+        <a class="slide__link" href="/tops/index?b=user" > <!--これでparamsで受け取る-->
+            <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
+            <span class="slide__content-wrap">
+                <span class="slide__content">
+                    <h3 class="slide__title">Cafelog利用者</h3>
+                    <div class="slide__text">
+                    投稿一覧はこちら
+                    </div>
+                </span>
+            </span>
+        </a>
+    </li>
+    <li class="slide"style="padding-bottom: 150px;,width:400px;">
+        <a class="slide__link" href="#">
+            <!--<img src="../assets/coffeebeans2.jpg" alt="image01">-->
+            <span class="slide__content-wrap">
+                <span class="slide__content">
+                    <h3 class="slide__title">ラテアート選手権</h3>
+                    <div class="slide__text">
+                    お気に入りを見つけよう
+                    </div>
+                </span>
+            </span>
+        </a>
+    </li>
+  </ul>
+
+</div>
+</div>
+
+
+
+
+
+<div class="title" style="display:inline;">東京で探す</div><%=link_to "もっと見る", "/shops/search" ,style:"margin-left:10px; text-decoration: none;",class:"detail"%>
+
+  <div class="a col-xs-10">
+      <%=link_to tag_path("二子玉川"), class:"area-content area-block",style:"color:white;" do%><!--この形にするとリンクが跳ぶ-->
+      <%= image_tag @images[1].picture.url%><!--修正をする箇所-->
+        <figcaption>
+          <h3>二子玉川</h3>
+          <p><%=@shibuya.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("表参道"), class:"area-content area-block", style:"color:white;" do%>
+<%= image_tag @images[2].picture.url%>
+        <figcaption>
+          <h3>表参道</h3>
+          <p><%=@omotesandou.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+    <figure class="area-content area-block">
+      <%=link_to tag_path("三軒茶屋"), style:"color:white;" do%>
+      <%= image_tag @images[3].picture.url%>
+        <figcaption>
+          <h3>三軒茶屋</h3>
+          <p><%=@sangendyaya.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+    </figure>
+      <%=link_to tag_path("中目黒") , class:"area-content area-block", style:"color:white;" do%>
+      <%= image_tag @images[4].picture.url%>
+        <figcaption>
+          <h3>中目黒</h3>
+          <p><%=@nakameguro.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("西荻窪"), class:"area-content area-block", style:"color:white;" do%>
+      <%= image_tag @images[5].picture.url%>
+        <figcaption>
+          <h3>西荻窪</h3>
+          <p><%=@nishiogikubo.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("代官山"), class:"area-content area-block" , style:"color:white;" do%>
+      <%= image_tag @images[6].picture.url%>
+        <figcaption>
+          <h3>代官山</h3>
+          <p><%=@daikanyama.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+      <%=link_to tag_path("浅草"), class:"area-content area-block", style:"color:white;" do%>
+      <%= image_tag @images[7].picture.url%>
+        <figcaption>
+          <h3>浅草</h3>
+          <p><%=@asakusa.count%>件の投稿があります</p>
+        </figcaption>
+      <%end%>
+
+  </div>
+
+
+    <!--<div class="b"><img class="c" src="assets/test1.jpg"></div> これで導入できないか確認してみる。-->
+<div class="all-container">
+<div class="second-block">
+
+
+
+<div class="title" style="display:inline;">渋谷で探す</div><%=link_to "もっと見る", tag_path("渋谷"),style:"margin-left:10px; text-decoration: none;",class:"detail"%>
+
+<section id="second-block">
+  <% @area.each do |t|  %>
+    <div class="l-card">
+      <div class="l-thumbnail">
+        <figure class="thumbnail-wrapper">
+          <%if t.pictures.present?%>
+          <img src="<%=t.pictures[0].picture%>">
+          <%end%>
+        </figure>
+          <span class="more-text">
+            <%=link_to "Read More", "/shops/#{t.id}" %>
+          </span>
+      </div>
+        <div class="text-content">
+          <h3 class="title">
+            <strong><%= t.name %></strong>
+          </h3>
+            <div class="caption">
+              <%if t.area.present?%>
+                <%=link_to "#{t.area}", tag_path("#{t.area}")%>
+              <%end%>
+           </div>
+            <div class="content-meta">
+              <span class="date">
+                <span class="star-rating">
+                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                  <span class="star-rating-back">★★★★★</span>
+                </span>
+                <% if t.comments.average(:score).present? %>
+                  <%=t.comments.average(:score).round(1)%>点
+                  <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
+                <% end %>
+              </span>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</section>
+
+</div>
+</div>
+
+
+
+<div class="title"style="display:inline;">旅行でオススメ</div><%=link_to "もっと見る", "/shops/search",style:"margin-left:10px; text-decoration: none; ",class:"detail"%>
+
+  <div class="a col-xs-10">
+    <figure class="area-content area-block">
+      <%=link_to tag_path("北海道"), style:"color:white;" do%>
+      <%= image_tag @images[10].picture.url%>
+        <figcaption>
+          <h3>北海道</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="area-content area-block">
+      <%=link_to tag_path("京都"), style:"color:white;" do%>
+      <%= image_tag @images[11].picture.url%>
+        <figcaption>
+          <h3>京都</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="area-content area-block">
+      <%=link_to tag_path("愛知"), style:"color:white;" do%>
+      <%= image_tag @images[12].picture.url%>
+        <figcaption>
+          <h3>愛知</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="area-content area-block">
+      <%=link_to tag_path("秋田") , style:"color:white;" do%>
+      <%= image_tag @images[13].picture.url%>
+        <figcaption>
+          <h3>秋田</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="area-content area-block">
+      <%=link_to tag_path("埼玉"), style:"color:white;" do%>
+      <%= image_tag @images[14].picture.url%>
+        <figcaption>
+          <h3>埼玉</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="area-content area-block">
+      <%=link_to tag_path("神奈川") , style:"color:white;" do%>
+      <%= image_tag @images[8].picture.url%>
+        <figcaption>
+          <h3>神奈川</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+    <figure class="area-content area-block">
+      <%=link_to tag_path("愛媛"), style:"color:white;" do%>
+      <%= image_tag @images[9].picture.url%>
+        <figcaption>
+          <h3>愛媛</h3>
+          <p>caption text here ...</p>
+        </figcaption>
+      <%end%>
+    </figure>
+
+  </div>
+
+
+
+
+  <div class="all-container">
+  <div class="second-block">
+<div class="title" style="display:inline;">wi-fiがあるお店</div><%=link_to "もっと見る", tag_path("wi-fi"),style:"margin-left:10px;text-decoration: none;",class:"detail" %>
+<section id="second-block"> <!--forth-blockにするとpaddingが発動するようになっている。-->
+  <% @tags.each do |t|  %><!--ここに&.eachを記載したら全部消えた-->
+    <div class="l-card tags">
+      <div class="l-thumbnail">
+        <figure class="thumbnail-wrapper">
+          <%if t.pictures.present?%>
+          <img src="<%=t.pictures[0].picture%>">
+          <%end%>
+        </figure>
+          <span class="more-text">
+            <%=link_to "Read More", "/shops/#{t.id}" %>
+          </span>
+      </div>
+        <div class="text-content">
+          <h3 class="title">
+            <strong><%= t.name %></strong>
+          </h3>
+            <div class="caption">
+              <%if t.area.present?%>
+                <%=link_to "#{t.area}", tag_path("#{t.area}")%>
+              <%end%>
+           </div>
+            <div class="content-meta">
+              <span class="date">
+                <span class="star-rating">
+                  <span class="star-rating-front" style="width: <%=(t.average_rate)%>%;">★★★★★</span>
+                  <span class="star-rating-back">★★★★★</span>
+                </span>
+                <% if t.comments.average(:score).present? %>
+                  <%=t.comments.average(:score).round(1)%>点
+                  <i class="fa fa-commenting fa-lg" aria-hidden="true"style="margin-left:5px;"></i><%= t.comments.count %>
+                <% end %>
+              </span>
+            </div>
+        </div>
+    </div>
+  <% end %>
+
+</section>
+
+</div>
+
+
+<div class="search-bar">
+<input id="address" type="textbox" class="form-control col-md-11" style="display:inline;"><!--ここに場所の名前を登録する-->
+<input type="button" value="search" class="btn-border" onclick="codeAddress()">
+</div>
+</div>
+<!-- ここまで追加-->
+<div id='map'></div>
+
+<style>
+#map {
+  height: 400px;
+  width: 100%;
+}
+</style>
+
+<script>
+let map
+// 下の1行を追加
+const display = document.getElementById('display')
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.7828, lng:-73.9653},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: 40.7828, lng:-73.9653},
+    map: map
+  });
+}
+
+// ここから追加
+let geocoder
+
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      // 下の1行を追加
+     display.textContent = "検索結果：" + results[ 0 ].geometry.location
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });
+}
+// ここまで追加
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4gF9HU4F7dz_aWGynXJ3jgS9qCPufJ10&callback=initMap" async defer></script>
+
+<%if user_signed_in?%>
+<%else%>
+  <div class="footer-container">
+    <div class="footer-block">
+      <div class="footer-content">
+        <nav><a href="/tops/about">cafelogとは</a></nav>
+        <nav><%=link_to "お問い合わせ", tops_about_path%></nav>
+      </div>
+      <div class="footer-content">
+        <nav><div style="color:white;">©2019 cafelog All Rights Reserved.</div></nav>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+</div>
