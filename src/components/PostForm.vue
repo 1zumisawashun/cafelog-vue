@@ -1,0 +1,125 @@
+<template>
+  <div>
+    <div class="form-container">
+      <el-input
+        type="text"
+        v-model="post.cafename"
+        placeholder="お店の名前"
+        class="form-block"
+      />
+      <el-input
+        type="text"
+        v-model="post.station"
+        placeholder="最寄駅"
+        class="form-block"
+      />
+      <el-input
+        type="text"
+        v-model="post.address"
+        placeholder="住所"
+        class="form-block"
+      />
+      <el-input
+        type="text"
+        v-model="post.tel"
+        placeholder="電話番号"
+        class="form-block"
+      />
+      <el-checkbox-button v-model="post.wifi" class="form-block"
+        >wi-fiあり</el-checkbox-button
+      >
+      <!-- <el-checkbox-button v-model="nearplace" class="form-block"
+                  >駅から近い</el-checkbox-button
+                > -->
+      <el-checkbox-button v-model="post.date" class="form-block"
+        >デートにおすすめ</el-checkbox-button
+      >
+      <el-checkbox-button v-model="post.studying" class="form-block"
+        >勉強しやすい</el-checkbox-button
+      >
+      <star-rating
+        v-model="post.rating"
+        v-bind:increment="1"
+        v-bind:max-rating="5"
+        inactive-color="#9e9e9e"
+        active-color="#E6E635"
+        v-bind:star-size="30"
+        @rating-selected="setRating"
+      ></star-rating>
+      <el-input
+        type="text"
+        v-model="post.content"
+        placeholder="感想"
+        class="form-block"
+      />
+      <el-input
+        type="text"
+        v-model="post.holiday"
+        placeholder="定休日"
+        class="form-block"
+      />
+      <el-checkbox v-model="post.open" class="form-block">開店</el-checkbox>
+      <el-checkbox v-model="post.close" class="form-block">閉店</el-checkbox>
+
+      <div id="image-container">
+        <div v-if="!post.image">
+          <input type="file" @change="onFileChange" class="form-block" />
+        </div>
+        <div v-else>
+          <img :src="post.image" class="postedImage" />
+          <el-button @click="removeImage">Remove</el-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import StarRating from "vue-star-rating";
+//import { db } from "@/firebase";
+export default {
+  data() {
+    return {};
+  },
+  props: ["post"],
+  components: {
+    StarRating
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  },
+  methods: {
+    onFileChange: function(event) {
+      var files = event.target.files || event.dataTransfer.files;
+      if (!files.length) {
+        return;
+      }
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      /*eslint-disable*/
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+      reader.onload = function(event) {
+        vm.image = event.target.result;
+        //これもthis.imageだよ！
+        console.log(vm.image);
+      };
+      reader.readAsDataURL(file);
+      console.log(file);
+      console.log(vm.image);
+      this.file = file;
+    },
+    removeImage: function() {
+      //this.image = ""; updateができない
+      this.post[0].image = "";
+    },
+  }
+};
+
+</script>
+
+<style></style>

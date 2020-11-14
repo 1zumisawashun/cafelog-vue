@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "vue-slack-5beff",
+    "y": "college-market-c83c3",
+    "dist": "vue-slack-5beff",
+    "college-market": "college-market-c83c3",
+    "vue-slack": "vue-slack-5beff",
+    "cafelog": "vuestagram-20f8d"
+  }
+}
