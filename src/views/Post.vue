@@ -11,15 +11,27 @@
           </div>
         </div>
         <div class="cafename">{{ post.cafename }}</div>
+        
         <div class="beLiked">
-          <el-button
+          <!-- <el-button
             v-if="beLiked"
             @click="unlikes()"
             type="danger"
             class="shadow"
             >いいね</el-button
           >
-          <el-button v-else @click="likes()" class="shadow">いいね</el-button>
+          <el-button v-else @click="likes()" class="shadow">いいね</el-button> 
+          -->
+          <font-awesome-icon class="save-container
+          dislike" 
+          icon="heart"
+          v-if="beLiked"
+            @click="unlikes()"/>
+          <font-awesome-icon class="save-container
+          like" 
+          icon="heart"
+          v-else
+            @click="likes()"/>
           {{ likeCount }}
           <el-button class="open shadow" v-show="post.open">開店</el-button>
           <el-button class="close shadow" v-show="post.close" type="danger"
@@ -532,6 +544,9 @@ export default {
 </script>
 
 <style scoped>
+.dislike {
+  color: red;
+}
 .post-container {
   width: 100%;
   height: auto;

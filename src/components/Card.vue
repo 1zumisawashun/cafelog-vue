@@ -37,16 +37,16 @@
             :show-rating="false"
             class="star-rating"
           ></StarRating>
-          <div
-            class="el-icon-collection-tag save-container dislike"
-            v-if="this.post.daisuki"
-            @click="unlikes(post)"
-          ></div>
-          <div
-            class="el-icon-collection-tag save-container like"
-            v-else
-            @click="likes(post)"
-          ></div>
+          <font-awesome-icon class="save-container
+          dislike" 
+          icon="heart"
+          v-if="this.post.daisuki"
+            @click="unlikes(post)"/>
+          <font-awesome-icon class="save-container
+          like" 
+          icon="heart"
+          v-else
+            @click="likes(post)"/>
         </div>
       </div>
     </div>
@@ -138,8 +138,8 @@ export default {
 </script>
 
 <style scoped>
-.dislike::before {
-  background-color: red;
+.dislike {
+  color: red;
 }
 .all-container {
   width: 100%;

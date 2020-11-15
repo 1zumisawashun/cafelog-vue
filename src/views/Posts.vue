@@ -26,8 +26,7 @@
     </div>
 
     <Carousel></Carousel>
-<font-awesome-icon icon="heart" />
-<font-awesome-icon icon="coffee" />
+
     <div class="posts-container">
       <Card
         class="card l-card"
@@ -160,6 +159,7 @@ export default {
 .dislike {
   background-color: red;
 }
+
 .all-container {
   width: 100%;
   height: auto;

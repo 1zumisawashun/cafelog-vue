@@ -21,12 +21,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(faCoffee, faCheck, faCheckCircle, faHeart);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+//面倒だが推奨に習って一個ずつインポートする必要がある。
 //------------font-awesomeここまで
-//
-import "vue-awesome/icons";
-import Icon from "vue-awesome/components/Icon";
-Vue.component("v-icon", Icon);
-//
 Vue.use(VueGoogleMaps, {
   load: {
     key: "AIzaSyD4gF9HU4F7dz_aWGynXJ3jgS9qCPufJ10",
