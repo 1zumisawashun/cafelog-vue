@@ -10,14 +10,30 @@ window.$ = window.jQuery = require("jquery");
 import * as VueGoogleMaps from "vue2-google-maps";
 import StarRating from "vue-star-rating";
 import VoerroTagsInput from "@voerro/vue-tagsinput";
-
+//------------font-awesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCoffee,
+  faCheck,
+  faCheckCircle,
+  faHeart
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+library.add(faCoffee, faCheck, faCheckCircle, faHeart);
+Vue.component("font-awesome-icon", FontAwesomeIcon);
+//------------font-awesomeここまで
+//
+import "vue-awesome/icons";
+import Icon from "vue-awesome/components/Icon";
+Vue.component("v-icon", Icon);
+//
 Vue.use(VueGoogleMaps, {
   load: {
     key: "AIzaSyD4gF9HU4F7dz_aWGynXJ3jgS9qCPufJ10",
     libraries: "places",
     region: "JP",
-    language: "ja",
-  },
+    language: "ja"
+  }
 });
 Vue.config.productionTip = false;
 Vue.use(VueSlick);
@@ -27,5 +43,5 @@ Vue.use(VoerroTagsInput);
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");

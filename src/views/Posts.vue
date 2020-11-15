@@ -24,10 +24,10 @@
         :post="post"
       ></Card>
     </div>
-    
 
     <Carousel></Carousel>
-
+<font-awesome-icon icon="heart" />
+<font-awesome-icon icon="coffee" />
     <div class="posts-container">
       <Card
         class="card l-card"

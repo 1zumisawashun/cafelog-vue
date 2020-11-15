@@ -138,7 +138,7 @@ export default {
 </script>
 
 <style scoped>
-.dislike {
+.dislike::before {
   background-color: red;
 }
 .all-container {
