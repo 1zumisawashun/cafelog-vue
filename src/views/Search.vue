@@ -185,15 +185,15 @@ export default {
   padding-left: 20%;
   width: 60%;
   margin: 0 auto;
-  padding-top: 50px;
+  padding-top: 100px;
   text-align: center;
   position: absolute;
 }
-p {
+/* .search-bar p {
   color: white;
   font-weight: bold;
-  font-size: 25px;
-}
+  font-size: 30px;
+} */
 /* カードの中身 */
 .image {
   width: 100%;
@@ -304,7 +304,7 @@ p {
   transform: translate(-50%, -50%);
   opacity: 1;
 }
-
+/* 
 .search-bar {
   padding-left: 10%;
   width: 80%;
@@ -312,17 +312,18 @@ p {
   padding-top: 55px;
   text-align: center;
   position: absolute;
-}
+} */
 .search-content {
   width: 90%;
   padding: 3% 5%;
   text-align: center;
   position: absolute;
+  text-decoration: none;
 }
 p {
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 10px;
 }
 .search-button-container {
@@ -357,7 +358,7 @@ p {
 }
 .sub-message {
   color: white;
-  font-size: 8px;
+  font-size: 11px;
 }
 
 @media screen and (max-width: 479px) {

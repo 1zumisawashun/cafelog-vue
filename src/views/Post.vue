@@ -13,15 +13,6 @@
         <div class="cafename">{{ post.cafename }}</div>
         
         <div class="beLiked">
-          <!-- <el-button
-            v-if="beLiked"
-            @click="unlikes()"
-            type="danger"
-            class="shadow"
-            >いいね</el-button
-          >
-          <el-button v-else @click="likes()" class="shadow">いいね</el-button> 
-          -->
           <font-awesome-icon class="save-container
           dislike" 
           icon="heart"

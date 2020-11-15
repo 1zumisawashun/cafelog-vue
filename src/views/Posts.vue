@@ -201,6 +201,7 @@ p {
   color: white;
   font-weight: bold;
   font-size: 25px;
+  margin-bottom: 10px;
 }
 /* ここからがカードの中身 */
 .card {
