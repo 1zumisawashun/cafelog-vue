@@ -18,7 +18,7 @@
         <div class="station">{{ post.station }}駅</div>
         <div
           class="el-icon-collection-tag responsive-save-container dislike"
-          v-if="this.daisuki"
+          v-if="this.post.daisuki"
           @click="unlikes(post)"
         ></div>
         <div
@@ -39,7 +39,7 @@
           ></StarRating>
           <div
             class="el-icon-collection-tag save-container dislike"
-            v-if="this.daisuki"
+            v-if="this.post.daisuki"
             @click="unlikes(post)"
           ></div>
           <div
@@ -60,8 +60,7 @@ export default {
   data() {
     return {
       commentCounts: [],
-      likesFiltered: [],
-      daisuki: false
+      likesFiltered: []
     };
   },
   props: ["post"],
@@ -103,60 +102,37 @@ export default {
         .collection("likes")
         .doc(this.user.uid)
         .delete();
+      post.daisuki = false;
       alert("「いいね」を消しました。");
     }
   },
   //いいねの色を変えるのは共通で必要になる機能なのでcard.vueで定義する
   mounted() {
-    // 全てのユーザのいいねのデータを取得する
     db.collectionGroup("likes")
-      //   //collectionGroupではwhereを使用することはできないため全部のユーザデータを取得
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          //       //これがwhereの代わりになっている。ログインしているユーザがいいねしたデータのみ取得
-          if (doc.data().currentUser === this.user.uid) {
-            this.likesFiltered.push({
-              //           //この中にログインしているユーザがいいね押しているカフェが入っている。
-              id: doc.id,
-              ...doc.data()
-            });
-            console.log(this.likesFiltered);
-            //         //もしログインしているユーザがいいねしたカフェの店名とカードのカフェの名前が同じだったら色を変える。
-            for (var i in this.likesFiltered) {
-              console.log(i);
-              //           //上記のfor文の使い方だと数字が入るようになる。条件式に注目する。
-              if (this.likesFiltered[i].cafename == this.post.cafename) {
-                this.daisuki = true;
-                console.log("実行できています");
+      //collectionGroupではwhereを使用することはできないため全部のユーザデータを取得
+      .onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          const doc = change.doc;
+          if (change.type === "added") {
+            //「いいね」を押した瞬間に以下if文のアクションをする
+            if (doc.data().currentUser === this.user.uid) {
+              this.likesFiltered.push({
+                id: doc.id,
+                ...doc.data()
+              });
+              for (var i in this.likesFiltered) {
+                //上記のfor文の使い方だと数字が入るようになる。条件式に注目する。
+                if (this.likesFiltered[i].cafename == this.post.cafename) {
+                  this.post.daisuki = true;
+                  console.log(this.likesFiltered);
+                  //一時的に一個ずつの配列に組み込むことで解決できるのではないか？
+                  //リロード時や変更した時はlikescollectionにはないから色が変更しない。
+                }
               }
             }
           }
         });
       });
-
-    // db.collectionGroup("likes")
-    //   //collectionGroupではwhereを使用することはできないため全部のユーザデータを取得
-    //   .onSnapshot(snapshot => {
-    //     snapshot.docChanges().forEach(change => {
-    //       const doc = change.doc;
-    //       if (change.type === "added") {
-    //         console.log("added: ", change.doc.data());
-    //         //「いいね」を押した瞬間に以下if文のアクションをする
-    //         if (doc.data().currentUser === this.user.uid) {
-    //           this.likesFiltered.push({ id: doc.id, ...doc.data() });
-    //           for (var i in this.likesFiltered) {
-    //             console.log(i);
-    //             //上記のfor文の使い方だと数字が入るようになる。条件式に注目する。
-    //             if (this.likesFiltered[i].cafename == this.post.cafename) {
-    //               this.daisuki = true;
-    //               console.log("更新の実行できています");
-    //             }
-    //           }
-    //         }
-    //       }
-    //     });
-    //   });
   }
 };
 </script>

@@ -122,7 +122,8 @@ export default {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.posts.push({ id: doc.id, ...doc.data() });
+          this.posts.push({ id: doc.id, ...doc.data(), daisuki: false });
+          //DBには登録されないけれど「いいね」を見分けるために必要な要素
           console.log(doc.data());
           console.log(doc.data().id);
         });
@@ -135,7 +136,7 @@ export default {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.posts2.push({ id: doc.id, ...doc.data() });
+          this.posts2.push({ id: doc.id, ...doc.data(), daisuki: false });
           console.log(doc.data());
           console.log(doc.id);
         });
@@ -148,7 +149,7 @@ export default {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.posts3.push({ id: doc.id, ...doc.data() });
+          this.posts3.push({ id: doc.id, ...doc.data(), daisuki: false });
         });
       });
   }

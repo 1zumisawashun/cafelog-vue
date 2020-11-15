@@ -87,7 +87,7 @@ export default {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.posts.push({ id: doc.id, ...doc.data() });
+          this.posts.push({ id: doc.id, ...doc.data(), daisuki: false });
           console.log(doc.data().cafename);
           console.log(this.posts);
           console.log(doc.data().id);
@@ -109,7 +109,9 @@ export default {
           if (doc.data().currentUser === this.user.uid) {
             this.likes.push({
               id: doc.id,
-              ...doc.data()
+              ...doc.data(),
+              daisuki: false
+              //星評価が出ないのはlikescollectionにはratingのデータがないため表示されない。
             });
           }
         });
