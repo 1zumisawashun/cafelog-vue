@@ -176,7 +176,8 @@ export default {
 .header {
   width: 100%;
   height: 325px;
-  background-image: url("../assets/header.jpg");
+  background-image: url("../assets/test15.jpg");
+  background-size: contain;
   position: relative;
 }
 

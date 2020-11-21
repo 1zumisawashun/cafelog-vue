@@ -15,13 +15,14 @@
       </div>
     </div>
     <div class="search-button-container" v-show="isDisplay" >
-        <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'wifi' }}"
+      
+        <div class="search-button wifi-button"><router-link :to="{ name: 'Filter', params: { value: 'wifi' }}"
         class="search-content">
           <span class="main-message">Wi-Fiがある場所</span><br> 
           <span class="sub-message">
           勉強する為にはWi-Fiがないと始まりません。カフェに入ってからWi-Fiが無いというトラブルに陥らないように事前に確認しましょう。</span>
           </router-link></div>
-        <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'date' }}"
+        <div class="search-button date-button"><router-link :to="{ name: 'Filter', params: { value: 'date' }}"
         class="search-content"
         >
         
@@ -31,7 +32,7 @@
           </span>
         
         </router-link></div>
-        <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'study' }}"
+        <div class="search-button studying-button"><router-link :to="{ name: 'Filter', params: { value: 'study' }}"
         class="search-content"
         >
         
@@ -43,7 +44,7 @@
         </router-link></div>
         <!-- <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
         class="search-content">駅から近い場所で検索する</router-link></div> -->
-        <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
+        <div class="search-button goodcoffee-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
         class="search-content">
         
         <span class="main-message">コーヒー通にお勧めしたいカフェ</span><br> 
@@ -52,7 +53,7 @@
           </span>
 
         </router-link></div>
-        <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
+        <div class="search-button coffeestand-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
         class="search-content">
         
         <span class="main-message">コーヒースタンド</span><br> 
@@ -61,7 +62,7 @@
           </span>
 
         </router-link></div>
-        <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
+        <div class="search-button stayalone-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
         class="search-content">
         
         <span class="main-message">一人で過ごしやすいカフェ</span><br> 
@@ -168,7 +169,8 @@ export default {
 .header {
   width: 100%;
   height: 325px;
-  background-image: url("../assets/header.jpg");
+  background-image: url("../assets/test15.jpg");
+  background-size: contain;
   position: relative;
 }
 
@@ -304,15 +306,6 @@ export default {
   transform: translate(-50%, -50%);
   opacity: 1;
 }
-/* 
-.search-bar {
-  padding-left: 10%;
-  width: 80%;
-  margin: 0 auto;
-  padding-top: 55px;
-  text-align: center;
-  position: absolute;
-} */
 .search-content {
   width: 90%;
   padding: 3% 5%;
@@ -327,31 +320,87 @@ p {
   margin-bottom: 10px;
 }
 .search-button-container {
-  width: 100%;
+  width: 85%;
   height: auto;
+  margin: 0 auto;
   /* 下二つの要素はないと機能しない */
   display: flex;
   flex-wrap: wrap;
+  padding: 0 2%;
 }
-.search-button {
-  background-image: url("../assets/wifi.jpg");
-  object-fit: cover;
-  width: 48%;
-  height: 100px;
+
+/* 透過した黒を上から重ねるイメージ  */
+.wifi-button::before,
+.date-button::before,
+.studying-button::before,
+.goodcoffee-button::before,
+.coffeestand-button::before,
+.stayalone-button::before {
+  background-color: rgba(0, 0, 0, 0.4);
+  /* 自由に位置指定  */
+  position: absolute;
+  left: 0;
+  /* これを入れないと上手く被せられない  */
+  width: 100%;
+  height: 200px;
+  content: "";
+}
+
+.wifi-button {
+  background-image: url("../assets/freewifi1.jpg");
+  background-size: cover;
+  /* backgroud-image,sizeはセットで使う */
+  width: 30%;
+  height: 200px;
+  margin: 1% 1% 1% 2%;
+  position: relative;
+}
+.date-button {
+  background-image: url("../assets/date2.jpg");
+  background-size: cover;
+  /* backgroud-image,sizeはセットで使う */
+  width: 30%;
+  height: 200px;
   margin: 1%;
   position: relative;
 }
-/* 透過した黒を上から重ねるイメージ */
-.search-button::before {
-  background-color: rgba(0, 0, 0, 0.4);
-  /* 自由に位置指定 */
-  position: absolute;
-  left: 0;
-  /* これを入れないと上手く被せられない */
-  width: 100%;
-  height: 100px;
-  content: "";
+.studying-button {
+  background-image: url("../assets/studying.jpg");
+  background-size: 100%;
+  /* backgroud-image,sizeはセットで使う */
+  width: 30%;
+  height: 200px;
+  margin: 1% 2% 1% 1%;
+  position: relative;
 }
+.goodcoffee-button {
+  background-image: url("../assets/test2.jpg");
+  background-size: cover;
+  /* backgroud-image,sizeはセットで使う */
+  width: 30%;
+  height: 200px;
+  margin: 1% 1% 1% 2%;
+  position: relative;
+}
+.coffeestand-button {
+  background-image: url("../assets/coffeecar.jpg");
+  background-size: cover;
+  /* backgroud-image,sizeはセットで使う */
+  width: 30%;
+  height: 200px;
+  margin: 1%;
+  position: relative;
+}
+.stayalone-button {
+  background-image: url("../assets/coffeebreak.jpg");
+  background-size: cover;
+  /* backgroud-image,sizeはセットで使う */
+  width: 30%;
+  height: 200px;
+  margin: 1% 2% 1% 1%;
+  position: relative;
+}
+
 .main-message {
   color: white;
   font-weight: bold;
@@ -375,6 +424,7 @@ p {
     width: 100%;
     height: 225px;
     background-image: url("../assets/header.jpg");
+    background-size: cover;
     position: relative;
   }
 
@@ -413,12 +463,11 @@ p {
   .search-button-container {
     width: 100%;
     height: auto;
+    padding: 0;
   }
   .search-button {
-    background-image: url("../assets/wifi.jpg");
-    object-fit: cover;
     width: 96%;
-    height: 100px;
+    height: 120px;
     margin: 2%;
     position: relative;
   }
@@ -430,7 +479,7 @@ p {
     left: 0;
     /* これを入れないと上手く被せられない */
     width: 100%;
-    height: 100px;
+    height: 120px;
     content: "";
   }
   .main-message {

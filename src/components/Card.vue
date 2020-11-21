@@ -16,7 +16,7 @@
           <img :src="post.user.thumbnail" class="thumbnail" />
         </router-link>
         <div class="station">{{ post.station }}駅</div>
-        <div
+        <!-- <div
           class="el-icon-collection-tag responsive-save-container dislike"
           v-if="this.post.daisuki"
           @click="unlikes(post)"
@@ -25,7 +25,17 @@
           class="el-icon-collection-tag responsive-save-container like"
           v-else
           @click="likes(post)"
-        ></div>
+        ></div> -->
+        <font-awesome-icon class="save-container
+          dislike responsive-save-container" 
+          icon="heart"
+          v-if="this.post.daisuki"
+            @click="unlikes(post)"/>
+          <font-awesome-icon class="save-container
+          like responsive-save-container" 
+          icon="heart"
+          v-else
+            @click="likes(post)"/>
         <div class="star-comment-container">
           <StarRating
             v-model="post.rating"
