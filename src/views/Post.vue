@@ -11,18 +11,20 @@
           </div>
         </div>
         <div class="cafename">{{ post.cafename }}</div>
-        
+
         <div class="beLiked">
-          <font-awesome-icon class="save-container
-          dislike" 
-          icon="heart"
-          v-if="beLiked"
-            @click="unlikes()"/>
-          <font-awesome-icon class="save-container
-          like" 
-          icon="heart"
-          v-else
-            @click="likes()"/>
+          <font-awesome-icon
+            class="save-container dislike"
+            icon="heart"
+            v-if="beLiked"
+            @click="unlikes()"
+          />
+          <font-awesome-icon
+            class="save-container like"
+            icon="heart"
+            v-else
+            @click="likes()"
+          />
           {{ likeCount }}
           <el-button class="open shadow" v-show="post.open">開店</el-button>
           <el-button class="close shadow" v-show="post.close" type="danger"
@@ -68,17 +70,23 @@
                 placeholder="電話番号"
                 class="form-block"
               />
-              <el-checkbox-button v-model="post.wifi" class="form-block"
+              <el-checkbox-button v-model="post.wifi"
                 >wi-fiあり</el-checkbox-button
               >
-              <!-- <el-checkbox-button v-model="nearplace" class="form-block"
-                  >駅から近い</el-checkbox-button
-                > -->
-              <el-checkbox-button v-model="post.date" class="form-block"
-                >デートにおすすめ</el-checkbox-button
+              <el-checkbox-button v-model="post.date"
+                >デートにお勧め</el-checkbox-button
               >
-              <el-checkbox-button v-model="post.studying" class="form-block"
+              <el-checkbox-button v-model="post.studying"
                 >勉強しやすい</el-checkbox-button
+              >
+              <el-checkbox-button v-model="post.goodcoffee"
+                >こだわりコーヒー</el-checkbox-button
+              >
+              <el-checkbox-button v-model="post.coffeestand"
+                >コーヒースタンド</el-checkbox-button
+              >
+              <el-checkbox-button v-model="post.stayslone"
+                >一人で過ごしやすい</el-checkbox-button
               >
               <star-rating
                 v-model="post.rating"
@@ -213,7 +221,7 @@
             :center="{ lat: 10, lng: 10 }"
             :zoom="6"
             class="shadow"
-            style="width: 100%; height: 300px; margin-top:25px;"
+            style="width: 100%; height: 300px; margin-top: 25px"
           >
             <GmapMarker :key="index" :draggable="true" />
           </GmapMap>
@@ -227,7 +235,7 @@
           >
         </div> -->
       </div>
-      <div style="margin-top:25px;">
+      <div style="margin-top: 25px">
         <router-link to="/posts">戻る</router-link>
       </div>
     </div>
@@ -319,6 +327,21 @@ export default {
         }
       });
 
+    //修正したらリアルタイムで反映される
+    db.collection("posts")
+      .doc(postsId)
+      .onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          const doc = change.doc;
+          if (change.type === "modified") {
+            this.post.push({
+              id: doc.id,
+              ...doc.data()
+            });
+          }
+        });
+      });
+
     db.collection("posts")
       .doc(postsId)
       .collection("comments")
@@ -364,9 +387,11 @@ export default {
           address: post.address,
           tel: post.tel,
           wifi: post.wifi,
-          nearplace: post.nearplace,
           date: post.date,
           studying: post.studying,
+          goodcoffee: post.goodcoffee,
+          coffeestand: post.coffeestand,
+          stayalone: post.stayalone,
           rating: post.rating,
           open: post.open,
           close: post.close,
@@ -385,6 +410,7 @@ export default {
           console.log(post.image);
           console.log(this.post[0].cafename);
           console.log(post.id);
+          this.UpdateDialogVisible = false;
         });
     },
     deleteButton(post) {
@@ -393,6 +419,7 @@ export default {
         .delete()
         .then(() => {
           alert("削除しました");
+          this.$router.push("/");
         });
     },
     // makeChannels(cafename, postedUserId, image) {
@@ -430,7 +457,7 @@ export default {
       var image = new Image();
       var reader = new FileReader();
       var vm = this;
-      reader.onload = function(event) {
+      reader.onload = function (event) {
         vm.image = event.target.result;
         //これもthis.imageだよ！
         console.log(vm.image);
@@ -440,7 +467,7 @@ export default {
       console.log(vm.image);
       this.file = file;
     },
-    removeImage: function() {
+    removeImage: function () {
       //this.image = ""; updateができない
       this.post[0].image = "";
     },
@@ -455,7 +482,7 @@ export default {
           let storageRef = firebase
             .storage()
             .ref(`images/${this.user.displayName}/` + this.file.name);
-          storageRef.getDownloadURL().then(url => {
+          storageRef.getDownloadURL().then((url) => {
             //getDownloadURLメソッドでstorageから取得している
             console.log(url);
             console.log(this.image);
@@ -472,8 +499,8 @@ export default {
                 user: {
                   id: this.userId,
                   name: this.user.displayName,
-                  thumbnail: this.user.photoURL
-                }
+                  thumbnail: this.user.photoURL,
+                },
               });
           });
           console.log(this.url);
@@ -499,16 +526,14 @@ export default {
           user: {
             id: this.post[0].user.id,
             name: this.post[0].user.name,
-            thumbnail: this.post[0].user.thumbnail
+            thumbnail: this.post[0].user.thumbnail,
           },
-          currentUser: this.user.uid
+          currentUser: this.user.uid,
         })
         .then(() => {
-          db.collection("posts")
-            .doc(postId)
-            .update({
-              beliked: true
-            });
+          db.collection("posts").doc(postId).update({
+            beliked: true,
+          });
         });
       this.beLiked = true;
       alert("いいねしました。");
@@ -521,16 +546,14 @@ export default {
         .doc(this.userId)
         .delete()
         .then(() => {
-          db.collection("posts")
-            .doc(postId)
-            .update({
-              beliked: false
-            });
+          db.collection("posts").doc(postId).update({
+            beliked: false,
+          });
         });
       this.beLiked = false;
       alert("いいねを消しました。");
-    }
-  }
+    },
+  },
 };
 </script>
 

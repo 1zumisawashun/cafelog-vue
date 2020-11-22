@@ -32,7 +32,7 @@
           </span>
         
         </router-link></div>
-        <div class="search-button studying-button"><router-link :to="{ name: 'Filter', params: { value: 'study' }}"
+        <div class="search-button studying-button"><router-link :to="{ name: 'Filter', params: { value: 'studying' }}"
         class="search-content"
         >
         
@@ -44,7 +44,7 @@
         </router-link></div>
         <!-- <div class="search-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
         class="search-content">駅から近い場所で検索する</router-link></div> -->
-        <div class="search-button goodcoffee-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
+        <div class="search-button goodcoffee-button"><router-link :to="{ name: 'Filter', params: { value: 'goodcoffee' }}"
         class="search-content">
         
         <span class="main-message">コーヒー通にお勧めしたいカフェ</span><br> 
@@ -53,7 +53,7 @@
           </span>
 
         </router-link></div>
-        <div class="search-button coffeestand-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
+        <div class="search-button coffeestand-button"><router-link :to="{ name: 'Filter', params: { value: 'coffeestand' }}"
         class="search-content">
         
         <span class="main-message">コーヒースタンド</span><br> 
@@ -62,7 +62,7 @@
           </span>
 
         </router-link></div>
-        <div class="search-button stayalone-button"><router-link :to="{ name: 'Filter', params: { value: 'nearplace' }}"
+        <div class="search-button stayalone-button"><router-link :to="{ name: 'Filter', params: { value: 'stayalone' }}"
         class="search-content">
         
         <span class="main-message">一人で過ごしやすいカフェ</span><br> 

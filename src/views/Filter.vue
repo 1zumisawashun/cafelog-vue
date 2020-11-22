@@ -24,19 +24,37 @@
     <div class="posts-container">
       <Card
         class="card l-card"
-        v-for="(post, index) in this.studyFiltered"
+        v-for="(post, index) in this.studyingFiltered"
         :key="index"
         :post="post"
-        v-show="isStudyBlockDisplay"
+        v-show="isStudyingBlockDisplay"
       ></Card>
     </div>
     <div class="posts-container">
       <Card
         class="card l-card"
-        v-for="(post, index) in this.nearplaceFiltered"
+        v-for="(post, index) in this.goodcoffeeFiltered"
         :key="index"
         :post="post"
-        v-show="isNearPlaceBlockDisplay"
+        v-show="isGoodCoffeeBlockDisplay"
+      ></Card>
+    </div>
+    <div class="posts-container">
+      <Card
+        class="card l-card"
+        v-for="(post, index) in this.coffeestandFiltered"
+        :key="index"
+        :post="post"
+        v-show="isCoffeeStandBlockDisplay"
+      ></Card>
+    </div>
+    <div class="posts-container">
+      <Card
+        class="card l-card"
+        v-for="(post, index) in this.stayaloneFiltered"
+        :key="index"
+        :post="post"
+        v-show="isStayAloneBlockDisplay"
       ></Card>
     </div>
   </div>
@@ -53,12 +71,16 @@ export default {
       keyword2: "",
       isDateBlockDisplay: false,
       isWifiBlockDisplay: false,
-      isStudyBlockDisplay: false,
-      isNearPlaceBlockDisplay: false,
+      isStudyingBlockDisplay: false,
+      isGoodCoffeeBlockDisplay: false,
+      isCoffeeStandBlockDisplay: false,
+      isStayAloneBlockDisplay: false,
       dateblock: [],
       wifiblock: [],
-      studyblock: [],
-      nearplaceblock: []
+      studyingblock: [],
+      goodcoffeeblock: [],
+      coffeestandblock: [],
+      stayaloneblock: []
     };
   },
   components: {
@@ -96,21 +118,41 @@ export default {
       }
       return posts;
     },
-    studyFiltered() {
+    studyingFiltered() {
       var posts = [];
       for (var i in this.posts) {
         var post = this.posts[i];
-        if (String(post.study).indexOf("true") !== -1) {
+        if (String(post.studying).indexOf("true") !== -1) {
           posts.push(post);
         }
       }
       return posts;
     },
-    nearplaceFiltered() {
+    goodcoffeeFiltered() {
       var posts = [];
       for (var i in this.posts) {
         var post = this.posts[i];
-        if (String(post.nearplace).indexOf("true") !== -1) {
+        if (String(post.goodcoffee).indexOf("true") !== -1) {
+          posts.push(post);
+        }
+      }
+      return posts;
+    },
+    coffeestandFiltered() {
+      var posts = [];
+      for (var i in this.posts) {
+        var post = this.posts[i];
+        if (String(post.coffeestand).indexOf("true") !== -1) {
+          posts.push(post);
+        }
+      }
+      return posts;
+    },
+    stayaloneFiltered() {
+      var posts = [];
+      for (var i in this.posts) {
+        var post = this.posts[i];
+        if (String(post.stayalone).indexOf("true") !== -1) {
           posts.push(post);
         }
       }
@@ -124,11 +166,17 @@ export default {
     if (this.$route.params.value == "date") {
       this.isDateBlockDisplay = true;
     }
-    if (this.$route.params.value == "study") {
-      this.isStudyBlockDisplay = true;
+    if (this.$route.params.value == "studying") {
+      this.isStudyingBlockDisplay = true;
     }
-    if (this.$route.params.value == "nearplace") {
-      this.isNearPlaceBlockDisplay = true;
+    if (this.$route.params.value == "goodcoffee") {
+      this.isGoodCoffeeBlockDisplay = true;
+    }
+    if (this.$route.params.value == "coffeestand") {
+      this.isCoffeeStandBlockDisplay = true;
+    }
+    if (this.$route.params.value == "stayalone") {
+      this.isStayAloneBlockDisplay = true;
     }
     //最初にポストデータをすべて取得する
     db.collection("posts")

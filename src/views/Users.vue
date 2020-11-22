@@ -6,14 +6,14 @@
       @tab-click="handleClick"
       class="tab-container"
     >
-      <el-tab-pane label="USER" name="first">
+      <!-- <el-tab-pane label="USER" name="first">
         <div v-for="(user, index) in users" :key="index">
           <p>{{ user.name }}さんのマイページ</p>
           <img :src="user.thumbnail" class="thumbnail" />
           <p>{{ user.email }}</p>
         </div>
-      </el-tab-pane>
-      <el-tab-pane label="POSTED" name="second">
+      </el-tab-pane> -->
+      <el-tab-pane label="POSTED" name="first">
         <div class="posts-container">
           <Card
             class="card l-card"
@@ -23,7 +23,7 @@
           ></Card>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="LIKED" name="third">
+      <el-tab-pane label="LIKED" name="second">
         <div class="posts-container">
           <Card
             class="card l-card"

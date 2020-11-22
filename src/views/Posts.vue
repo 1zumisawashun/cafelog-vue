@@ -117,14 +117,22 @@ export default {
     db.collection("posts")
       .orderBy("createdAt", "desc")
       .limit(8)
-      //.orderby("createdAt")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.posts.push({ id: doc.id, ...doc.data(), daisuki: false });
-          //DBには登録されないけれど「いいね」を見分けるために必要な要素
-          console.log(doc.data());
-          console.log(doc.data().id);
+      .onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          const doc = change.doc;
+          if (change.type === "added") {
+            this.posts.push({
+              id: doc.id,
+              ...doc.data(),
+              daisuki: false
+              //dbには入れないで一つの投稿に判別の為のプロパティを入れる
+            });
+          } else if (change.type === "removed") {
+            this.posts.splice(7, 1);
+            // limit,orderbyも使う時はremovedも使わなくてはいけない
+          }
+          console.log(change.type);
+          console.log(this.posts);
         });
       });
 

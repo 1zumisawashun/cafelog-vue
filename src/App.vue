@@ -12,7 +12,9 @@
               >HomePage</router-link
             >
           </div>
-          <a v-if="isAuthenticated" class="el-icon-setting" v-on:click="logout">LogOut</a>
+          <a v-if="isAuthenticated" class="el-icon-setting" v-on:click="logout"
+            >LogOut</a
+          >
           <a class="el-icon-s-tools" v-else v-on:click="login">LogIn</a>
           <div>
             <router-link
@@ -62,17 +64,23 @@
                   placeholder="電話番号"
                   class="form-block"
                 />
-                <el-checkbox-button v-model="wifi" class="form-block"
+                <el-checkbox-button v-model="wifi"
                   >wi-fiあり</el-checkbox-button
                 >
-                <el-checkbox-button v-model="nearplace" class="form-block"
-                  >駅から近い</el-checkbox-button
+                <el-checkbox-button v-model="date"
+                  >デートにお勧め</el-checkbox-button
                 >
-                <el-checkbox-button v-model="date" class="form-block"
-                  >デートにおすすめ</el-checkbox-button
-                >
-                <el-checkbox-button v-model="studying" class="form-block"
+                <el-checkbox-button v-model="studying"
                   >勉強しやすい</el-checkbox-button
+                >
+                <el-checkbox-button v-model="goodcoffee"
+                  >こだわりコーヒー</el-checkbox-button
+                >
+                <el-checkbox-button v-model="coffeestand"
+                  >コーヒースタンド</el-checkbox-button
+                >
+                <el-checkbox-button v-model="stayalone"
+                  >一人で過ごしやすい</el-checkbox-button
                 >
                 <star-rating
                   v-model="rating"
@@ -126,10 +134,30 @@
       <router-view :key="$route.fullPath" />
     </div>
     <div class="responsive-footer">
-      <div class="link-block"><router-link to="/posts"><div class="el-icon-house"></div><div>Home</div></router-link></div>
-      <div class="link-block"><router-link to="/search"><div class="el-icon-search"></div><div>Search</div></router-link></div>
-      <div class="link-block" v-if="isAuthenticated"><router-link :to="`/users/${userId}`" ><div class="el-icon-user"></div><div>User</div></router-link></div>
-      <div class="link-block" v-else><a v-on:click="login"><div class="el-icon-s-tools"></div><div>LogIn</div> </a></div>
+      <div class="link-block">
+        <router-link to="/posts"
+          ><div class="el-icon-house"></div>
+          <div>Home</div></router-link
+        >
+      </div>
+      <div class="link-block">
+        <router-link to="/search"
+          ><div class="el-icon-search"></div>
+          <div>Search</div></router-link
+        >
+      </div>
+      <div class="link-block" v-if="isAuthenticated">
+        <router-link :to="`/users/${userId}`"
+          ><div class="el-icon-user"></div>
+          <div>User</div></router-link
+        >
+      </div>
+      <div class="link-block" v-else>
+        <a v-on:click="login"
+          ><div class="el-icon-s-tools"></div>
+          <div>LogIn</div>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -141,40 +169,42 @@ import StarRating from "vue-star-rating";
 export default {
   data() {
     return {
-      channels: [],
+      //channels: [],
       cafename: "",
       content: "",
       holiday: "",
       station: "",
       address: "",
       tel: "",
+      rating: "",
       wifi: false,
-      nearplace: false,
       date: false,
       studying: false,
+      goodcoffee: false,
+      coffeestand: false,
+      stayalone: false,
       open: false,
       close: false,
       file: "",
       image: "",
       modal: false,
       drawer: false,
-      direction: "ltr",
-      rating: ""
+      direction: "ltr"
     };
   },
   components: {
     StarRating
   },
   mounted() {
-    db.collection("channels")
-      .where("cafename", "==", "test")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.channels.push({ id: doc.id, ...doc.data() });
-          console.log(doc.data().id);
-        });
-      });
+    // db.collection("channels")
+    //   .where("cafename", "==", "test")
+    //   .get()
+    //   .then(querySnapshot => {
+    //     querySnapshot.forEach(doc => {
+    //       this.channels.push({ id: doc.id, ...doc.data() });
+    //       console.log(doc.data().id);
+    //     });
+    //   });
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setUser(user);
@@ -243,7 +273,7 @@ export default {
       var image = new Image();
       var reader = new FileReader();
       var vm = this;
-      reader.onload = function(event) {
+      reader.onload = function (event) {
         vm.image = event.target.result;
         //これもthis.imageだよ！
         console.log(vm.image);
@@ -253,53 +283,75 @@ export default {
       console.log(vm.image);
       this.file = file;
     },
-    removeImage: function() {
+    removeImage: function () {
       this.image = "";
     },
     addPosts() {
       let storageRef = firebase
         .storage()
         .ref(`posts/${this.user.displayName}/` + this.file.name);
-      storageRef.put(this.file).then(() => {
-        let storageRef = firebase
-          .storage()
-          .ref(`posts/${this.user.displayName}/` + this.file.name);
-        storageRef.getDownloadURL().then(url => {
-          //getDownloadURLメソッドでstorageから取得している;
-          console.log(url);
-          console.log(this.image);
-          this.url = url;
-          //このurlはfirebaseからの画像情報になる;
-          window.alert("storageに格納しました");
-          db.collection("posts").add({
-            cafename: this.cafename,
-            content: this.content,
-            holiday: this.holiday,
-            station: this.station,
-            address: this.address,
-            tel: this.tel,
-            wifi: this.wifi,
-            nearplace: this.nearplace,
-            date: this.date,
-            studying: this.studying,
-            rating: this.rating,
-            beliked: false,
-            open: this.open,
-            close: this.close,
-            image: this.url,
-            createdAt: new Date().getTime(),
-            user: {
-              id: this.user.uid,
-              name: this.user.displayName,
-              thumbnail: this.user.photoURL
-            }
+      storageRef
+        .put(this.file)
+        .then(() => {
+          let storageRef = firebase
+            .storage()
+            .ref(`posts/${this.user.displayName}/` + this.file.name);
+          storageRef.getDownloadURL().then((url) => {
+            //getDownloadURLメソッドでstorageから取得している;
+            console.log(url);
+            console.log(this.image);
+            this.url = url;
+            //このurlはfirebaseからの画像情報になる;
+            window.alert("storageに格納しました");
+            db.collection("posts").add({
+              cafename: this.cafename,
+              content: this.content,
+              holiday: this.holiday,
+              station: this.station,
+              address: this.address,
+              tel: this.tel,
+              wifi: this.wifi,
+              date: this.date,
+              studying: this.studying,
+              goodcoffee: this.goodcoffee,
+              coffeestand: this.coffeestand,
+              stayalone: this.stayalone,
+              rating: this.rating,
+              open: this.open,
+              close: this.close,
+              image: this.url,
+              createdAt: new Date().getTime(),
+              user: {
+                id: this.user.uid,
+                name: this.user.displayName,
+                thumbnail: this.user.photoURL,
+              },
+            });
           });
+          console.log(this.url);
+          window.alert("firestoreに格納しました。これで表示されます");
+        })
+        .then(() => {
+          // (this.cafename = ""),
+          //   (this.content = ""),
+          //   (this.holiday = ""),
+          //   (this.station = ""),
+          //   (this.address = ""),
+          //   (this.tel = ""),
+          //   (this.wifi = ""),
+          //   (this.date = ""),
+          //   (this.studying = ""),
+          //   (this.goodcoffee = ""),
+          //   (this.coffeestand = ""),
+          //   (this.stayalone = ""),
+          //   (this.rating = ""),
+          //   (this.open = ""),
+          //   (this.close = ""),
+          //   (this.url = ""),
+          //   (this.image = "");
+          this.modal = false;
         });
-        console.log(this.url);
-        window.alert("firestoreに格納しました。これで表示されます");
-      });
-      this.image = null;
-    }
+    },
   },
   computed: {
     isAuthenticated() {
@@ -310,20 +362,20 @@ export default {
     },
     user() {
       return this.$store.state.user;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 /* scopeを外してアスタリスクで指定すると余白が消える */
-*{
-margin:0;
-padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 .wrap {
-     overflow: hidden;
- }
+  overflow: hidden;
+}
 .header-container {
   width: 100%;
   display: flex;
@@ -411,19 +463,19 @@ padding:0;
 .drower-container {
   display: none;
 }
-.responsive-footer{
+.responsive-footer {
   display: none;
 }
 @media screen and (max-width: 479px) {
-   .sidebar {
+  .sidebar {
     display: none;
-  } 
+  }
   .main-content {
-  width: 100%;
-  /* この背景色が絶妙で良い */
-  background: #f1f1f1;
-  height: auto;
-}
+    width: 100%;
+    /* この背景色が絶妙で良い */
+    background: #f1f1f1;
+    height: auto;
+  }
   .responsive-footer {
     display: block;
     position: fixed;
@@ -433,24 +485,23 @@ padding:0;
     z-index: 9999;
     height: auto;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16), 0 1px 8px rgba(0, 0, 0, 0.23);
-/* 横並びにして等間隔に並べる要素 */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    /* 横並びにして等間隔に並べる要素 */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  .link-block{
+  .link-block {
     padding: 5px 40px;
     display: flex;
     text-align: center;
-    
   }
   .link-block a {
     color: black;
-  text-decoration: none;
-  justify-content: center;
-  cursor: pointer;
-  font-weight: bold;
-}
+    text-decoration: none;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+  }
 }
 </style>
