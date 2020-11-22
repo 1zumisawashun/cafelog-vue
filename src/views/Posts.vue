@@ -181,15 +181,15 @@ export default {
   position: relative;
 }
 
-/* 透過した黒を上から重ねるイメージ */
+/* 透過した黒を上から重ねるイメージ 
 .header::before {
   background-color: rgba(0, 0, 0, 0.4);
-  /* 自由に位置指定 */
+   自由に位置指定 
   position: absolute;
   width: 100%;
   height: 325px;
   content: " ";
-}
+} */
 .search-bar {
   padding-left: 20%;
   width: 60%;

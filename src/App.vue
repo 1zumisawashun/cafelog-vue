@@ -337,7 +337,7 @@ padding:0;
 }
 
 .link-container {
-  width: 50%;
+  width: 43%;
   /* background-color: aquamarine; */
   margin: 0 0 0 auto;
   /* 右に寄せる */

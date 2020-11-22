@@ -173,16 +173,16 @@ export default {
   background-size: contain;
   position: relative;
 }
-
-/* 透過した黒を上から重ねるイメージ */
+/* 
+透過した黒を上から重ねるイメージ 
 .header::before {
   background-color: rgba(0, 0, 0, 0.4);
-  /* 自由に位置指定 */
+   自由に位置指定 
   position: absolute;
   width: 100%;
   height: 325px;
   content: " ";
-}
+} */
 .search-bar {
   padding-left: 20%;
   width: 60%;
@@ -308,7 +308,7 @@ export default {
 }
 .search-content {
   width: 90%;
-  padding: 3% 5%;
+  padding: 10% 5%;
   text-align: center;
   position: absolute;
   text-decoration: none;
@@ -404,10 +404,11 @@ p {
 .main-message {
   color: white;
   font-weight: bold;
+  font-size: 17px;
 }
 .sub-message {
   color: white;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 @media screen and (max-width: 479px) {

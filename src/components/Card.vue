@@ -85,7 +85,6 @@ export default {
   methods: {
     //LikesCollectionとpostsCollection両方のdbをいじって表示を変更させる。
     likes(post) {
-      console.log(post);
       db.collection("posts")
         .doc(post.id)
         .collection("likes")
@@ -97,6 +96,7 @@ export default {
           cafename: post.cafename,
           station: post.station,
           image: post.image,
+          rating: post.rating,
           user: {
             id: post.user.id,
             name: post.user.name,
