@@ -8,6 +8,7 @@
         </div>
         <div class="link-container">
           <div>
+            
             <router-link to="/posts" class="el-icon-house"
               >HomePage</router-link
             >
@@ -15,7 +16,10 @@
           <a v-if="isAuthenticated" class="el-icon-setting" v-on:click="logout"
             >LogOut</a
           >
-          <a class="el-icon-s-tools" v-else v-on:click="login">LogIn</a>
+          <span v-else>
+          <a class="el-icon-s-tools"  v-on:click="login">LogIn</a>
+          <a class="el-icon-setting"  @click="anonymouse">guestlogin</a>
+          </span>
           <div>
             <router-link
               :to="`/users/${userId}`"
@@ -32,6 +36,7 @@
           <a class="el-icon-position" @click="openModal" v-if="isAuthenticated"
             >Post</a
           >
+          
           <transition name="my-modal">
             <div class="my-modal" v-if="modal">
               <div class="form-container">
@@ -249,6 +254,18 @@ export default {
         })
         .catch(error => {
           window.alert(error);
+        });
+    },
+    //匿名ログインの設定
+    anonymouse: function() {
+      firebase
+        .auth()
+        .signInAnonymously()
+        .then(() => {
+          alert("ゲストログインしています。");
+        })
+        .catch(function(error) {
+          alert(error.message);
         });
     },
     setRating: function(rating) {
