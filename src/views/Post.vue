@@ -10,188 +10,193 @@
             <p>{{ post.content }}</p>
           </div>
         </div>
-        <div class="cafename">{{ post.cafename }}</div>
+        <div style="margin: 10px">
+          <div class="cafename">{{ post.cafename }}</div>
 
-        <div class="beLiked">
-          <font-awesome-icon
-            class="save-container dislike"
-            icon="heart"
-            v-if="beLiked"
-            @click="unlikes()"
-          />
-          <font-awesome-icon
-            class="save-container like"
-            icon="heart"
-            v-else
-            @click="likes()"
-          />
-          {{ likeCount }}
-          <el-button class="open shadow" v-show="post.open">開店</el-button>
-          <el-button class="close shadow" v-show="post.close" type="danger"
-            >閉店</el-button
-          >
-          <el-button
-            type="danger"
-            class="shadow"
-            @click="deleteButton(post)"
-            v-show="isPosted"
-            >DELETE</el-button
-          >
-          <el-button
-            type="primary"
-            class="shadow"
-            @click="openUpdateModal"
-            v-show="isPosted"
-            >UPDATE</el-button
-          >
-          <el-dialog cafename :visible.sync="UpdateDialogVisible" width="80%">
-            <div class="form-container">
-              <el-input
-                type="text"
-                v-model="post.cafename"
-                placeholder="お店の名前"
-                class="form-block"
-              />
-              <el-input
-                type="text"
-                v-model="post.station"
-                placeholder="最寄駅"
-                class="form-block"
-              />
-              <el-input
-                type="text"
-                v-model="post.address"
-                placeholder="住所"
-                class="form-block"
-              />
-              <el-input
-                type="text"
-                v-model="post.tel"
-                placeholder="電話番号"
-                class="form-block"
-              />
-              <el-checkbox-button v-model="post.wifi"
-                >wi-fiあり</el-checkbox-button
-              >
-              <el-checkbox-button v-model="post.date"
-                >デートにお勧め</el-checkbox-button
-              >
-              <el-checkbox-button v-model="post.studying"
-                >勉強しやすい</el-checkbox-button
-              >
-              <el-checkbox-button v-model="post.goodcoffee"
-                >こだわりコーヒー</el-checkbox-button
-              >
-              <el-checkbox-button v-model="post.coffeestand"
-                >コーヒースタンド</el-checkbox-button
-              >
-              <el-checkbox-button v-model="post.stayslone"
-                >一人で過ごしやすい</el-checkbox-button
-              >
-              <star-rating
-                v-model="post.rating"
-                v-bind:increment="1"
-                v-bind:max-rating="5"
-                inactive-color="#9e9e9e"
-                active-color="#E6E635"
-                v-bind:star-size="30"
-                @rating-selected="setRating"
-              ></star-rating>
-              <el-input
-                type="text"
-                v-model="post.content"
-                placeholder="感想"
-                class="form-block"
-              />
-              <el-input
-                type="text"
-                v-model="post.holiday"
-                placeholder="定休日"
-                class="form-block"
-              />
-              <el-checkbox v-model="post.open" class="form-block"
-                >開店</el-checkbox
-              >
-              <el-checkbox v-model="post.close" class="form-block"
-                >閉店</el-checkbox
-              >
+          <div class="beLiked">
+            <font-awesome-icon
+              class="save-container dislike"
+              icon="heart"
+              v-if="beLiked"
+              @click="unlikes()"
+            />
+            <font-awesome-icon
+              class="save-container like"
+              icon="heart"
+              v-else
+              @click="likes()"
+            />
+            {{ likeCount }}
+            <el-button class="open shadow" size="small" v-show="post.open">開店</el-button>
+            <el-button class="close shadow" size="small" v-show="post.close" type="danger"
+              >閉店</el-button
+            >
+            <el-button
+              type="danger"
+              class="shadow"
+              size="small"
+              @click="deleteButton(post)"
+              v-show="isPosted"
+              >DELETE</el-button
+            >
+            <el-button
+              type="primary"
+              class="shadow"
+              size="small"
+              @click="openUpdateModal"
+              v-show="isPosted"
+              >UPDATE</el-button
+            >
+            <el-dialog cafename :visible.sync="UpdateDialogVisible" width="80%">
+              <div class="form-container">
+                <el-input
+                  type="text"
+                  v-model="post.cafename"
+                  placeholder="お店の名前"
+                  class="form-block"
+                />
+                <el-input
+                  type="text"
+                  v-model="post.station"
+                  placeholder="最寄駅"
+                  class="form-block"
+                />
+                <el-input
+                  type="text"
+                  v-model="post.address"
+                  placeholder="住所"
+                  class="form-block"
+                />
+                <el-input
+                  type="text"
+                  v-model="post.tel"
+                  placeholder="電話番号"
+                  class="form-block"
+                />
+                <el-checkbox-button v-model="post.wifi"
+                  >wi-fiあり</el-checkbox-button
+                >
+                <el-checkbox-button v-model="post.date"
+                  >デートにお勧め</el-checkbox-button
+                >
+                <el-checkbox-button v-model="post.studying"
+                  >勉強しやすい</el-checkbox-button
+                >
+                <el-checkbox-button v-model="post.goodcoffee"
+                  >こだわりコーヒー</el-checkbox-button
+                >
+                <el-checkbox-button v-model="post.coffeestand"
+                  >コーヒースタンド</el-checkbox-button
+                >
+                <el-checkbox-button v-model="post.stayslone"
+                  >一人で過ごしやすい</el-checkbox-button
+                >
+                <star-rating
+                  v-model="post.rating"
+                  v-bind:increment="1"
+                  v-bind:max-rating="5"
+                  inactive-color="#9e9e9e"
+                  active-color="#E6E635"
+                  v-bind:star-size="30"
+                  @rating-selected="setRating"
+                ></star-rating>
+                <el-input
+                  type="text"
+                  v-model="post.content"
+                  placeholder="感想"
+                  class="form-block"
+                />
+                <el-input
+                  type="text"
+                  v-model="post.holiday"
+                  placeholder="定休日"
+                  class="form-block"
+                />
+                <el-checkbox v-model="post.open" class="form-block"
+                  >開店</el-checkbox
+                >
+                <el-checkbox v-model="post.close" class="form-block"
+                  >閉店</el-checkbox
+                >
 
-              <div id="image-container">
-                <div v-if="!post.image">
-                  <input
-                    type="file"
-                    @change="onFileChange"
-                    class="form-block"
-                  />
-                </div>
-                <div v-else>
-                  <img :src="post.image" class="postedImage" />
-                  <el-button @click="removeImage">Remove</el-button>
+                <div id="image-container">
+                  <div v-if="!post.image">
+                    <input
+                      type="file"
+                      @change="onFileChange"
+                      class="form-block"
+                    />
+                  </div>
+                  <div v-else>
+                    <img :src="post.image" class="postedImage" />
+                    <el-button @click="removeImage">Remove</el-button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <el-button @click="updateButton(post)">更新する</el-button>
-          </el-dialog>
-        </div>
-
-        <hr />
-        <div class="resposive-comment-container">
-          <img :src="post.user.thumbnail" alt class="user-thumbnail" />
-          <div class="comment-block">
-            <div class="comment-content">{{ post.content }}</div>
+              <el-button @click="updateButton(post)">更新する</el-button>
+            </el-dialog>
           </div>
-        </div>
-        <div v-for="(comment, index) in comments" :key="index">
-          <div class="comment-container">
-            <img :src="comment.thumbnail" alt class="user-thumbnail" />
+
+          <hr />
+          <div class="resposive-comment-container">
+            <img :src="post.user.thumbnail" alt class="user-thumbnail" />
             <div class="comment-block">
-              <div class="comment-content">{{ comment.comment }}</div>
+              <div class="comment-content">{{ post.content }}</div>
             </div>
           </div>
-        </div>
-        <el-button type="primary" class="shadow" @click="openCommentModal"
-          >コメント</el-button
-        >
-        <el-dialog cafename :visible.sync="CommentDialogVisible" width="70%">
-          <div>コメントを記入してください。</div>
-          <el-input type="text" v-model="comment" />
-          <el-button @click="addComment(post.id)">コメントする</el-button>
-        </el-dialog>
-
-        <hr />
-
-        <div id="image-container">
-          <div
-            v-for="(image, index) in images"
-            :key="index"
-            class="image-block"
+          <div v-for="(comment, index) in comments" :key="index">
+            <div class="comment-container">
+              <img :src="comment.thumbnail" alt class="user-thumbnail" />
+              <div class="comment-block">
+                <div class="comment-content">{{ comment.comment }}</div>
+              </div>
+            </div>
+          </div>
+          <el-button type="primary" class="shadow" size="small" @click="openCommentModal"
+            >コメント</el-button
           >
-            <img :src="image.image" class="picture" alt />
+          <el-dialog cafename :visible.sync="CommentDialogVisible" width="70%">
+            <div>コメントを記入してください。</div>
+            <el-input type="text" v-model="comment" />
+            <el-button @click="addComment(post.id)" size="small">コメントする</el-button>
+          </el-dialog>
+
+          <hr />
+
+          <div id="image-container">
+            <div
+              v-for="(image, index) in images"
+              :key="index"
+              class="image-block"
+            >
+              <img :src="image.image" class="picture" alt />
+            </div>
           </div>
+          <el-button type="primary" class="shadow" size="small" @click="openImageModal"
+            >写真</el-button
+          >
+
+          <el-dialog cafename :visible.sync="ImageDialogVisible" width="70%">
+            <p>写真を投稿してください。</p>
+            <div class="image-container">
+              <div v-if="!image">
+                <input
+                  type="file"
+                  @change="onFileChange"
+                  class="file-container"
+                />
+              </div>
+              <div v-else>
+                <img :src="image" class="image" />
+                <el-button @click="removeImage">Remove</el-button>
+                <el-button @click="addImage()" size="small">post</el-button>
+              </div>
+            </div>
+          </el-dialog>
+
+          <hr />
         </div>
-        <el-button type="primary" class="shadow" @click="openImageModal"
-          >写真</el-button
-        >
-
-        <el-dialog cafename :visible.sync="ImageDialogVisible" width="70%">
-          <p>写真を投稿してください。</p>
-          <div class="image-container">
-            <div v-if="!image">
-              <input
-                type="file"
-                @change="onFileChange"
-                class="file-container"
-              />
-            </div>
-            <div v-else>
-              <img :src="image" class="image" />
-              <el-button @click="removeImage">Remove</el-button>
-              <el-button @click="addImage()">post</el-button>
-            </div>
-          </div>
-        </el-dialog>
-
-        <hr />
+        <!-- ↑margin10pxの締めdiv -->
         <table>
           <tr>
             <th>最寄駅</th>
@@ -209,19 +214,13 @@
             <th>電話番号</th>
             <td>{{ post.tel }}</td>
           </tr>
-          <!-- <tr>
-            <th>wi-fiの有無</th>
-            <td v-show="post.wifiless">無し</td>
-            <td v-show="post.wifi">有り</td>
-          </tr> -->
         </table>
 
         <div class="map-container">
           <GmapMap
             :center="{ lat: 10, lng: 10 }"
             :zoom="6"
-            class="shadow"
-            style="width: 100%; height: 300px; margin-top: 25px"
+            class="shadow map-block"
           >
             <GmapMarker :key="index" :draggable="true" />
           </GmapMap>
@@ -234,9 +233,6 @@
             >chat-maker</el-button
           >
         </div> -->
-      </div>
-      <div style="margin-top: 25px">
-        <router-link to="/posts">戻る</router-link>
       </div>
     </div>
   </div>
@@ -341,28 +337,35 @@ export default {
           }
         });
       });
-
+    //コメント投稿機能
     db.collection("posts")
       .doc(postsId)
       .collection("comments")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.comments.push({ id: doc.id, ...doc.data() });
-          console.log(doc.id);
-          console.log(this.comments.length);
-          this.commentCount = this.comments.length;
+      .onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          const doc = change.doc;
+          if (change.type === "added") {
+            this.comments.push({
+              id: doc.id,
+              ...doc.data()
+            });
+          }
         });
       });
 
+    //写真投稿機能
     db.collection("posts")
       .doc(postsId)
       .collection("images")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.images.push({ id: doc.id, ...doc.data() });
-          console.log(doc.data().id);
+      .onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          const doc = change.doc;
+          if (change.type === "added") {
+            this.images.push({
+              id: doc.id,
+              ...doc.data()
+            });
+          }
         });
       });
   },
@@ -442,8 +445,12 @@ export default {
           username: this.user.displayName,
           comment: this.comment,
           thumbnail: this.user.photoURL
+        })
+        .then(() => {
+          alert("コメントの追加をしました");
+          this.CommentDialogVisible = false;
+          //this.$router.push(`/posts/${id}`);
         });
-      alert("コメントの追加をしました");
     },
     onFileChange: function(event) {
       var files = event.target.files || event.dataTransfer.files;
@@ -502,16 +509,15 @@ export default {
                   thumbnail: this.user.photoURL,
                 },
               });
-          });
-          console.log(this.url);
-          window.alert("firestoreに格納しました");
+          }).then(() => {
+          alert("コメントの追加をしました");
+          this.ImageDialogVisible = false;
         });
-        this.image = null;
+        });
       }
     },
     likes() {
       const postId = this.$route.params.id;
-
       db.collection("posts")
         .doc(postId)
         .collection("likes")
@@ -564,7 +570,7 @@ export default {
 .post-container {
   width: 100%;
   height: auto;
-  padding-top: 25px;
+  padding: 30px 0;
 }
 .cafename {
   font-size: 30px;
@@ -577,7 +583,7 @@ export default {
   margin: 0 auto;
 }
 hr {
-  margin: 10px;
+  margin: 10px 0px;
 }
 .post-info {
   display: flex;
@@ -593,17 +599,14 @@ hr {
   background-color: white;
 }
 /* ユーザのコメント */
-.comment-container,
-#image-container {
+.comment-container
+ {
   width: 100%;
   height: auto;
   display: flex;
   flex-wrap: wrap;
-}
-
-.image-block {
-  width: 25%;
-  height: 180px;
+  
+  
 }
 .user-thumbnail {
   width: 5%;
@@ -614,6 +617,19 @@ hr {
   padding: 1%;
   width: 93%;
   height: auto;
+}
+#image-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0 0 2%;
+  
+}
+.image-block {
+  width: 100%;
+  height: 180px;
+  
 }
 /* ユーザのコメント */
 .image-block img {
@@ -681,6 +697,12 @@ table td {
 
 .resposive-comment-container {
   display: none;
+}
+
+.map-block {
+  width: 100%;
+  height: 250px;
+  margin-top: 25px;
 }
 
 @media screen and (max-width: 479px) {
@@ -776,6 +798,11 @@ table td {
     text-align: center;
     background-color: white;
     padding: 5px 0;
+  }
+  .map-block {
+    width: 100%;
+    height: 200px;
+    margin: 15px 0px;
   }
 }
 </style>

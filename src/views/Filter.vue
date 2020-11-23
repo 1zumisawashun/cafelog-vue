@@ -3,58 +3,52 @@
     <div class="responsive-header">
       <div class="title">cafelog</div>
     </div>
-    <div class="posts-container">
+    <div class="posts-container" v-show="isWifiBlockDisplay">
       <Card
         class="card l-card"
         v-for="(post, index) in this.wifiFiltered"
         :key="index"
         :post="post"
-        v-show="isWifiBlockDisplay"
       ></Card>
     </div>
-    <div class="posts-container">
+    <div class="posts-container" v-show="isDateBlockDisplay">
       <Card
         class="card l-card"
         v-for="(post, index) in this.dateFiltered"
         :key="index"
         :post="post"
-        v-show="isDateBlockDisplay"
       ></Card>
     </div>
-    <div class="posts-container">
+    <div class="posts-container" v-show="isStudyingBlockDisplay">
       <Card
         class="card l-card"
         v-for="(post, index) in this.studyingFiltered"
         :key="index"
         :post="post"
-        v-show="isStudyingBlockDisplay"
       ></Card>
     </div>
-    <div class="posts-container">
+    <div class="posts-container" v-show="isGoodCoffeeBlockDisplay">
       <Card
         class="card l-card"
         v-for="(post, index) in this.goodcoffeeFiltered"
         :key="index"
         :post="post"
-        v-show="isGoodCoffeeBlockDisplay"
       ></Card>
     </div>
-    <div class="posts-container">
+    <div class="posts-container" v-show="isCoffeeStandBlockDisplay">
       <Card
         class="card l-card"
         v-for="(post, index) in this.coffeestandFiltered"
         :key="index"
         :post="post"
-        v-show="isCoffeeStandBlockDisplay"
       ></Card>
     </div>
-    <div class="posts-container">
+    <div class="posts-container" v-show="isStayAloneBlockDisplay">
       <Card
         class="card l-card"
         v-for="(post, index) in this.stayaloneFiltered"
         :key="index"
         :post="post"
-        v-show="isStayAloneBlockDisplay"
       ></Card>
     </div>
   </div>

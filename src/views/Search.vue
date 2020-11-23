@@ -119,7 +119,7 @@ export default {
           this.wifiblock.push(post);
         }
       }
-      this.searchWord = "wifiblock";
+      // this.searchWord = "wifiblock";
       this.isDisplay = false;
     },
     isDisplayChange() {
@@ -354,6 +354,7 @@ p {
   height: 200px;
   margin: 1% 1% 1% 2%;
   position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .date-button {
   background-image: url("../assets/date2.jpg");
@@ -363,6 +364,7 @@ p {
   height: 200px;
   margin: 1%;
   position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .studying-button {
   background-image: url("../assets/studying.jpg");
@@ -372,6 +374,7 @@ p {
   height: 200px;
   margin: 1% 2% 1% 1%;
   position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .goodcoffee-button {
   background-image: url("../assets/test2.jpg");
@@ -381,6 +384,7 @@ p {
   height: 200px;
   margin: 1% 1% 1% 2%;
   position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .coffeestand-button {
   background-image: url("../assets/coffeecar.jpg");
@@ -390,6 +394,7 @@ p {
   height: 200px;
   margin: 1%;
   position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .stayalone-button {
   background-image: url("../assets/coffeebreak.jpg");
@@ -399,6 +404,7 @@ p {
   height: 200px;
   margin: 1% 2% 1% 1%;
   position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .main-message {
@@ -424,20 +430,20 @@ p {
   .header {
     width: 100%;
     height: 225px;
-    background-image: url("../assets/header.jpg");
+    background-image: url("../assets/test15.jpg");
     background-size: cover;
     position: relative;
   }
 
-  /* 透過した黒を上から重ねるイメージ */
+  /* 透過した黒を上から重ねるイメージ
   .header::before {
     background-color: rgba(0, 0, 0, 0.4);
-    /* 自由に位置指定 */
+    自由に位置指定 
     position: absolute;
     width: 100%;
     height: 225px;
     content: " ";
-  }
+  } */
   .search-bar {
     padding-left: 10%;
     width: 80%;
@@ -489,7 +495,7 @@ p {
   }
   .sub-message {
     color: white;
-    font-size: 8px;
+    font-size: 10px;
   }
 }
 </style>
