@@ -379,7 +379,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* scopeを外してアスタリスクで指定すると余白が消える */
 * {
   margin: 0;

@@ -152,5 +152,18 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+.postedImage {
+  width: 200px;
+  height: auto;
+}
+.form-container {
+  width: 100%;
+  height: auto;
+  padding: 3% 6%;
+  background-color: white;
+}
+.form-block {
+  margin: 5px;
+}
 </style>

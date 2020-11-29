@@ -85,7 +85,7 @@
             @click="openCommentModal"
             >コメント</el-button
           >
-          <el-dialog cafename :visible.sync="CommentDialogVisible" width="70%">
+          <el-dialog cafename :visible.sync="CommentDialogVisible" >
             <div>コメントを記入してください。</div>
             <el-input type="text" v-model="comment" />
             <el-button @click="addComment(post.id)" size="small"
@@ -112,7 +112,7 @@
             >写真</el-button
           >
 
-          <el-dialog cafename :visible.sync="ImageDialogVisible" width="70%">
+          <el-dialog cafename :visible.sync="ImageDialogVisible">
             <p>写真を投稿してください。</p>
             <div class="image-container">
               <div v-if="!image">
@@ -655,6 +655,7 @@ table td {
   height: 250px;
   margin-top: 25px;
 }
+
 
 @media screen and (max-width: 479px) {
   .post-container {
