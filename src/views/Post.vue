@@ -27,8 +27,14 @@
               @click="likes()"
             />
             {{ likeCount }}
-            <el-button class="open shadow" size="small" v-show="post.open">開店</el-button>
-            <el-button class="close shadow" size="small" v-show="post.close" type="danger"
+            <el-button class="open shadow" size="small" v-show="post.open"
+              >開店</el-button
+            >
+            <el-button
+              class="close shadow"
+              size="small"
+              v-show="post.close"
+              type="danger"
               >閉店</el-button
             >
             <el-button
@@ -49,91 +55,11 @@
             >
             <el-dialog cafename :visible.sync="UpdateDialogVisible" width="80%">
               <div class="form-container">
-                <el-input
-                  type="text"
-                  v-model="post.cafename"
-                  placeholder="お店の名前"
-                  class="form-block"
-                />
-                <el-input
-                  type="text"
-                  v-model="post.station"
-                  placeholder="最寄駅"
-                  class="form-block"
-                />
-                <el-input
-                  type="text"
-                  v-model="post.address"
-                  placeholder="住所"
-                  class="form-block"
-                />
-                <el-input
-                  type="text"
-                  v-model="post.tel"
-                  placeholder="電話番号"
-                  class="form-block"
-                />
-                <el-checkbox-button v-model="post.wifi"
-                  >wi-fiあり</el-checkbox-button
-                >
-                <el-checkbox-button v-model="post.date"
-                  >デートにお勧め</el-checkbox-button
-                >
-                <el-checkbox-button v-model="post.studying"
-                  >勉強しやすい</el-checkbox-button
-                >
-                <el-checkbox-button v-model="post.goodcoffee"
-                  >こだわりコーヒー</el-checkbox-button
-                >
-                <el-checkbox-button v-model="post.coffeestand"
-                  >コーヒースタンド</el-checkbox-button
-                >
-                <el-checkbox-button v-model="post.stayslone"
-                  >一人で過ごしやすい</el-checkbox-button
-                >
-                <star-rating
-                  v-model="post.rating"
-                  v-bind:increment="1"
-                  v-bind:max-rating="5"
-                  inactive-color="#9e9e9e"
-                  active-color="#E6E635"
-                  v-bind:star-size="30"
-                  @rating-selected="setRating"
-                ></star-rating>
-                <el-input
-                  type="text"
-                  v-model="post.content"
-                  placeholder="感想"
-                  class="form-block"
-                />
-                <el-input
-                  type="text"
-                  v-model="post.holiday"
-                  placeholder="定休日"
-                  class="form-block"
-                />
-                <el-checkbox v-model="post.open" class="form-block"
-                  >開店</el-checkbox
-                >
-                <el-checkbox v-model="post.close" class="form-block"
-                  >閉店</el-checkbox
-                >
-
-                <div id="image-container">
-                  <div v-if="!post.image">
-                    <input
-                      type="file"
-                      @change="onFileChange"
-                      class="form-block"
-                    />
-                  </div>
-                  <div v-else>
-                    <img :src="post.image" class="postedImage" />
-                    <el-button @click="removeImage">Remove</el-button>
-                  </div>
-                </div>
+                <post-form
+                  :post="post"
+                  @update="updateButton(post)"
+                ></post-form>
               </div>
-              <el-button @click="updateButton(post)">更新する</el-button>
             </el-dialog>
           </div>
 
@@ -152,13 +78,19 @@
               </div>
             </div>
           </div>
-          <el-button type="primary" class="shadow" size="small" @click="openCommentModal"
+          <el-button
+            type="primary"
+            class="shadow"
+            size="small"
+            @click="openCommentModal"
             >コメント</el-button
           >
           <el-dialog cafename :visible.sync="CommentDialogVisible" width="70%">
             <div>コメントを記入してください。</div>
             <el-input type="text" v-model="comment" />
-            <el-button @click="addComment(post.id)" size="small">コメントする</el-button>
+            <el-button @click="addComment(post.id)" size="small"
+              >コメントする</el-button
+            >
           </el-dialog>
 
           <hr />
@@ -172,7 +104,11 @@
               <img :src="image.image" class="picture" alt />
             </div>
           </div>
-          <el-button type="primary" class="shadow" size="small" @click="openImageModal"
+          <el-button
+            type="primary"
+            class="shadow"
+            size="small"
+            @click="openImageModal"
             >写真</el-button
           >
 
@@ -240,7 +176,8 @@
 
 <script>
 import { db, firebase } from "@/firebase";
-import StarRating from "vue-star-rating";
+// import StarRating from "vue-star-rating";
+import PostForm from "@/components/PostForm.vue";
 export default {
   data() {
     return {
@@ -265,7 +202,8 @@ export default {
     };
   },
   components: {
-    StarRating
+    //   StarRating
+    PostForm
   },
   computed: {
     userId() {
@@ -489,30 +427,33 @@ export default {
           let storageRef = firebase
             .storage()
             .ref(`images/${this.user.displayName}/` + this.file.name);
-          storageRef.getDownloadURL().then((url) => {
-            //getDownloadURLメソッドでstorageから取得している
-            console.log(url);
-            console.log(this.image);
-            this.url = url;
-            //このurlはfirebaseからの画像情報になる
-            window.alert("storageに格納しました");
-            const channelId = this.$route.params.id;
-            db.collection("posts")
-              .doc(channelId)
-              .collection("images")
-              .add({
-                image: this.url,
-                createdAt: new Date().getTime(),
-                user: {
-                  id: this.userId,
-                  name: this.user.displayName,
-                  thumbnail: this.user.photoURL,
-                },
-              });
-          }).then(() => {
-          alert("コメントの追加をしました");
-          this.ImageDialogVisible = false;
-        });
+          storageRef
+            .getDownloadURL()
+            .then((url) => {
+              //getDownloadURLメソッドでstorageから取得している
+              console.log(url);
+              console.log(this.image);
+              this.url = url;
+              //このurlはfirebaseからの画像情報になる
+              window.alert("storageに格納しました");
+              const channelId = this.$route.params.id;
+              db.collection("posts")
+                .doc(channelId)
+                .collection("images")
+                .add({
+                  image: this.url,
+                  createdAt: new Date().getTime(),
+                  user: {
+                    id: this.userId,
+                    name: this.user.displayName,
+                    thumbnail: this.user.photoURL,
+                  },
+                });
+            })
+            .then(() => {
+              alert("コメントの追加をしました");
+              this.ImageDialogVisible = false;
+            });
         });
       }
     },
@@ -599,14 +540,11 @@ hr {
   background-color: white;
 }
 /* ユーザのコメント */
-.comment-container
- {
+.comment-container {
   width: 100%;
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  
-  
 }
 .user-thumbnail {
   width: 5%;
@@ -624,12 +562,10 @@ hr {
   display: flex;
   flex-wrap: wrap;
   padding: 0 0 0 2%;
-  
 }
 .image-block {
   width: 100%;
   height: 180px;
-  
 }
 /* ユーザのコメント */
 .image-block img {

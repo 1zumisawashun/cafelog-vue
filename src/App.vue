@@ -45,6 +45,7 @@
                   class="el-icon-close modalClose"
                   　@click="closeModal"
                 ></i>
+                <!-- ここからコンポーネントで使う -->
                 <el-input
                   type="text"
                   v-model="cafename"
@@ -128,6 +129,7 @@
                     <el-button @click="removeImage">Remove</el-button>
                   </div>
                 </div>
+                <!-- ここまでコンポーネントで切り離す -->
                 <el-button @click="addPosts" class="form-block">Post</el-button>
               </div>
             </div>
