@@ -130,14 +130,14 @@ export default {
         snapshot.docChanges().forEach(change => {
           const doc = change.doc;
           if (change.type === "added") {
-            this.posts.push({
+            this.posts.unshift({
               id: doc.id,
               ...doc.data(),
               daisuki: false
               //dbには入れないで一つの投稿に判別の為のプロパティを入れる
             });
           } else if (change.type === "removed") {
-            this.posts.splice(7, 1);
+            this.posts.splice(0, 1);
             // limit,orderbyも使う時はremovedも使わなくてはいけない
           }
           console.log(change.type);

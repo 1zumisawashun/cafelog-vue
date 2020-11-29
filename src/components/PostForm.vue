@@ -93,7 +93,10 @@ import StarRating from "vue-star-rating";
 //import { db } from "@/firebase";
 export default {
   data() {
-    return {};
+    return {
+      newfile: [],
+      image: ""
+    };
   },
   props: ["post"],
   components: {
@@ -106,7 +109,7 @@ export default {
   },
   mounted() {
     console.log(this.post);
-    console.log(this.post.cafename);
+    console.log(this.post.image);
   },
   methods: {
     onFileChange: function(event) {
@@ -121,19 +124,28 @@ export default {
       var image = new Image();
       var reader = new FileReader();
       var vm = this;
+      console.log(vm.image)
       reader.onload = function(event) {
-        vm.image = event.target.result;
+        vm.post.image = event.target.result;
+        //vm.imageだとエラーになる。ここでかなり詰まったので注意。
+        console.log(event.target.result)
         //これもthis.imageだよ！
-        console.log(vm.image);
+        console.log(vm.image)
+        console.log("写真を読み込んでいるよ")
       };
       reader.readAsDataURL(file);
-      console.log(file);
-      console.log(vm.image);
-      this.file = file;
+      this.post.file = file
+      //fileの要素をpostの中に入れて一気にemitするため→二個以上の要素をemitで出せるか検証中
+      console.log(this.post);
+      
     },
     removeImage: function() {
       //this.image = ""; updateができない
-      this.post[0].image = "";
+      this.post.image = "";
+    },
+    setRating: function(rating) {
+      this.rating = rating;
+      console.log(this.rating);
     },
   }
 };

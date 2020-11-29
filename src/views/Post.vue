@@ -193,7 +193,7 @@ export default {
       comment: "",
       images: [],
       image: "", //event.target.result→すごく長い文字列が格納されている
-      file: "", //写真の情報が格納されている
+      file: [], //写真の情報が格納されている
       url: null, //storageの情報が格納されている
       beLiked: false,
       likeCount: 0,
@@ -318,32 +318,47 @@ export default {
       this.UpdateDialogVisible = true;
     },
     updateButton(post) {
-      db.collection("posts")
-        .doc(post.id)
-        .update({
-          cafename: post.cafename,
-          content: post.content,
-          holiday: post.holiday,
-          station: post.station,
-          address: post.address,
-          tel: post.tel,
-          wifi: post.wifi,
-          date: post.date,
-          studying: post.studying,
-          goodcoffee: post.goodcoffee,
-          coffeestand: post.coffeestand,
-          stayalone: post.stayalone,
-          rating: post.rating,
-          open: post.open,
-          close: post.close,
-          image: post.image,
-          // post.urlにしない
-          createdAt: new Date().getTime(),
-          user: {
-            id: this.user.uid,
-            name: this.user.displayName,
-            thumbnail: this.user.photoURL
-          }
+      //fileの中身もしっかりemitされている。
+      console.log(post);
+      let storageRef = firebase
+        .storage()
+        .ref(`posts/${this.user.displayName}/` + post.file.name);
+      storageRef
+        .put(post.file)
+        .then(() => {
+          let storageRef = firebase
+            .storage()
+            .ref(`posts/${this.user.displayName}/` + post.file.name);
+          storageRef.getDownloadURL().then(url => {
+            //urlが画像表示の肝になる
+            db.collection("posts")
+              .doc(post.id)
+              .update({
+                cafename: post.cafename,
+                content: post.content,
+                holiday: post.holiday,
+                station: post.station,
+                address: post.address,
+                tel: post.tel,
+                wifi: post.wifi,
+                date: post.date,
+                studying: post.studying,
+                goodcoffee: post.goodcoffee,
+                coffeestand: post.coffeestand,
+                stayalone: post.stayalone,
+                rating: post.rating,
+                open: post.open,
+                close: post.close,
+                image: url,
+                // post.urlにしない
+                createdAt: new Date().getTime(),
+                user: {
+                  id: this.user.uid,
+                  name: this.user.displayName,
+                  thumbnail: this.user.photoURL
+                }
+              });
+          });
         })
         .then(() => {
           alert("メッセージの更新に成功しました");

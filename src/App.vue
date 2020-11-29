@@ -303,10 +303,12 @@ export default {
       reader.onload = function (event) {
         vm.image = event.target.result;
         //これもthis.imageだよ！
+        //vm.imageが投稿前の画像表示の中身になる
         console.log(vm.image);
       };
       reader.readAsDataURL(file);
       console.log(file);
+      console.log(vm)
       console.log(vm.image);
       this.file = file;
     },
@@ -359,23 +361,6 @@ export default {
           window.alert("firestoreに格納しました。これで表示されます");
         })
         .then(() => {
-          // (this.cafename = ""),
-          //   (this.content = ""),
-          //   (this.holiday = ""),
-          //   (this.station = ""),
-          //   (this.address = ""),
-          //   (this.tel = ""),
-          //   (this.wifi = ""),
-          //   (this.date = ""),
-          //   (this.studying = ""),
-          //   (this.goodcoffee = ""),
-          //   (this.coffeestand = ""),
-          //   (this.stayalone = ""),
-          //   (this.rating = ""),
-          //   (this.open = ""),
-          //   (this.close = ""),
-          //   (this.url = ""),
-          //   (this.image = "");
           this.modal = false;
         });
     },
