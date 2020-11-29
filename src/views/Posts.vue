@@ -15,7 +15,9 @@
         ></el-input>
       </div>
     </div>
-    
+    <div class="heading-container">
+      <h2>投稿順で探す</h2>
+    </div>
     <div class="posts-container">
       <Card
         class="card l-card"
@@ -24,9 +26,13 @@
         :post="post"
       ></Card>
     </div>
-
+    <div class="heading-container">
+      <h2>東京でおすすめカフェ</h2>
+    </div>
     <Carousel></Carousel>
-
+    <div class="heading-container">
+      <h2>渋谷のカフェを探す</h2>
+    </div>
     <div class="posts-container">
       <Card
         class="card l-card"
@@ -35,9 +41,13 @@
         :post="post"
       ></Card>
     </div>
-
+<div class="heading-container">
+      <h2>旅行先のカフェ</h2>
+    </div>
     <Carousel></Carousel>
-
+<div class="heading-container">
+      <h2>Wi-Fiのあるカフェ</h2>
+    </div>
     <div class="posts-container">
       <Card
         class="card l-card"
@@ -46,7 +56,6 @@
         :post="post"
       ></Card>
     </div>
-    
   </div>
 </template>
 
@@ -339,7 +348,36 @@ p {
 .responsive-footer {
   display: none;
 }
+.heading-container {
+  width: 80%;
+  margin: 0 auto;
+}
 
+h2 {
+  color: #4a4141;
+  position: relative;
+  margin: 0.5% 0 0 1%;
+  text-align: center;
+  width: 250px;
+}
+
+h2:after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  content: "";
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#4a4141),
+    to(#f1f1f1)
+  );
+  background-image: -webkit-linear-gradient(left, #4a4141 0%, #f1f1f1 100%);
+  background-image: linear-gradient(to right, #4a4141 0%, #f1f1f1 100%);
+}
 @media screen and (max-width: 479px) {
   .card {
     width: 46%;
@@ -368,6 +406,36 @@ p {
   }
   .all-container {
     padding-bottom: 67.5px;
+  }
+  .heading-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  h2 {
+    color: #4a4141;
+    font-size: 18px;
+    position: relative;
+    margin: 1.5% 0 0 1.5%;
+    text-align: left;
+    width: 200px;
+  }
+
+  h2:after {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    content: "";
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#4a4141),
+      to(#f1f1f1)
+    );
+    background-image: -webkit-linear-gradient(left, #4a4141 0%, #f1f1f1 100%);
+    background-image: linear-gradient(to right, #4a4141 0%, #f1f1f1 100%);
   }
 }
 </style>

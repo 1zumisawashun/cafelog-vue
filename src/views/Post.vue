@@ -53,7 +53,7 @@
               v-show="isPosted"
               >UPDATE</el-button
             >
-            <el-dialog cafename :visible.sync="UpdateDialogVisible" width="80%">
+            <el-dialog cafename :visible.sync="UpdateDialogVisible" width="75%">
               <div class="form-container">
                 <post-form
                   :post="post"

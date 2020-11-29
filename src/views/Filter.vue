@@ -177,7 +177,7 @@ export default {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.posts.push({ id: doc.id, ...doc.data() });
+          this.posts.push({ id: doc.id, ...doc.data(), daisuki: false });
         });
       });
   }

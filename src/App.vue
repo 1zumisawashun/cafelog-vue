@@ -8,7 +8,6 @@
         </div>
         <div class="link-container">
           <div>
-            
             <router-link to="/posts" class="el-icon-house"
               >HomePage</router-link
             >
@@ -17,8 +16,8 @@
             >LogOut</a
           >
           <span v-else>
-          <a class="el-icon-s-tools"  v-on:click="login">LogIn</a>
-          <a class="el-icon-setting"  @click="anonymouse">guestlogin</a>
+            <a class="el-icon-s-tools" v-on:click="login">LogIn</a>
+            <a class="el-icon-setting" @click="anonymouse">guestlogin</a>
           </span>
           <div>
             <router-link
@@ -36,13 +35,13 @@
           <a class="el-icon-position" @click="openModal" v-if="isAuthenticated"
             >Post</a
           >
-          
+
           <transition name="my-modal">
             <div class="my-modal" v-if="modal">
               <div class="form-container">
                 <i
                   type="primary"
-                  class="el-icon-close modalClose"
+                  class="el-icon-close modal-close"
                   　@click="closeModal"
                 ></i>
                 <!-- ここからコンポーネントで使う -->
@@ -70,33 +69,38 @@
                   placeholder="電話番号"
                   class="form-block"
                 />
-                <el-checkbox-button v-model="wifi"
-                  >wi-fiあり</el-checkbox-button
-                >
-                <el-checkbox-button v-model="date"
-                  >デートにお勧め</el-checkbox-button
-                >
-                <el-checkbox-button v-model="studying"
-                  >勉強しやすい</el-checkbox-button
-                >
-                <el-checkbox-button v-model="goodcoffee"
-                  >こだわりコーヒー</el-checkbox-button
-                >
-                <el-checkbox-button v-model="coffeestand"
-                  >コーヒースタンド</el-checkbox-button
-                >
-                <el-checkbox-button v-model="stayalone"
-                  >一人で過ごしやすい</el-checkbox-button
-                >
-                <star-rating
-                  v-model="rating"
-                  v-bind:increment="1"
-                  v-bind:max-rating="5"
-                  inactive-color="#9e9e9e"
-                  active-color="#E6E635"
-                  v-bind:star-size="30"
-                  @rating-selected="setRating"
-                ></star-rating>
+                <div class="form-block">
+                  <!-- divで囲まないと中途半端なレイアウトになる -->
+                  <el-checkbox-button v-model="wifi"
+                    >wi-fiあり</el-checkbox-button
+                  >
+                  <el-checkbox-button v-model="date"
+                    >デートにお勧め</el-checkbox-button
+                  >
+                  <el-checkbox-button v-model="studying"
+                    >勉強しやすい</el-checkbox-button
+                  >
+                  <el-checkbox-button v-model="goodcoffee"
+                    >こだわりコーヒー</el-checkbox-button
+                  >
+                  <el-checkbox-button v-model="coffeestand"
+                    >コーヒースタンド</el-checkbox-button
+                  >
+                  <el-checkbox-button v-model="stayalone"
+                    >一人で過ごしやすい</el-checkbox-button
+                  >
+                </div>
+                <div class="form-block">
+                  <star-rating
+                    v-model="rating"
+                    v-bind:increment="1"
+                    v-bind:max-rating="5"
+                    inactive-color="#9e9e9e"
+                    active-color="#E6E635"
+                    v-bind:star-size="30"
+                    @rating-selected="setRating"
+                  ></star-rating>
+                </div>
                 <el-input
                   type="text"
                   v-model="content"
@@ -109,12 +113,10 @@
                   placeholder="定休日"
                   class="form-block"
                 />
-                <el-checkbox v-model="open" class="form-block"
-                  >開店</el-checkbox
-                >
-                <el-checkbox v-model="close" class="form-block"
-                  >閉店</el-checkbox
-                >
+                <div class="form-block">
+                  <el-checkbox-button v-model="open">開店</el-checkbox-button>
+                  <el-checkbox-button v-model="close">閉店</el-checkbox-button>
+                </div>
 
                 <div id="image-container">
                   <div v-if="!image">
@@ -125,12 +127,18 @@
                     />
                   </div>
                   <div v-else>
+                    <div class="form-block">
                     <img :src="image" class="postedImage" />
                     <el-button @click="removeImage">Remove</el-button>
                   </div>
+                  </div>
                 </div>
                 <!-- ここまでコンポーネントで切り離す -->
-                <el-button @click="addPosts" class="form-block">Post</el-button>
+                <div class="form-block">
+                  <el-button @click="addPosts" class="form-block"
+                    >POST</el-button
+                  >
+                </div>
               </div>
             </div>
           </transition>
@@ -444,7 +452,7 @@ export default {
 }
 
 .postedImage {
-  width: 100px;
+  width: 150px;
   height: auto;
 }
 /* modalの要素 */
@@ -470,20 +478,24 @@ export default {
   height: 100vh;
 }
 .form-container {
-  width: 65%;
+  width: 75%;
   height: auto;
-  margin: 0 auto;
+  padding: 3% 6%;
   background-color: white;
-  padding: 30px;
 }
 .form-block {
-  margin: 3px;
+  margin: 5px;
 }
 .drower-container {
   display: none;
 }
 .responsive-footer {
   display: none;
+}
+.modal-close {
+  /* モーダルを閉じる×印を右端に寄せる */
+  width: 100%;
+  text-align: end;
 }
 @media screen and (max-width: 479px) {
   .sidebar {
