@@ -16,10 +16,29 @@ import {
   faCoffee,
   faCheck,
   faCheckCircle,
-  faHeart
+  faHeart,
+  faHome,
+  faSignOutAlt,
+  faSignInAlt,
+  faUser,
+  faSearch,
+  faPaperPlane,
+  faUserSecret
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(faCoffee, faCheck, faCheckCircle, faHeart);
+library.add(
+  faCoffee,
+  faCheck,
+  faCheckCircle,
+  faHeart,
+  faHome,
+  faSignOutAlt,
+  faSignInAlt,
+  faUser,
+  faSearch,
+  faPaperPlane,
+  faUserSecret
+);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 //面倒だが推奨に習って一個ずつインポートする必要がある。
 //------------font-awesomeここまで

@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="heading-container">
-      <h2>投稿順で探す</h2>
+      <h3>投稿順でカフェを探す</h3>
     </div>
     <div class="posts-container">
       <Card
@@ -27,11 +27,11 @@
       ></Card>
     </div>
     <div class="heading-container">
-      <h2>東京でおすすめカフェ</h2>
+      <h3>東京都内のカフェを探す</h3>
     </div>
     <Carousel></Carousel>
     <div class="heading-container">
-      <h2>渋谷のカフェを探す</h2>
+      <h3>渋谷のカフェを探す</h3>
     </div>
     <div class="posts-container">
       <Card
@@ -42,11 +42,11 @@
       ></Card>
     </div>
 <div class="heading-container">
-      <h2>旅行先のカフェ</h2>
+      <h3>旅行先でカフェを探す</h3>
     </div>
     <Carousel></Carousel>
 <div class="heading-container">
-      <h2>Wi-Fiのあるカフェ</h2>
+      <h3>Wi-Fi完備のカフェを探す</h3>
     </div>
     <div class="posts-container">
       <Card
@@ -196,6 +196,7 @@ export default {
   background-image: url("../assets/test15.jpg");
   background-size: contain;
   position: relative;
+  margin: 0 0 10px 0;
 }
 
 /* 透過した黒を上から重ねるイメージ 
@@ -353,15 +354,15 @@ p {
   margin: 0 auto;
 }
 
-h2 {
+h3 {
   color: #4a4141;
   position: relative;
   margin: 0.5% 0 0 1%;
-  text-align: center;
+  text-align: left;
   width: 250px;
 }
 
-h2:after {
+h3:after {
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -411,7 +412,7 @@ h2:after {
     width: 90%;
     margin: 0 auto;
   }
-  h2 {
+  h3 {
     color: #4a4141;
     font-size: 18px;
     position: relative;
@@ -420,7 +421,7 @@ h2:after {
     width: 200px;
   }
 
-  h2:after {
+  h3:after {
     position: absolute;
     bottom: -5px;
     left: 0;

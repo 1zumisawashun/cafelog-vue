@@ -6,7 +6,8 @@
         <div class="post-info">
           <img :src="post.image" class="image shadow" />
           <div class="content-block">
-            投稿者のコメント
+            <h3>投稿者のコメント</h3>
+            <hr>
             <p>{{ post.content }}</p>
           </div>
         </div>
@@ -154,7 +155,7 @@
  <GmapMap
       :center="{lat:10, lng:10}"
       :zoom="7"
-      map-type-id="terrain"
+      map-type-id="roadmap"
       class="map-block shadow"
       
     >
@@ -204,7 +205,11 @@ export default {
       likeCount: 0,
       commentCount: 0,
       isPosted: false,
-      isNotLoginUser: true
+      isNotLoginUser: true,
+      markers: [
+        { position: { lng: 10.2, lat: 10 } },
+        { position: { lng: 10.5, lat: 10 } }
+      ]
     };
   },
   components: {
@@ -699,6 +704,9 @@ table td {
   width: 100%;
   height: 250px;
   margin-top: 25px;
+}
+.form-container{
+  width: none;
 }
 
 

@@ -7,33 +7,31 @@
           <img src="./assets/logo.jpg" class="logo" />
         </div>
         <div class="link-container">
-          <div>
-            <router-link to="/posts" class="el-icon-house"
-              >HomePage</router-link
-            >
-          </div>
-          <a v-if="isAuthenticated" class="el-icon-setting" v-on:click="logout"
-            >LogOut</a
+          <router-link to="/posts"
+            ><font-awesome-icon icon="home"　class="font-awesome-adjustment" />
+            <div>Home</div>
+          </router-link>
+          <a v-if="isAuthenticated" v-on:click="logout"
+            ><font-awesome-icon icon="sign-out-alt" class="font-awesome-adjustment" />LogOut</a
           >
-          <span v-else>
-            <a class="el-icon-s-tools" v-on:click="login">LogIn</a>
-            <a class="el-icon-setting" @click="anonymouse">guestlogin</a>
-          </span>
-          <div>
-            <router-link
-              :to="`/users/${userId}`"
-              v-if="isAuthenticated"
-              class="el-icon-user"
-              >MyPage</router-link
-            >
-          </div>
-          <div>
-            <router-link to="/search" class="el-icon-search"
-              >Search</router-link
-            >
-          </div>
-          <a class="el-icon-position" @click="openModal" v-if="isAuthenticated"
-            >Post</a
+
+          <a @click="login" v-if="!isAuthenticated"
+            ><font-awesome-icon icon="sign-in-alt" class="font-awesome-adjustment"/>LogIn</a
+          >
+          <a @click="anonymouse" v-if="!isAuthenticated"
+            ><font-awesome-icon icon="user-secret" class="font-awesome-adjustment"/>GuestLogin</a
+          >
+
+          <router-link :to="`/users/${userId}`" v-if="isAuthenticated"
+            ><font-awesome-icon icon="user" class="font-awesome-adjustment"/>MyPage</router-link
+          >
+
+          <router-link to="/search"
+            ><font-awesome-icon icon="search" class="font-awesome-adjustment"/>Search</router-link
+          >
+
+          <a @click="openModal" v-if="isAuthenticated"
+            ><font-awesome-icon icon="paper-plane" class="font-awesome-adjustment"/>Post</a
           >
 
           <transition name="my-modal">
@@ -128,9 +126,9 @@
                   </div>
                   <div v-else>
                     <div class="form-block">
-                    <img :src="image" class="postedImage" />
-                    <el-button @click="removeImage">Remove</el-button>
-                  </div>
+                      <img :src="image" class="postedImage" />
+                      <el-button @click="removeImage">Remove</el-button>
+                    </div>
                   </div>
                 </div>
                 <!-- ここまでコンポーネントで切り離す -->
@@ -151,27 +149,33 @@
     <div class="responsive-footer">
       <div class="link-block">
         <router-link to="/posts"
-          ><div class="el-icon-house"></div>
+          ><font-awesome-icon icon="home" />
           <div>Home</div></router-link
         >
       </div>
       <div class="link-block">
         <router-link to="/search"
-          ><div class="el-icon-search"></div>
+          ><font-awesome-icon icon="search" />
           <div>Search</div></router-link
         >
       </div>
       <div class="link-block" v-if="isAuthenticated">
         <router-link :to="`/users/${userId}`"
-          ><div class="el-icon-user"></div>
+          ><font-awesome-icon icon="user" />
           <div>User</div></router-link
         >
       </div>
-      <div class="link-block" v-else>
+      <div class="link-block" v-if="!isAuthenticated">
         <a v-on:click="login"
-          ><div class="el-icon-s-tools"></div>
+          ><font-awesome-icon icon="sign-in-alt" />
           <div>LogIn</div>
         </a>
+      </div>
+      <div class="link-block" v-if="!isAuthenticated">
+        <a @click="anonymouse"
+          ><font-awesome-icon icon="user-secret" />
+          <div>Guest</div></a
+        >
       </div>
     </div>
   </div>
@@ -211,15 +215,6 @@ export default {
     StarRating
   },
   mounted() {
-    // db.collection("channels")
-    //   .where("cafename", "==", "test")
-    //   .get()
-    //   .then(querySnapshot => {
-    //     querySnapshot.forEach(doc => {
-    //       this.channels.push({ id: doc.id, ...doc.data() });
-    //       console.log(doc.data().id);
-    //     });
-    //   });
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setUser(user);
@@ -234,6 +229,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
+          //ここでゲストログインをユーザは痕跡を全て消す。
           this.setUser(null);
           window.alert("ログアウトに成功しました");
         })
@@ -308,7 +304,7 @@ export default {
       };
       reader.readAsDataURL(file);
       console.log(file);
-      console.log(vm)
+      console.log(vm);
       console.log(vm.image);
       this.file = file;
     },
@@ -415,6 +411,7 @@ export default {
   cursor: pointer;
   margin-left: 35px;
   font-weight: bold;
+  display: flex;
 }
 .logo-container {
   width: 50%;
@@ -482,6 +479,10 @@ export default {
   width: 100%;
   text-align: end;
 }
+.font-awesome-adjustment{
+  margin: 3px 2px 0 0;
+}
+
 @media screen and (max-width: 479px) {
   .sidebar {
     display: none;
@@ -508,7 +509,7 @@ export default {
     justify-content: space-between;
   }
   .link-block {
-    padding: 5px 40px;
+    padding: 5px 25px;
     display: flex;
     text-align: center;
   }
