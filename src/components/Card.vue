@@ -65,7 +65,7 @@
 
 <script>
 import StarRating from "vue-star-rating";
-import { db } from "@/firebase";
+import { db, firebase } from "@/firebase";
 export default {
   data() {
     return {
@@ -85,26 +85,31 @@ export default {
   methods: {
     //LikesCollectionとpostsCollection両方のdbをいじって表示を変更させる。
     likes(post) {
-      db.collection("posts")
-        .doc(post.id)
-        .collection("likes")
-        .doc(this.user.uid)
-        .set({
-          //setはaddと違いしていたidにデータをいれることができる。
-          //一番上に来るのがidに当てはめられる
-          id: post.id,
-          cafename: post.cafename,
-          station: post.station,
-          image: post.image,
-          rating: post.rating,
-          user: {
-            id: post.user.id,
-            name: post.user.name,
-            thumbnail: post.user.thumbnail
-          },
-          currentUser: this.user.uid
-        });
-      alert("「いいね」を付けました。");
+      if (this.user == null) {
+        alert(post.cafename + "にいいねをつけるにはログインをしてください。");
+        this.login();
+      } else {
+        db.collection("posts")
+          .doc(post.id)
+          .collection("likes")
+          .doc(this.user.uid)
+          .set({
+            //setはaddと違いしていたidにデータをいれることができる。
+            //一番上に来るのがidに当てはめられる
+            id: post.id,
+            cafename: post.cafename,
+            station: post.station,
+            image: post.image,
+            rating: post.rating,
+            user: {
+              id: post.user.id,
+              name: post.user.name,
+              thumbnail: post.user.thumbnail
+            },
+            currentUser: this.user.uid
+          });
+        alert("「いいね」を付けました。");
+      }
     },
     unlikes(post) {
       db.collection("posts")
@@ -114,6 +119,25 @@ export default {
         .delete();
       post.daisuki = false;
       alert("「いいね」を消しました。");
+    },
+    login() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+          db.collection("users").add({
+            id: result.user.uid,
+            name: result.user.displayName,
+            thumbnail: result.user.photoURL,
+            email: result.user.email
+          });
+          const user = result.user;
+          this.setUser(user);
+        })
+        .catch(error => {
+          window.alert(error);
+        });
     }
   },
   //いいねの色を変えるのは共通で必要になる機能なのでcard.vueで定義する

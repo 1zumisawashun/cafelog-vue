@@ -13,7 +13,7 @@
         <div style="margin: 10px">
           <div class="cafename">{{ post.cafename }}</div>
 
-          <div class="beLiked">
+          <div class="beLiked" v-show="isNotLoginUser">
             <font-awesome-icon
               class="save-container dislike"
               icon="heart"
@@ -151,17 +151,22 @@
             <td>{{ post.tel }}</td>
           </tr>
         </table>
-
-        <div class="map-container">
-          <GmapMap
-            :center="{ lat: 10, lng: 10 }"
-            :zoom="6"
-            class="shadow map-block"
-          >
-            <GmapMarker :key="index" :draggable="true" />
-          </GmapMap>
-        </div>
-        <!--eslint-disable-->
+ <GmapMap
+      :center="{lat:10, lng:10}"
+      :zoom="7"
+      map-type-id="terrain"
+      class="map-block shadow"
+      
+    >
+      <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center=m.position"
+      />
+    </GmapMap>
         <!-- <div class="chat-maker">
           <el-button
             @click="makeChannels(post.cafename, post.user.id, post.image)"
@@ -198,7 +203,8 @@ export default {
       beLiked: false,
       likeCount: 0,
       commentCount: 0,
-      isPosted: false
+      isPosted: false,
+      isNotLoginUser: true
     };
   },
   components: {
@@ -218,23 +224,33 @@ export default {
   },
   mounted() {
     //いいねを付ける、取り外しをする
-    console.log(this.post);
+
+    // console.log(this.post);
     const postId = this.$route.params.id;
-    const userid = this.userId; //よくわからないがuseridを再度定義しないとエラーになる為記載
-    db.collection("posts")
-      .doc(postId)
-      .collection("likes")
-      .where("currentUser", "==", userid)
-      .get()
-      .then(doc => {
-        if (doc.docs.length === 1) {
-          this.beLiked = true;
-          console.log(this.beLiked);
-        } else {
-          this.beLiked = false;
-          console.log(this.beLiked);
-        }
-      });
+    if (this.user === null) {
+      this.isNotLoginUser = false;
+    } else {
+      const userid = this.userId; //よくわからないがuseridを再度定義しないとエラーになる為記載
+      db.collection("posts")
+        .doc(postId)
+        .collection("likes")
+        .where("currentUser", "==", userid)
+        .get()
+        .then(doc => {
+          if (doc.docs.length === 1) {
+            this.beLiked = true;
+            console.log(this.beLiked);
+          } else {
+            this.beLiked = false;
+            console.log(this.beLiked);
+          }
+        })
+        .catch(function(error) {
+          // いずれかのreadFileでエラーがあった場合の処理
+          console.log(error);
+          this.guestuser = false;
+        });
+    }
     //いいねをカウントする
     const likeRef = db
       .collection("posts")
@@ -309,10 +325,20 @@ export default {
   },
   methods: {
     openCommentModal() {
-      this.CommentDialogVisible = true;
+      if (this.user == null) {
+        alert("ログインしてください。");
+        this.login();
+      } else {
+        this.CommentDialogVisible = true;
+      }
     },
     openImageModal() {
-      this.ImageDialogVisible = true;
+      if (this.user == null) {
+        alert("ログインしてください。");
+        this.login();
+      } else {
+        this.ImageDialogVisible = true;
+      }
     },
     openUpdateModal() {
       this.UpdateDialogVisible = true;
@@ -515,7 +541,26 @@ export default {
       this.beLiked = false;
       alert("いいねを消しました。");
     },
-  },
+  login() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+          db.collection("users").add({
+            id: result.user.uid,
+            name: result.user.displayName,
+            thumbnail: result.user.photoURL,
+            email: result.user.email
+          });
+          const user = result.user;
+          this.setUser(user);
+        })
+        .catch(error => {
+          window.alert(error);
+        });
+  }
+  }
 };
 </script>
 

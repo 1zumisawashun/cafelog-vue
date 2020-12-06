@@ -25,7 +25,9 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 //------------font-awesomeここまで
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyD4gF9HU4F7dz_aWGynXJ3jgS9qCPufJ10",
+    // key: "AIzaSyD4gF9HU4F7dz_aWGynXJ3jgS9qCPufJ10",
+    key: "AIzaSyDeBCEsPiM8uPKHdTcrvgL4A01jrKkl5zA",
+    //GCPでアップデートしたらAPIも新しく発行された。
     libraries: "places",
     region: "JP",
     language: "ja"
