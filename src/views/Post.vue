@@ -1,5 +1,6 @@
 <template>
-  <!-- eslint-disable  -->
+  <div class="flex">
+    <!-- eslint-disable  -->
   <div class="post-container">
     <div class="post-block">
       <div v-for="(post, index) in post" :key="index">
@@ -152,7 +153,7 @@
             <td>{{ post.tel }}</td>
           </tr>
         </table>
- <GmapMap
+    <GmapMap
       :center="{lat:10, lng:10}"
       :zoom="7"
       map-type-id="roadmap"
@@ -178,10 +179,22 @@
       </div>
     </div>
   </div>
+  <div class="side-menu" >
+    <div class="side-menu-title">同じエリアで <br> おすすめ</div>
+    <div v-for="(recommend, index) in this.recommends" :key="index">
+      <div class="side-menu-content">
+       <img :src="recommend.image" class="side-menu-image shadow">
+       <div class="side-menu-cafename">{{recommend.cafename}}</div>
+       <div class="side-menu-station">{{recommend.station}}</div>
+     </div>
+    </div>
+  </div>
+    </div>
 </template>
 
 <script>
 import { db, firebase } from "@/firebase";
+
 // import StarRating from "vue-star-rating";
 import PostForm from "@/components/PostForm.vue";
 export default {
@@ -209,7 +222,8 @@ export default {
       markers: [
         { position: { lng: 10.2, lat: 10 } },
         { position: { lng: 10.5, lat: 10 } }
-      ]
+      ],
+      recommends: []
     };
   },
   components: {
@@ -230,7 +244,7 @@ export default {
   mounted() {
     //いいねを付ける、取り外しをする
 
-    // console.log(this.post);
+    console.log(this.post);
     const postId = this.$route.params.id;
     if (this.user === null) {
       this.isNotLoginUser = false;
@@ -326,6 +340,25 @@ export default {
             });
           }
         });
+      });
+    //リコメンド機能
+    const post = this.post;
+    const osusume = [];
+    db.collection("posts")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          if (post[0].station === doc.data().station) {
+            osusume.push({ id: doc.id, ...doc.data() });
+            //forEachで配列の外に出しているからdataは[]で準備しておかなくてはならない
+            //mapメソッドを使用すれば問題ないと思う
+          }
+        });
+      })
+      .then(() => {
+        //配列の中、インデックス番号0,1,2を取得してrecommendsに格納する
+        this.recommends = osusume.slice(0, 3);
+        console.log(this.recommends);
       });
   },
   methods: {
@@ -570,13 +603,28 @@ export default {
 </script>
 
 <style scoped>
+/* 左から
+margin 15%
+mainwidth 57.5%
+sidemenuwidth 12.5%
+=85
+margin 15% */
+
+.flex{
+  display: flex;
+  width: 57.5%;
+  margin: 0 0 0 15%;
+  padding: 30px 0;
+}
+
 .dislike {
   color: red;
 }
 .post-container {
   width: 100%;
   height: auto;
-  padding: 30px 0;
+  margin: 0 0 0 0;
+  
 }
 .cafename {
   font-size: 30px;
@@ -584,7 +632,7 @@ export default {
   margin: 10px;
 }
 .post-block {
-  width: 70%;
+  width: 100%;
   height: auto;
   margin: 0 auto;
 }
@@ -596,11 +644,11 @@ hr {
 }
 /* イメージ写真とコメントのボックス */
 .content-block {
-  width: 65%;
+  width: 48%;
   height: auto;
-  margin: 0 0 0 3%;
+  margin: 0 0 0 4%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 10px;
   background-color: white;
 }
@@ -640,10 +688,10 @@ hr {
 }
 
 .image {
-  width: 40%;
+  width: 48%;
   height: 270px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 .shadow {
@@ -707,6 +755,39 @@ table td {
 }
 .form-container{
   width: none;
+}
+
+/* サイドメニュー */
+.side-menu{
+  width: 12.5%;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  left: 75%;
+}
+.side-menu-content{
+  margin: 0 0 10px 0;
+  background-color: white;
+  
+}
+.side-menu-title{
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+.side-menu-image{
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+.side-menu-cafename{
+  font-size: 12px;
+  font-weight: bold;
+}
+.side-menu-station{
+  font-size: 10px;
+  font-weight: bold;
 }
 
 
@@ -808,6 +889,15 @@ table td {
     width: 100%;
     height: 200px;
     margin: 15px 0px;
+  }
+  .side-menu
+  {
+    display: none;
+  }
+  .flex{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0 30px 0;
   }
 }
 </style>

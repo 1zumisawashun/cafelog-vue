@@ -178,6 +178,16 @@
         >
       </div>
     </div>
+    <footer>
+　　<ul class="footer-menu">
+     <li>Home ｜</li>
+     <li>Login ｜</li>
+     <li>GuestLogin ｜</li>
+     <li>Search ｜</li>
+     <li>Contact </li>
+    </ul>
+    <p>© All rights reserved by cafelog.</p>
+  </footer>
   </div>
 </template>
 
@@ -390,7 +400,7 @@ export default {
 }
 .sidebar {
   width: 100%;
-  background: #f1f1f1;
+  background: #f1f1f1; 
   padding: 8px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: flex;
@@ -482,6 +492,18 @@ export default {
 .font-awesome-adjustment{
   margin: 3px 2px 0 0;
 }
+footer{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    color: #4a4141;
+    text-align: center;
+    padding: 15px;
+}
+ul.footer-menu li {
+display: inline;
+padding: 10px 5px;
+}
 
 @media screen and (max-width: 479px) {
   .sidebar {
@@ -519,6 +541,9 @@ export default {
     justify-content: center;
     cursor: pointer;
     font-weight: bold;
+  }
+  footer{
+    display: none;
   }
 }
 </style>

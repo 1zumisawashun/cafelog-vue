@@ -4,17 +4,24 @@
       <div class="title">cafelog</div>
     </div>
     <div class="header">
+      <img src="../assets/header.jpg" class="header-image" />
       <div class="search-bar">
-        <p>行きたいカフェを探そう</p>
-        <!-- eslint-disable -->
-        <el-input v-model="keyword" placeholder="カフェ名" clearable></el-input>
+        <div class="overlay"></div>
+        <p class="header-title">cafelog</p>
+        <p>one cup at a time, one cafe at a time.</p>
+        <p class="overlay-text">
+          cafelog運営を手伝って<br />くれる方募集中!!<br />
+          カフェ投稿数<br />{{ counter }}件
+        </p>
+        <!-- <el-input v-model="keyword" placeholder="カフェ名" clearable></el-input>
         <el-input
           v-model="keyword2"
           placeholder="最寄り駅"
           clearable
-        ></el-input>
+        ></el-input> -->
       </div>
     </div>
+    <!-- eslint-disable -->
     <div class="heading-container">
       <h3>投稿順でカフェを探す</h3>
     </div>
@@ -95,7 +102,8 @@ export default {
 
       beliked: false,
       liked: true,
-      likes: []
+      likes: [],
+      counter: ""
     };
   },
   components: {
@@ -168,6 +176,14 @@ export default {
           this.posts3.push({ id: doc.id, ...doc.data(), daisuki: false });
         });
       });
+
+    //カウンター
+    db.collection("posts")
+      .get()
+      .then(querySnapshot => {
+        this.counter = querySnapshot.docs.length;
+        console.log(querySnapshot.docs.length);
+      });
   }
 };
 </script>
@@ -187,27 +203,32 @@ export default {
   margin: 0 auto;
   flex-wrap: wrap;
   display: flex;
-  margin-top: 1%;
+  /* margin-top: 1%; */
 }
-
+.header-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
 .header {
   width: 100%;
-  height: 325px;
-  background-image: url("../assets/test15.jpg");
-  background-size: contain;
+  height: 350px;
+  /* background-image: url("../assets/picture3.jpg"); */
+  /* background-size: contain; */
   position: relative;
   margin: 0 0 10px 0;
 }
 
-/* 透過した黒を上から重ねるイメージ 
+/* 透過した黒を上から重ねるイメージ  */
 .header::before {
-  background-color: rgba(0, 0, 0, 0.4);
-   自由に位置指定 
+  background: rgba(0, 0, 0, 0.05);
+  /* 自由に位置指定  */
   position: absolute;
   width: 100%;
-  height: 325px;
+  height: 350px;
   content: " ";
-} */
+}
+
 .search-bar {
   padding-left: 20%;
   width: 60%;
@@ -215,9 +236,17 @@ export default {
   padding-top: 100px;
   text-align: center;
   position: absolute;
+  top: 0;
+  left: 0;
+}
+.header-title {
+  color: #4a4141;
+  font-weight: bold;
+  font-size: 70px;
+  margin-bottom: 10px;
 }
 p {
-  color: white;
+  color: #4a4141;
   font-weight: bold;
   font-size: 25px;
   margin-bottom: 10px;
@@ -355,30 +384,32 @@ p {
 }
 
 h3 {
-  color: #4a4141;
-  position: relative;
-  margin: 0.5% 0 0 1%;
+  padding: 0 5px; /*上下 左右の余白*/
+  margin: 5px 15px;
+  color: #494949; /*文字色*/
+  background: transparent; /*背景透明に*/
+  border-left: solid 5px #494949; /*左線*/
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 150px solid rgba(0, 0, 0, 0.2);
+  border-right: 250px solid transparent;
+  border-bottom: 150px solid transparent;
+  border-left: 250px solid rgba(0, 0, 0, 0.2);
+}
+.overlay-text {
+  position: absolute;
+  color: white;
   text-align: left;
-  width: 250px;
+  top: 0%;
+  left: 0%;
+  margin: 35px 0 0 35px;
 }
 
-h3:after {
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  content: "";
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#4a4141),
-    to(#f1f1f1)
-  );
-  background-image: -webkit-linear-gradient(left, #4a4141 0%, #f1f1f1 100%);
-  background-image: linear-gradient(to right, #4a4141 0%, #f1f1f1 100%);
-}
 @media screen and (max-width: 479px) {
   .card {
     width: 46%;
@@ -413,30 +444,7 @@ h3:after {
     margin: 0 auto;
   }
   h3 {
-    color: #4a4141;
-    font-size: 18px;
-    position: relative;
-    margin: 1.5% 0 0 1.5%;
-    text-align: left;
-    width: 200px;
-  }
-
-  h3:after {
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    content: "";
-    background-image: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      from(#4a4141),
-      to(#f1f1f1)
-    );
-    background-image: -webkit-linear-gradient(left, #4a4141 0%, #f1f1f1 100%);
-    background-image: linear-gradient(to right, #4a4141 0%, #f1f1f1 100%);
+    margin: 10px 0 0 0;
   }
 }
 </style>
