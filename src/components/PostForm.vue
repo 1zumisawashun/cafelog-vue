@@ -70,6 +70,18 @@
       <el-checkbox-button v-model="post.open">開店</el-checkbox-button>
       <el-checkbox-button v-model="post.close">閉店</el-checkbox-button>
     </div>
+    <el-input
+      type="text"
+      v-model="post.lat"
+      placeholder="緯度"
+      class="form-block"
+    />
+    <el-input
+      type="text"
+      v-model="post.lng"
+      placeholder="経度"
+      class="form-block"
+    />
     <div id="image-container">
       <div v-if="!post.image">
         <input type="file" @change="onFileChange" class="form-block" />
@@ -131,7 +143,7 @@ export default {
         console.log(event.target.result)
         //これもthis.imageだよ！
         console.log(vm.image)
-        console.log("写真を読み込んでいるよ")
+        alert("写真を読み込んでいるよ")
       };
       reader.readAsDataURL(file);
       this.post.file = file
@@ -142,6 +154,7 @@ export default {
     removeImage: function() {
       //this.image = ""; updateができない
       this.post.image = "";
+      alert("写真を消すよ")
     },
     setRating: function(rating) {
       this.rating = rating;

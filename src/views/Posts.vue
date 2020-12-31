@@ -7,18 +7,19 @@
       <img src="../assets/header.jpg" class="header-image" />
       <div class="search-bar">
         <div class="overlay"></div>
-        <p class="header-title">cafelog</p>
+        <h1 class="header-title">cafelog</h1>
         <p>one cup at a time, one cafe at a time.</p>
-        <p class="overlay-text">
-          cafelog運営を手伝って<br />くれる方募集中!!<br />
-          カフェ投稿数<br />{{ counter }}件
-        </p>
-        <!-- <el-input v-model="keyword" placeholder="カフェ名" clearable></el-input>
-        <el-input
-          v-model="keyword2"
-          placeholder="最寄り駅"
-          clearable
-        ></el-input> -->
+        <ul class="overlay-text">
+          <li>
+            <!--li なので自動で「・」が付与される-->
+            cafelog運営のお手伝いをして<br />
+            くれる方募集中です!
+          </li>
+          <li>
+            カフェ投稿数<br />
+            計{{ counter }}件
+          </li>
+        </ul>
       </div>
     </div>
     <!-- eslint-disable -->
@@ -28,7 +29,7 @@
     <div class="posts-container">
       <Card
         class="card l-card"
-        v-for="(post, index) in this.itemsFiltered"
+        v-for="(post, index) in this.posts"
         :key="index"
         :post="post"
       ></Card>
@@ -114,19 +115,6 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
-    },
-    itemsFiltered() {
-      var posts = [];
-      for (var i in this.posts) {
-        var post = this.posts[i];
-        if (
-          String(post.station).indexOf(this.keyword2) !== -1 &&
-          String(post.cafename).indexOf(this.keyword) !== -1
-        ) {
-          posts.push(post);
-        }
-      }
-      return posts;
     }
   },
   mounted() {
@@ -134,24 +122,36 @@ export default {
     db.collection("posts")
       .orderBy("createdAt", "desc")
       .limit(8)
-      .onSnapshot(snapshot => {
-        snapshot.docChanges().forEach(change => {
-          const doc = change.doc;
-          if (change.type === "added") {
-            this.posts.unshift({
-              id: doc.id,
-              ...doc.data(),
-              daisuki: false
-              //dbには入れないで一つの投稿に判別の為のプロパティを入れる
-            });
-          } else if (change.type === "removed") {
-            this.posts.splice(0, 1);
-            // limit,orderbyも使う時はremovedも使わなくてはいけない
-          }
-          console.log(change.type);
-          console.log(this.posts);
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.posts.push({ id: doc.id, ...doc.data(), daisuki: false });
+          console.log(doc.data());
+          console.log(doc.id);
         });
       });
+
+    // db.collection("posts")
+    //   .orderBy("createdAt", "desc")
+    //   .limit(8)
+    //   .onSnapshot(snapshot => {
+    //     snapshot.docChanges().forEach(change => {
+    //       const doc = change.doc;
+    //       if (change.type === "added") {
+    //         this.posts.unshift({
+    //           id: doc.id,
+    //           ...doc.data(),
+    //           daisuki: false
+    //           //dbには入れないで一つの投稿に判別の為のプロパティを入れる
+    //         });
+    //       } else if (change.type === "removed") {
+    //         this.posts.splice(0, 1);
+    //         // limit,orderbyも使う時はremovedも使わなくてはいけない
+    //       }
+    //       console.log(change.type);
+    //       console.log(this.posts);
+    //     });
+    //   });
 
     // 2個目のカフェボックス
     db.collection("posts")
@@ -242,7 +242,7 @@ export default {
 .header-title {
   color: #4a4141;
   font-weight: bold;
-  font-size: 70px;
+  font-size: 80px;
   margin-bottom: 10px;
 }
 p {
@@ -396,10 +396,10 @@ h3 {
   left: 0;
   width: 0;
   height: 0;
-  border-top: 150px solid rgba(0, 0, 0, 0.2);
-  border-right: 250px solid transparent;
-  border-bottom: 150px solid transparent;
-  border-left: 250px solid rgba(0, 0, 0, 0.2);
+  border-top: 140px solid rgba(0, 0, 0, 0.5);
+  border-right: 270px solid transparent;
+  border-bottom: 140px solid transparent;
+  border-left: 270px solid rgba(0, 0, 0, 0.5);
 }
 .overlay-text {
   position: absolute;
@@ -407,7 +407,15 @@ h3 {
   text-align: left;
   top: 0%;
   left: 0%;
-  margin: 35px 0 0 35px;
+  margin: 32px 0 0 45px;
+  font-size: 22px;
+  font-weight: bold;
+}
+li {
+  margin: 0 0 10px 0;
+}
+li::first-line {
+  margin-left: -1em;
 }
 
 @media screen and (max-width: 479px) {

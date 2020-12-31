@@ -4,6 +4,9 @@
       <div class="title">cafelog</div>
     </div>
     <div class="posts-container" v-show="isWifiBlockDisplay">
+      <div class="heading-container">
+        <h3>Wi-Fi完備のカフェを探す</h3>
+      </div>
       <Card
         class="card l-card"
         v-for="(post, index) in this.wifiFiltered"
@@ -12,6 +15,9 @@
       ></Card>
     </div>
     <div class="posts-container" v-show="isDateBlockDisplay">
+      <div class="heading-container">
+        <h3>デートでお勧めのカフェを探す</h3>
+      </div>
       <Card
         class="card l-card"
         v-for="(post, index) in this.dateFiltered"
@@ -20,6 +26,9 @@
       ></Card>
     </div>
     <div class="posts-container" v-show="isStudyingBlockDisplay">
+      <div class="heading-container">
+        <h3>勉強しやすいカフェを探す</h3>
+      </div>
       <Card
         class="card l-card"
         v-for="(post, index) in this.studyingFiltered"
@@ -28,6 +37,9 @@
       ></Card>
     </div>
     <div class="posts-container" v-show="isGoodCoffeeBlockDisplay">
+      <div class="heading-container">
+        <h3>コーヒーが美味しいカフェを探す</h3>
+      </div>
       <Card
         class="card l-card"
         v-for="(post, index) in this.goodcoffeeFiltered"
@@ -36,6 +48,9 @@
       ></Card>
     </div>
     <div class="posts-container" v-show="isCoffeeStandBlockDisplay">
+      <div class="heading-container">
+        <h3>コーヒースタンドのカフェを探す</h3>
+      </div>
       <Card
         class="card l-card"
         v-for="(post, index) in this.coffeestandFiltered"
@@ -44,6 +59,9 @@
       ></Card>
     </div>
     <div class="posts-container" v-show="isStayAloneBlockDisplay">
+      <div class="heading-container">
+        <h3>一人で過ごしやすいカフェを探す</h3>
+      </div>
       <Card
         class="card l-card"
         v-for="(post, index) in this.stayaloneFiltered"
@@ -325,6 +343,18 @@ p {
 }
 .responsive-header {
   display: none;
+}
+.heading-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+h3 {
+  padding: 0 5px; /*上下 左右の余白*/
+  margin: 5px 15px;
+  color: #494949; /*文字色*/
+  background: transparent; /*背景透明に*/
+  border-left: solid 5px #494949; /*左線*/
 }
 
 @media screen and (max-width: 479px) {

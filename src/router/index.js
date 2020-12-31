@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Channel from "@/views/Channel.vue";
+//import Channel from "@/views/Channel.vue";
 import Users from "@/views/Users.vue";
 import Posts from "@/views/Posts.vue";
 import Post from "@/views/Post.vue";
-import Channels from "@/views/Channels.vue";
+//import Channels from "@/views/Channels.vue";
 import Search from "@/views/Search.vue";
-import Test from "@/views/Test.vue";
+//import Test from "@/views/Test.vue";
 import Filter from "@/views/Filter.vue";
 
 Vue.use(VueRouter);
@@ -29,16 +29,16 @@ const routes = [
     component: Filter
   },
 
-  {
-    path: "/channels",
-    name: Channels,
-    component: Channels
-  },
-  {
-    path: "/channels/:id",
-    name: Channel,
-    component: Channel
-  },
+  // {
+  //   path: "/channels",
+  //   name: Channels,
+  //   component: Channels
+  // },
+  // {
+  //   path: "/channels/:id",
+  //   name: Channel,
+  //   component: Channel
+  // },
   {
     path: "/users/:id",
     name: Users,
@@ -57,12 +57,12 @@ const routes = [
     path: "/posts/:id",
     name: Post,
     component: Post
-  },
-  {
-    path: "/test",
-    name: Test,
-    component: Test
   }
+  // {
+  //   path: "/test",
+  //   name: Test,
+  //   component: Test
+  //}
 ];
 
 const router = new VueRouter({

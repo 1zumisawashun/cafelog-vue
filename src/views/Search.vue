@@ -166,36 +166,29 @@ export default {
 </script>
 
 <style scoped>
+/* ヘッダーの中身 */
 .header {
   width: 100%;
-  height: 325px;
+  height: 350px;
   background-image: url("../assets/test15.jpg");
   background-size: contain;
   position: relative;
 }
-/* 
-透過した黒を上から重ねるイメージ 
-.header::before {
-  background-color: rgba(0, 0, 0, 0.4);
-   自由に位置指定 
-  position: absolute;
-  width: 100%;
-  height: 325px;
-  content: " ";
-} */
 .search-bar {
   padding-left: 20%;
   width: 60%;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 120px;
   text-align: center;
   position: absolute;
 }
-/* .search-bar p {
+p {
   color: white;
   font-weight: bold;
   font-size: 30px;
-} */
+  margin-bottom: 10px;
+}
+
 /* カードの中身 */
 .image {
   width: 100%;
@@ -306,19 +299,8 @@ export default {
   transform: translate(-50%, -50%);
   opacity: 1;
 }
-.search-content {
-  width: 90%;
-  padding: 10% 5%;
-  text-align: center;
-  position: absolute;
-  text-decoration: none;
-}
-p {
-  color: white;
-  font-weight: bold;
-  font-size: 25px;
-  margin-bottom: 10px;
-}
+
+/* 検索ブロックの中身 */
 .search-button-container {
   width: 85%;
   height: auto;
@@ -326,9 +308,24 @@ p {
   /* 下二つの要素はないと機能しない */
   display: flex;
   flex-wrap: wrap;
-  padding: 0 2%;
+  padding: 1% 2%;
 }
-
+.search-content {
+  width: 90%;
+  padding: 10% 5%;
+  text-align: center;
+  position: absolute;
+  text-decoration: none;
+}
+.main-message {
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+.sub-message {
+  color: white;
+  font-size: 13px;
+}
 /* 透過した黒を上から重ねるイメージ  */
 .wifi-button::before,
 .date-button::before,
@@ -377,7 +374,7 @@ p {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .goodcoffee-button {
-  background-image: url("../assets/test2.jpg");
+  background-image: url("../assets/picture7.jpg");
   background-size: cover;
   /* backgroud-image,sizeはセットで使う */
   width: 30%;
@@ -407,16 +404,6 @@ p {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.main-message {
-  color: white;
-  font-weight: bold;
-  font-size: 17px;
-}
-.sub-message {
-  color: white;
-  font-size: 13px;
-}
-
 @media screen and (max-width: 479px) {
   .card {
     width: 46%;
@@ -434,16 +421,6 @@ p {
     background-size: cover;
     position: relative;
   }
-
-  /* 透過した黒を上から重ねるイメージ
-  .header::before {
-    background-color: rgba(0, 0, 0, 0.4);
-    自由に位置指定 
-    position: absolute;
-    width: 100%;
-    height: 225px;
-    content: " ";
-  } */
   .search-bar {
     padding-left: 10%;
     width: 80%;

@@ -115,7 +115,18 @@
                   <el-checkbox-button v-model="open">開店</el-checkbox-button>
                   <el-checkbox-button v-model="close">閉店</el-checkbox-button>
                 </div>
-
+                <el-input
+                  type="number"
+                  v-model="lat"
+                  placeholder="緯度"
+                  class="form-block"
+                />
+                <el-input
+                  type="number"
+                  v-model="lng"
+                  placeholder="経度"
+                  class="form-block"
+                />
                 <div id="image-container">
                   <div v-if="!image">
                     <input
@@ -218,7 +229,9 @@ export default {
       image: "",
       modal: false,
       drawer: false,
-      direction: "ltr"
+      direction: "ltr",
+      lat: "",
+      lng: ""
     };
   },
   components: {
@@ -354,6 +367,8 @@ export default {
               rating: this.rating,
               open: this.open,
               close: this.close,
+              lat:this.lat,
+              lng:this.lng,
               image: this.url,
               createdAt: new Date().getTime(),
               user: {
@@ -498,7 +513,7 @@ footer{
     background-color: white;
     color: #4a4141;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
 }
 ul.footer-menu li {
 display: inline;

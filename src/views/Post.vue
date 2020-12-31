@@ -154,8 +154,8 @@
           </tr>
         </table>
     <GmapMap
-      :center="{lat:10, lng:10}"
-      :zoom="7"
+      :center="{lng: post.lng, lat: post.lat}"
+      :zoom="15"
       map-type-id="roadmap"
       class="map-block shadow"
       
@@ -163,19 +163,12 @@
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
-        :position="m.position"
+        :position="{ lng: post.lng, lat: post.lat }"
         :clickable="true"
         :draggable="true"
-        @click="center=m.position"
+        @click="center={lng: post.lng, lat: post.lat}"
       />
     </GmapMap>
-        <!-- <div class="chat-maker">
-          <el-button
-            @click="makeChannels(post.cafename, post.user.id, post.image)"
-            v-show="eraseChat"
-            >chat-maker</el-button
-          >
-        </div> -->
       </div>
     </div>
   </div>
@@ -219,10 +212,7 @@ export default {
       commentCount: 0,
       isPosted: false,
       isNotLoginUser: true,
-      markers: [
-        { position: { lng: 10.2, lat: 10 } },
-        { position: { lng: 10.5, lat: 10 } }
-      ],
+      markers: [{ position: { lng: 10.5, lat: 10 } }],
       recommends: []
     };
   },
@@ -243,8 +233,6 @@ export default {
   },
   mounted() {
     //いいねを付ける、取り外しをする
-
-    console.log(this.post);
     const postId = this.$route.params.id;
     if (this.user === null) {
       this.isNotLoginUser = false;
@@ -263,6 +251,7 @@ export default {
             this.beLiked = false;
             console.log(this.beLiked);
           }
+          //existを使えばlengthで中身を検索しなくてもOK
         })
         .catch(function(error) {
           // いずれかのreadFileでエラーがあった場合の処理
@@ -356,10 +345,12 @@ export default {
         });
       })
       .then(() => {
-        //配列の中、インデックス番号0,1,2を取得してrecommendsに格納する
+        //配列の中、インデックス番号0,1,2を取得してrecommendsに格納する。whereの代わりをしている感じ
         this.recommends = osusume.slice(0, 3);
         console.log(this.recommends);
       });
+    console.log("緯度をテストしています");
+    console.log(this.post.lat);
   },
   methods: {
     openCommentModal() {
@@ -384,12 +375,15 @@ export default {
     updateButton(post) {
       //fileの中身もしっかりemitされている。
       console.log(post);
+      alert("updateスタート");
       let storageRef = firebase
         .storage()
         .ref(`posts/${this.user.displayName}/` + post.file.name);
+      //写真が更新されないと何も反応しなくなる。
       storageRef
         .put(post.file)
         .then(() => {
+          alert("写真の格納をします。");
           let storageRef = firebase
             .storage()
             .ref(`posts/${this.user.displayName}/` + post.file.name);
@@ -413,6 +407,8 @@ export default {
                 rating: post.rating,
                 open: post.open,
                 close: post.close,
+                lat: post.lat,
+                lng: post.lng,
                 image: url,
                 // post.urlにしない
                 createdAt: new Date().getTime(),
@@ -442,17 +438,6 @@ export default {
           this.$router.push("/");
         });
     },
-    // makeChannels(cafename, postedUserId, image) {
-    //   console.log("makeChannels");
-    //   db.collection("channels").add({
-    //     name: cafename,
-    //     postedUser: postedUserId,
-    //     currentUser: this.userId,
-    //     createdAt: new Date().getTime(),
-    //     thumbnail: image
-    //   });
-    //   window.alert("chat-maker");
-    // },
     addComment(id) {
       console.log("コメントをテストしています");
       db.collection("posts")
