@@ -13,7 +13,10 @@
           <li>
             <!--li なので自動で「・」が付与される-->
             cafelog運営のお手伝いをして<br />
-            くれる方募集中です!
+            くれる方募集中です! <br />
+            <span class="contact-detail"
+              ><router-link to="Contact">詳細はこちら</router-link></span
+            >
           </li>
           <li>
             カフェ投稿数<br />
@@ -121,7 +124,7 @@ export default {
     // 一個目のカフェボックス
     db.collection("posts")
       .orderBy("createdAt", "desc")
-      .limit(8)
+      .limit(10)
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
@@ -156,7 +159,7 @@ export default {
     // 2個目のカフェボックス
     db.collection("posts")
       .where("station", "==", "渋谷")
-      .limit(8)
+      .limit(10)
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
@@ -169,7 +172,7 @@ export default {
     //3個目のカフェボックス
     db.collection("posts")
       .where("wifi", "==", true)
-      .limit(8)
+      .limit(10)
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
@@ -253,7 +256,7 @@ p {
 }
 /* ここからがカードの中身 */
 .card {
-  width: 23%;
+  width: 18%;
   height: auto;
   margin: 1%;
   background-color: white;
@@ -265,7 +268,7 @@ p {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 /* ユーザのサムネイル */
 .thumbnail {
@@ -407,7 +410,7 @@ h3 {
   text-align: left;
   top: 0%;
   left: 0%;
-  margin: 32px 0 0 45px;
+  margin: 25px 0 0 45px;
   font-size: 22px;
   font-weight: bold;
 }

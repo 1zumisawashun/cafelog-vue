@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-//import Channel from "@/views/Channel.vue";
+import Contact from "@/views/Contact.vue";
 import Users from "@/views/Users.vue";
 import Posts from "@/views/Posts.vue";
 import Post from "@/views/Post.vue";
@@ -28,12 +28,11 @@ const routes = [
     name: "Filter",
     component: Filter
   },
-
-  // {
-  //   path: "/channels",
-  //   name: Channels,
-  //   component: Channels
-  // },
+  {
+    path: "/contact",
+    name: Contact,
+    component: Contact
+  },
   // {
   //   path: "/channels/:id",
   //   name: Channel,

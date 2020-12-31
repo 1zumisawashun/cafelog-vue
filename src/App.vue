@@ -191,11 +191,13 @@
     </div>
     <footer>
 　　<ul class="footer-menu">
-     <li>Home ｜</li>
+     <li><router-link to="/">Home</router-link> ｜</li>
      <li>Login ｜</li>
      <li>GuestLogin ｜</li>
      <li>Search ｜</li>
-     <li>Contact </li>
+     <li>
+       <router-link to="Contact">Contact</router-link>
+        </li>
     </ul>
     <p>© All rights reserved by cafelog.</p>
   </footer>

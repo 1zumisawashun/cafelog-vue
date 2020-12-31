@@ -217,32 +217,34 @@ p {
   font-weight: bold;
   font-size: 25px;
 }
-/* ここからがカードの中身 */
-.card {
+/* ここからがカードの中身→管理しているのはposts.vue */
+
+/* .card {
   width: 23%;
   height: auto;
   margin: 1%;
   background-color: white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 10px;
-}
-/* カードの画像 */
+  border-radius: 5px;
+} */
+
+/* カードの画像→これはCard.vueで管理している */
 .image {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 /* ユーザのサムネイル */
 .thumbnail {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin-right: 10px;
 }
 /* カードの下半分の要素コンテナ */
 .content-block {
-  padding: 10px;
+  padding: 8px;
 }
 /* お店の名前 */
 .content {
@@ -250,7 +252,7 @@ p {
   height: 27px;
   margin-top: 0;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 15px;
   overflow: hidden;
   /* text-overflow: ellipsis;
   white-space: nowrap; */
@@ -261,7 +263,7 @@ p {
 .station {
   font-size: 15px;
   color: #9e9e9e;
-  padding-top: 4px;
+  padding: 2px 0 0 0;
 }
 .posted-user {
   display: flex;
@@ -325,7 +327,7 @@ p {
 /* 星評価機能 */
 .star-rating {
   display: inline-block;
-  width: 45%;
+  width: 70%;
 }
 /* コメントカウント */
 .comment-count {
@@ -335,7 +337,7 @@ p {
 }
 .save-container {
   display: inline-block;
-  margin-left: 8px;
+  margin-left: 75px;
   margin-top: 2.5px;
 }
 .responsive-save-container {

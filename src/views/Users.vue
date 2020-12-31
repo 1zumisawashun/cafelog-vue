@@ -160,7 +160,7 @@ export default {
 }
 
 .card {
-  width: 23%;
+  width: 18%;
   height: auto;
   margin: 1%;
   background-color: white;

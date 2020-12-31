@@ -71,6 +71,16 @@
           </span>
 
         </router-link></div>
+
+         <div class="search-button allshops-button"><router-link :to="{ name: 'Filter', params: { value: 'allshops' }}"
+        class="search-content">
+        
+        <span class="main-message">投稿カフェ一覧</span><br> 
+          <span class="sub-message">
+            今まで投稿されたカフェを全て見てみませんか。カフェログではユーザの皆様の役立つカフェ情報を発信します。
+          </span>
+
+        </router-link></div>
     </div>
 <!-- <div class="posts-container">
       <Card
@@ -332,6 +342,7 @@ p {
 .studying-button::before,
 .goodcoffee-button::before,
 .coffeestand-button::before,
+.allshops-button::before,
 .stayalone-button::before {
   background-color: rgba(0, 0, 0, 0.4);
   /* 自由に位置指定  */
@@ -400,6 +411,16 @@ p {
   width: 30%;
   height: 200px;
   margin: 1% 2% 1% 1%;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.allshops-button {
+  background-image: url("../assets/logo.jpg");
+  background-size: cover;
+  /* backgroud-image,sizeはセットで使う */
+  width: 30%;
+  height: 200px;
+  margin: 1% 1% 1% 2%;
   position: relative;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }

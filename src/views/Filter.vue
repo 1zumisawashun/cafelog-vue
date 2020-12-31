@@ -69,6 +69,17 @@
         :post="post"
       ></Card>
     </div>
+    <div class="posts-container" v-show="isAllShopsBlockDisplay">
+      <div class="heading-container">
+        <h3>投稿カフェ一覧</h3>
+      </div>
+      <Card
+        class="card l-card"
+        v-for="(post, index) in this.posts"
+        :key="index"
+        :post="post"
+      ></Card>
+    </div>
   </div>
 </template>
 
@@ -87,12 +98,14 @@ export default {
       isGoodCoffeeBlockDisplay: false,
       isCoffeeStandBlockDisplay: false,
       isStayAloneBlockDisplay: false,
+      isAllShopsBlockDisplay: false,
       dateblock: [],
       wifiblock: [],
       studyingblock: [],
       goodcoffeeblock: [],
       coffeestandblock: [],
-      stayaloneblock: []
+      stayaloneblock: [],
+      allshopsblock: []
     };
   },
   components: {
@@ -159,16 +172,6 @@ export default {
         }
       }
       return posts;
-    },
-    stayaloneFiltered() {
-      var posts = [];
-      for (var i in this.posts) {
-        var post = this.posts[i];
-        if (String(post.stayalone).indexOf("true") !== -1) {
-          posts.push(post);
-        }
-      }
-      return posts;
     }
   },
   mounted() {
@@ -189,6 +192,9 @@ export default {
     }
     if (this.$route.params.value == "stayalone") {
       this.isStayAloneBlockDisplay = true;
+    }
+    if (this.$route.params.value == "allshops") {
+      this.isAllShopsBlockDisplay = true;
     }
     //最初にポストデータをすべて取得する
     db.collection("posts")
@@ -260,7 +266,7 @@ p {
   padding-top: 2%;
 }
 .card {
-  width: 23%;
+  width: 18%;
   height: auto;
   margin: 1%;
   background-color: white;
