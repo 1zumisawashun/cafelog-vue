@@ -118,6 +118,7 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+      //算出プロパティでデータを加工→Stringからnumberに変更してあげれば良い！
     }
   },
   mounted() {
@@ -180,7 +181,7 @@ export default {
         });
       });
 
-    //カウンター
+    //投稿数のカウンター
     db.collection("posts")
       .get()
       .then(querySnapshot => {

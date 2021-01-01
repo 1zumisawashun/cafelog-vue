@@ -116,14 +116,14 @@
                   <el-checkbox-button v-model="close">閉店</el-checkbox-button>
                 </div>
                 <el-input
-                  type="number"
-                  v-model="lat"
+                  type="text"
+                  v-model.number="lat"
                   placeholder="緯度"
                   class="form-block"
                 />
                 <el-input
-                  type="number"
-                  v-model="lng"
+                  type="text"
+                  v-model.number="lng"
                   placeholder="経度"
                   class="form-block"
                 />
@@ -487,13 +487,13 @@ export default {
   height: 100vh;
 }
 .form-container {
-  width: 75%;
+  width: 80%;
   height: auto;
-  padding: 3% 6%;
+  padding: 3% 2%;
   background-color: white;
 }
-.form-block {
-  margin: 5px;
+.form-container .form-block {
+  margin: 3px;
 }
 .drower-container {
   display: none;

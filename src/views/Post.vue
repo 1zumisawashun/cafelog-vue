@@ -55,8 +55,8 @@
               v-show="isPosted"
               >UPDATE</el-button
             >
-            <el-dialog cafename :visible.sync="UpdateDialogVisible" width="75%">
-              <div class="form-container">
+            <el-dialog cafename :visible.sync="UpdateDialogVisible" width="80%">
+              <div class="update-form-container">
                 <post-form
                   :post="post"
                   @update="updateButton(post)"
@@ -737,9 +737,6 @@ table td {
   width: 100%;
   height: 250px;
   margin-top: 25px;
-}
-.form-container{
-  width: none;
 }
 
 /* サイドメニュー */

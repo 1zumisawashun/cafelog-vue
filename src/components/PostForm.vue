@@ -72,13 +72,14 @@
     </div>
     <el-input
       type="text"
-      v-model="post.lat"
+      v-model.number="post.lat"
       placeholder="緯度"
       class="form-block"
     />
+    <!-- v-model.numberにすることで数値でデータが登録される -->
     <el-input
       type="text"
-      v-model="post.lng"
+      v-model.number="post.lng"
       placeholder="経度"
       class="form-block"
     />
@@ -167,16 +168,10 @@ export default {
 
 <style scoped>
 .postedImage {
-  width: 200px;
+  width: 150px;
   height: auto;
-}
-.form-container {
-  width: 100%;
-  height: auto;
-  padding: 3% 6%;
-  background-color: white;
 }
 .form-block {
-  margin: 5px;
+  margin: 3px;
 }
 </style>

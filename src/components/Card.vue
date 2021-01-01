@@ -36,7 +36,7 @@
           icon="heart"
           v-else
             @click="likes(post)"/>
-        <div class="star-comment-container">
+        <div class="star-save-container">
           <StarRating
             v-model="post.rating"
             :read-only="true"
@@ -307,7 +307,7 @@ p {
   display: inline-block;
   padding: 6px 12px 8px;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   border: 1px solid #fff;
   opacity: 0;
 }
@@ -318,8 +318,8 @@ p {
   transform: translate(-50%, -50%);
   opacity: 1;
 }
-/* 星評価とコメントカウントのコンテナ */
-.star-comment-container {
+/* 星評価といいね機能カウントのコンテナ */
+.star-save-container {
   width: 98%;
   margin: 0 auto;
   display: flex;
@@ -327,18 +327,13 @@ p {
 /* 星評価機能 */
 .star-rating {
   display: inline-block;
-  width: 70%;
+  width: 85%;
 }
-/* コメントカウント */
-.comment-count {
-  display: inline-block;
-  margin-left: 8px;
-  margin-top: 2px;
-}
+/* いいね機能 */
 .save-container {
   display: inline-block;
-  margin-left: 75px;
-  margin-top: 2.5px;
+  width: 15%;
+  margin: 2.5px 0 0 0;
 }
 .responsive-save-container {
   display: none;
