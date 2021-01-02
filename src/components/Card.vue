@@ -383,7 +383,7 @@ p {
     opacity: 0;
   }
   /* 星評価とコメントカウントのコンテナ */
-  .star-comment-container {
+  .star-save-container {
     display: none;
   }
 

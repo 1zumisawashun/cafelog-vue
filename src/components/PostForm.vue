@@ -163,7 +163,6 @@ export default {
     },
   }
 };
-
 </script>
 
 <style scoped>
@@ -175,3 +174,5 @@ export default {
   margin: 3px;
 }
 </style>
+
+
