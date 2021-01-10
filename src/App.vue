@@ -8,30 +8,48 @@
         </div>
         <div class="link-container">
           <router-link to="/posts"
-            ><font-awesome-icon icon="home"　class="font-awesome-adjustment" />
+            ><font-awesome-icon icon="home" 　class="font-awesome-adjustment" />
             <div>Home</div>
           </router-link>
           <a v-if="isAuthenticated" v-on:click="logout"
-            ><font-awesome-icon icon="sign-out-alt" class="font-awesome-adjustment" />LogOut</a
+            ><font-awesome-icon
+              icon="sign-out-alt"
+              class="font-awesome-adjustment"
+            />LogOut</a
           >
 
           <a @click="login" v-if="!isAuthenticated"
-            ><font-awesome-icon icon="sign-in-alt" class="font-awesome-adjustment"/>LogIn</a
+            ><font-awesome-icon
+              icon="sign-in-alt"
+              class="font-awesome-adjustment"
+            />LogIn</a
           >
           <a @click="anonymouse" v-if="!isAuthenticated"
-            ><font-awesome-icon icon="user-secret" class="font-awesome-adjustment"/>GuestLogin</a
+            ><font-awesome-icon
+              icon="user-secret"
+              class="font-awesome-adjustment"
+            />GuestLogin</a
           >
 
           <router-link :to="`/users/${userId}`" v-if="isAuthenticated"
-            ><font-awesome-icon icon="user" class="font-awesome-adjustment"/>MyPage</router-link
+            ><font-awesome-icon
+              icon="user"
+              class="font-awesome-adjustment"
+            />MyPage</router-link
           >
 
           <router-link to="/search"
-            ><font-awesome-icon icon="search" class="font-awesome-adjustment"/>Search</router-link
+            ><font-awesome-icon
+              icon="search"
+              class="font-awesome-adjustment"
+            />Search</router-link
           >
 
           <a @click="openModal" v-if="isAuthenticated"
-            ><font-awesome-icon icon="paper-plane" class="font-awesome-adjustment"/>Post</a
+            ><font-awesome-icon
+              icon="paper-plane"
+              class="font-awesome-adjustment"
+            />Post</a
           >
 
           <transition name="my-modal">
@@ -156,6 +174,7 @@
     </div>
     <div class="main-content">
       <router-view :key="$route.fullPath" />
+      <!-- :keyを指定することで強制レンダリングをさせている。 -->
     </div>
     <div class="responsive-footer">
       <div class="link-block">
@@ -190,17 +209,18 @@
       </div>
     </div>
     <footer>
-　　<ul class="footer-menu">
-     <li><router-link to="/">Home</router-link> ｜</li>
-     <li>Login ｜</li>
-     <li>GuestLogin ｜</li>
-     <li>Search ｜</li>
-     <li>
-       <router-link to="Contact">Contact</router-link>
+      　　
+      <ul class="footer-menu">
+        <li><router-link to="/">Home</router-link> ｜</li>
+        <li>Login ｜</li>
+        <li>GuestLogin ｜</li>
+        <li>Search ｜</li>
+        <li>
+          <router-link to="Contact">Contact</router-link>
         </li>
-    </ul>
-    <p>© All rights reserved by cafelog.</p>
-  </footer>
+      </ul>
+      <p>© All rights reserved by cafelog.</p>
+    </footer>
   </div>
 </template>
 
@@ -369,8 +389,8 @@ export default {
               rating: this.rating,
               open: this.open,
               close: this.close,
-              lat:this.lat,
-              lng:this.lng,
+              lat: this.lat,
+              lng: this.lng,
               image: this.url,
               createdAt: new Date().getTime(),
               user: {
@@ -408,27 +428,29 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 .wrap {
-  overflow: hidden;
+  /* overflow: hidden;   */
 }
 .header-container {
-  width: 100%;
   display: flex;
+  max-width: 100%;
+  background: #f1f1f1;
 }
 .sidebar {
   width: 100%;
-  background: #f1f1f1; 
-  padding: 8px;
+  padding: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: flex;
 }
 
 .link-container {
-  width: 43%;
+  max-width: 100%;
   /* background-color: aquamarine; */
-  margin: 0 0 0 auto;
+  /* margin: 0 0 0 auto; */
   /* 右に寄せる */
   display: flex;
+  padding: 0 50px 0 0;
 }
 .sidebar a {
   color: #4a4141;
@@ -450,7 +472,7 @@ export default {
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
 .main-content {
@@ -506,20 +528,21 @@ export default {
   width: 100%;
   text-align: end;
 }
-.font-awesome-adjustment{
+.font-awesome-adjustment {
   margin: 3px 2px 0 0;
 }
-footer{
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    color: #4a4141;
-    text-align: center;
-    padding: 20px;
+footer {
+  max-width: 100%;
+  /* これで無駄な横は見出しを防ぐことができる */
+  height: 50px;
+  background-color: white;
+  color: #4a4141;
+  text-align: center;
+  padding: 20px;
 }
 ul.footer-menu li {
-display: inline;
-padding: 10px 5px;
+  display: inline;
+  padding: 10px 5px;
 }
 
 @media screen and (max-width: 479px) {
@@ -559,7 +582,7 @@ padding: 10px 5px;
     cursor: pointer;
     font-weight: bold;
   }
-  footer{
+  footer {
     display: none;
   }
 }

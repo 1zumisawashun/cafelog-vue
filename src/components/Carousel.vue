@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="slick-all-container">
     <VueSlickCarousel v-bind="setting" class="slick-carousel-container">
       <router-link :to="`posts/${posts[0].id}`" class="slick-box">
         <div class="station">{{ posts[0].station }}</div>
@@ -47,7 +47,8 @@ export default {
         slidesToShow: 5,
         infinite: true,
         autoplay: true,
-        autoplayTimeout: 1000
+        autoplayTimeout: 1000,
+        arrows: false
       }
     };
   },
@@ -73,6 +74,10 @@ export default {
 </script>
 
 <style scoped>
+.slick-all-container {
+  max-width: 95%;
+  margin: 0 auto;
+}
 .slick-carousel-container {
   width: 100%;
   height: auto;
@@ -97,10 +102,26 @@ export default {
 }
 .station {
   top: 160px;
+  padding: 0 0 0 10px;
   position: absolute;
   color: white;
   font-weight: bold;
 }
 @media screen and (max-width: 479px) {
+  .slick-all-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .slick-carousel-container {
+    width: 100%;
+    height: auto;
+  }
+  .station {
+    top: 160px;
+    padding: 0;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+  }
 }
 </style>

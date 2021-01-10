@@ -16,26 +16,18 @@
           <img :src="post.user.thumbnail" class="thumbnail" />
         </router-link>
         <div class="station">{{ post.station }}駅</div>
-        <!-- <div
-          class="el-icon-collection-tag responsive-save-container dislike"
+        <font-awesome-icon
+          class="save-container dislike responsive-save-container"
+          icon="heart"
           v-if="this.post.daisuki"
           @click="unlikes(post)"
-        ></div>
-        <div
-          class="el-icon-collection-tag responsive-save-container like"
+        />
+        <font-awesome-icon
+          class="save-container like responsive-save-container"
+          icon="heart"
           v-else
           @click="likes(post)"
-        ></div> -->
-        <font-awesome-icon class="save-container
-          dislike responsive-save-container" 
-          icon="heart"
-          v-if="this.post.daisuki"
-            @click="unlikes(post)"/>
-          <font-awesome-icon class="save-container
-          like responsive-save-container" 
-          icon="heart"
-          v-else
-            @click="likes(post)"/>
+        />
         <div class="star-save-container">
           <StarRating
             v-model="post.rating"
@@ -47,16 +39,18 @@
             :show-rating="false"
             class="star-rating"
           ></StarRating>
-          <font-awesome-icon class="save-container
-          dislike" 
-          icon="heart"
-          v-if="this.post.daisuki"
-            @click="unlikes(post)"/>
-          <font-awesome-icon class="save-container
-          like" 
-          icon="heart"
-          v-else
-            @click="likes(post)"/>
+          <font-awesome-icon
+            class="save-container dislike"
+            icon="heart"
+            v-if="this.post.daisuki"
+            @click="unlikes(post)"
+          />
+          <font-awesome-icon
+            class="save-container like"
+            icon="heart"
+            v-else
+            @click="likes(post)"
+          />
         </div>
       </div>
     </div>

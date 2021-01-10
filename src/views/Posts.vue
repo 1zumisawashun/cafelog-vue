@@ -122,19 +122,6 @@ export default {
     }
   },
   mounted() {
-    // 一個目のカフェボックス
-    db.collection("posts")
-      .orderBy("createdAt", "desc")
-      .limit(10)
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.posts.push({ id: doc.id, ...doc.data(), daisuki: false });
-          console.log(doc.data());
-          console.log(doc.id);
-        });
-      });
-
     // db.collection("posts")
     //   .orderBy("createdAt", "desc")
     //   .limit(8)
@@ -156,6 +143,19 @@ export default {
     //       console.log(this.posts);
     //     });
     //   });
+
+    // 一個目のカフェボックス
+    db.collection("posts")
+      .orderBy("createdAt", "desc")
+      .limit(10)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.posts.push({ id: doc.id, ...doc.data(), daisuki: false });
+          console.log(doc.data());
+          console.log(doc.id);
+        });
+      });
 
     // 2個目のカフェボックス
     db.collection("posts")
@@ -198,7 +198,7 @@ export default {
 }
 
 .all-container {
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 .posts-container {
