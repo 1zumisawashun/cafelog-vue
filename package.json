@@ -20,6 +20,7 @@
     "jquery": "^2.2.4",
     "vue": "^2.6.12",
     "vue-awesome": "^4.1.0",
+    "vue-paginate": "^3.6.0",
     "vue-router": "^3.4.9",
     "vue-slick": "^1.1.15",
     "vue-slick-carousel": "^1.0.6",

@@ -10,6 +10,7 @@ window.$ = window.jQuery = require("jquery");
 import * as VueGoogleMaps from "vue2-google-maps";
 import StarRating from "vue-star-rating";
 import VoerroTagsInput from "@voerro/vue-tagsinput";
+//import VuePaginate from "vue-paginate";
 
 //------------font-awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -57,6 +58,7 @@ Vue.config.productionTip = false;
 Vue.use(VueSlick);
 Vue.use(StarRating);
 Vue.use(VoerroTagsInput);
+//Vue.use(VuePaginate);
 
 new Vue({
   router,

@@ -428,10 +428,10 @@ export default {
   margin: 0;
   padding: 0;
 }
-
+/* 
 .wrap {
-  /* overflow: hidden;   */
-}
+  overflow: hidden;
+} */
 .header-container {
   display: flex;
   max-width: 100%;

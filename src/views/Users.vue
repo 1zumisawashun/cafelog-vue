@@ -6,21 +6,45 @@
       @tab-click="handleClick"
       class="tab-container"
     >
-      <!-- <el-tab-pane label="USER" name="first">
+      <!-- <el-tab-pane label="USER" name="third">
         <div v-for="(user, index) in users" :key="index">
           <p>{{ user.name }}さんのマイページ</p>
           <img :src="user.thumbnail" class="thumbnail" />
           <p>{{ user.email }}</p>
         </div>
       </el-tab-pane> -->
+
       <el-tab-pane label="POSTED" name="first">
         <div class="posts-container">
           <Card
             class="card l-card"
-            v-for="(post, index) in this.posts"
+            v-for="(post, index) in this.firstPagination"
             :key="index"
             :post="post"
+            v-show="firstPaginate"
           ></Card>
+          <Card
+            class="card l-card"
+            v-for="(post, index) in this.secondPagination"
+            :key="index"
+            :post="post"
+            v-show="secondPaginate"
+          ></Card>
+          <Card
+            class="card l-card"
+            v-for="(post, index) in this.thirdPagination"
+            :key="index"
+            :post="post"
+            v-show="thirdPaginate"
+          ></Card>
+          <div class="pagination-container">
+          <Pagination
+            query="members"
+            :length="this.userPostedCount"
+            :now="Number($route.query.members) || 1"
+            class="nav"
+          />
+          </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="LIKED" name="second">
@@ -42,6 +66,7 @@
 <script>
 import { db } from "@/firebase";
 import Card from "@/components/Card";
+import Pagination from "@/components/Pagination.vue";
 export default {
   data() {
     return {
@@ -51,12 +76,27 @@ export default {
       likes: [],
       likesFiltered: [],
       eraseElement: true,
-      activeName: "first"
+      activeName: "first",
+      firstPaginate: false,
+      secondPaginate: false,
+      thirdPaginate: false
     };
   },
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    userPostedCount() {
+      return this.posts.length / 15;
+    },
+    firstPagination() {
+      return this.posts.slice(0, 15);
+    },
+    secondPagination() {
+      return this.posts.slice(15, 30);
+    },
+    thirdPagination() {
+      return this.posts.slice(30, 45);
     }
   },
   methods: {
@@ -66,9 +106,22 @@ export default {
   },
   components: {
     //StarRating,
-    Card
+    Card,
+    Pagination
   },
   mounted() {
+    console.log(this.$route.query.members);
+    //queryが１ページ目を示していたらそれに対応する表示イベントを発火させる
+    if (this.$route.query.members == 1) {
+      this.firstPaginate = true;
+    }
+    if (this.$route.query.members == 2) {
+      this.secondPaginate = true;
+    }
+    if (this.$route.query.members == 3) {
+      this.thirdPaginate = true;
+    }
+
     console.log(this.likes);
 
     db.collection("users")
@@ -125,15 +178,15 @@ export default {
   max-width: 100%;
   height: auto;
   min-height: 565px;
-  padding: 4% 0 4% 4%;
+  padding: 5%;
 }
 .tab-container {
-  width: 90%;
+  width: 97%;
   height: auto;
   background-color: white;
   padding: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .posts-container {
@@ -240,6 +293,10 @@ export default {
 .l-card:hover .more-text {
   transform: translate(-50%, -50%);
   opacity: 1;
+}
+.pagination-container {
+  width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 479px) {
