@@ -761,12 +761,12 @@ hr {
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 0 0 2%;
+  margin: 0 0 2% 0;
 }
 .image-block {
-  width: 100%;
+  width: 33%;
   height: 180px;
-}
+  }
 /* ユーザのコメント */
 .image-block img {
   width: 100%;
@@ -780,7 +780,6 @@ hr {
   object-fit: cover;
   border-radius: 3px;
 }
-
 .shadow {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
