@@ -4,20 +4,16 @@ import "firebase/firestore";
 
 if (!firebase.apps.length) {
   const config = {
-    apiKey: "AIzaSyBtWqRoKlSft9Gj9qZhIIC_nYmNrx6E3wg",
-    authDomain: "vuestagram-20f8d.firebaseapp.com",
-    databaseURL: "https://vuestagram-20f8d.firebaseio.com",
-    projectId: "vuestagram-20f8d",
-    storageBucket: "vuestagram-20f8d.appspot.com",
-    messagingSenderId: "1041755303397",
-    // eslint-disable-next-line
-    appId: "1:1041755303397:web:d17c2a36f65cde77e7530c",
+    apiKey: process.env.VUE_APP_API_KEY,
+    authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+    databaseURL: process.env.VUE_APP_DATABASE_URL,
+    projectId: process.env.VUE_APP_PROJECT_ID,
+    storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+    appId: process.env.VUE_APP_APP_ID
   };
   firebase.initializeApp(config);
 }
 
 const db = firebase.firestore();
 export { firebase, db };
-
-// xporet const add = collection().doc
-// のようにデータをあらかじめ決めることで省略で書くことができる

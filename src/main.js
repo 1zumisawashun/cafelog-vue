@@ -10,7 +10,9 @@ window.$ = window.jQuery = require("jquery");
 import * as VueGoogleMaps from "vue2-google-maps";
 import StarRating from "vue-star-rating";
 import VoerroTagsInput from "@voerro/vue-tagsinput";
+import dotenv from "dotenv";
 //import VuePaginate from "vue-paginate";
+dotenv.config();
 
 //------------font-awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
