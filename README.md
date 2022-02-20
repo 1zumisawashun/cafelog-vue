@@ -1,13 +1,3 @@
-# Todo
-
-・画像の複数投稿  
-・ページネーションの実装  
-・sass の導入
-
-# Done
-
-# vue-slack
-
 ## Project setup
 
 ```
